@@ -16,8 +16,7 @@ export const Badge: React.FC<IProps> = ({
     rounded = false,
     ...props
  }) => {
-    console.log(theme.colors)
-    console.log(theme)
+    
     return (
         <span className={classname({
             "text-xs font-semibold inline-block py-1 px-2 uppercase last:mr-0 mr-1 rounded-lg": true,
