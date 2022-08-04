@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
+import '../src/index.css';
 import { Button } from '../src';
 import { ButtonSize, ButtonVariant } from '../src/components/Button';
+import { left } from '@popperjs/core';
 
 export default {
   /* 👇 The title prop is optional.
@@ -17,31 +18,26 @@ export default {
     outlined: false,
     disabled: false,
     full: false,
+    leftIcon:'',
+    rightIcon:'',
     loading: false
+    
   },
   argTypes: {
     variant: {
-      options: [ButtonVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: [ButtonVariant.default,ButtonVariant.primary, ButtonVariant.secondary,ButtonVariant.danger,ButtonVariant.warning,ButtonVariant.info,ButtonVariant.success],
       control: { type: 'select' }
     },
     size: {
-      options: [ ButtonSize.sm, ButtonSize.md, ButtonSize.lg],
+      options: [ ButtonSize.sm, ButtonSize.md],
       control: 'inline-radio' 
     },
     outlined : { control : 'boolean'},
+    leftIcon:{type:'string'},
+    rightIcon:{type:'string'},
     loading : { control : 'boolean'},
     disabled : { control : 'boolean'},
     full : { control : 'boolean'},
-    leftIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
-    },
-    rightIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
-    },
   }
 } as ComponentMeta<typeof Button>;
 
@@ -51,7 +47,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Button Default', variant: ButtonVariant.default };
+Default.args = { label: 'Button Default',variant: ButtonVariant.default };
 
 export const Primary = Template.bind({});
 Primary.args = { label: 'Button Primary', variant: ButtonVariant.primary };

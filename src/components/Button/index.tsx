@@ -1,7 +1,9 @@
 import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import '../../index.css';
 import ReactLoading from 'react-loading';
+import theme from '../../theme'
 
 export enum ButtonVariant {
     default = 'default',
@@ -16,7 +18,6 @@ export enum ButtonVariant {
 export enum ButtonSize {
     sm = 'sm',
     md = 'md',
-    lg = 'lg',
 }
 
 export interface IProps {
@@ -41,12 +42,13 @@ export const Button: React.FC<IProps> = ({
     loading = false,
     size = ButtonSize.md,
     variant = ButtonVariant.default,
+    onClick,
     full = false,
     ...props
  }) => {
 
     const getIcon = (icon: string) => {
-        return <i className={`fas fa-${icon}`}></i>
+        return <i className={`${icon}`}></i>
     }
 
     const getLeftIcon = () => {
@@ -59,7 +61,7 @@ export const Button: React.FC<IProps> = ({
 
     const getLoading = () => <ReactLoading type='spin' color='#FFF' height={"20px"} width={"20px"}/>;
 
-    const getRealContent = () => <span>{getLeftIcon()} {label} {getRightIcon()}</span>
+    const getRealContent = () => <span>{getLeftIcon()} <span className='mx-2'>{label}</span> {getRightIcon()}</span>
 
     const getContent = () => {
         if(loading) {
@@ -68,19 +70,19 @@ export const Button: React.FC<IProps> = ({
 
         return getRealContent();
     }
-
+     console.log(`bg-${theme.colors.warning.default} text-white`, )
     return (
-        <button disabled={disabled} className={
+        <button onClick={onClick} disabled={disabled} className={
             classname({
-                'font-bold uppercase rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150' :  true,
+                'font-bold uppercase rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150 cursor-pointer' :  true,
                 // Outline none
-                'bg-gray-600 text-white enabled:active:bg-gray-700 enabled:hover:bg-gray-700' : ButtonVariant.default == variant,
-                'bg-teal-300 text-white enabled:active:bg-teal-500 enabled:hover:bg-teal-500' : ButtonVariant.primary == variant,
-                'bg-orange-400 text-white enabled:active:bg-orange-600 enabled:hover:bg-orange-600' : ButtonVariant.secondary == variant,
-                'bg-teal-400 text-white enabled:active:bg-teal-500 enabled:hover:bg-teal-500' : ButtonVariant.success == variant,
-                'bg-cyan-300 text-white enabled:active:bg-cyan-500 enabled:hover:bg-cyan-500' : ButtonVariant.info == variant,
-                'bg-amber-400 text-white enabled:active:bg-amber-500 enabled:hover:bg-amber-500' : ButtonVariant.warning == variant,
-                'bg-red-400 text-white enabled:active:bg-red-500 enabled:hover:bg-red-500' : ButtonVariant.danger == variant,
+                [`bg-${ theme.colors.default.default} text-white`] : ButtonVariant.default == variant,
+                [`bg-${theme.colors.primary.default} text-white`] : ButtonVariant.primary == variant,
+                [`bg-${theme.colors.secondary.default} text-white`] : ButtonVariant.secondary == variant,
+                [`bg-${theme.colors.success.default} text-white`] : ButtonVariant.success == variant,
+                [`bg-${theme.colors.info.default} text-white`] : ButtonVariant.info == variant,
+                [`bg-${theme.colors.warning.default} text-white`] : ButtonVariant.warning == variant,
+                [`bg-${theme.colors.danger.default} text-white`] : ButtonVariant.danger == variant,
             
                 // Outline
                 'outline outline-2 bg-transparent' : outlined,
@@ -93,9 +95,8 @@ export const Button: React.FC<IProps> = ({
                 'text-red-400 outline-red-400  enabled:active:outline-red-500 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-red-500' : ButtonVariant.danger == variant && outlined,
 
                 // Size
-                'text-xs px-4 py-2 ' : ButtonSize.sm == size,
-                'text-sm px-6 py-3 ' : ButtonSize.md == size,
-                'px-8 py-3 ' : ButtonSize.lg == size,
+                'text-sm px-3 py-1.5' : ButtonSize.sm == size,
+                'text-base px-4 py-2' : ButtonSize.md == size,
 
                 'opacity-25' : disabled,
 

@@ -1,3 +1,5 @@
+import './index.css';
+
 export { Button } from './components/Button';
 export { Alert } from './components/Alert';
 export { Badge } from './components/Badge';

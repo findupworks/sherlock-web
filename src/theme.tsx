@@ -1,22 +1,39 @@
 export default {
     colors: {
-        bg: {
-            default: 'bg-slate-500',
-            primary: 'bg-blue-500',
-            secondary: 'bg-slate-300',
-            success: 'bg-green-700	 ',
-            info: 'bg-blue-800',
-            warning: 'bg-amber-600',
-            danger: 'bg-red-500',
+        default:{
+            default:'zinc-500',
+            black:'zinc-600',
+            light:'zinc-400',
         },
-        text: {
-            default: 'text-gray-600 ',
-            primary: 'text-teal-600',
-            secondary: 'text-orange-600 ',
-            success: 'text-teal-600',
-            info: 'text-cyan-600',
-            warning: 'text-amber-600',
-            danger: 'text-red-600 ',
-        }
+        primary:{
+            default:'blue-500',
+            black:'blue-600',
+            light:'blue-400',
+        },
+        secondary:{
+            default:'slate-500',
+            black:'slate-600',
+            light:'slate-400',
+        },
+        success:{
+            default:'green-500',
+            black:'green-600',
+            light:'green-400',
+        },
+        info:{
+            default:'orange-500',
+            black:'orange-600',
+            light:'orange-400',
+        },
+        warning:{
+            default:'amber-500',
+            black:'amber-600',
+            light:'amber-400',
+        },
+        danger:{
+            default:'red-500',
+            black:'red-600',
+            light:'red-400',
+        },
     }
 }

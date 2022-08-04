@@ -20,15 +20,13 @@ export const Badge: React.FC<IProps> = ({
         <span className={classname({
             "text-xs font-semibold inline-block py-1 px-2 uppercase last:mr-0 mr-1 rounded-full ": true,
             // Outline none
-            [`${theme.colors.bg.default} text-white`]: ColorVariant.default == variant,
-            [`${theme.colors.bg.primary} text-white`] : ColorVariant.primary == variant,
-            [`${theme.colors.bg.secondary} text-slate-500`] : ColorVariant.secondary == variant,
-            [`${theme.colors.bg.success} text-white`] : ColorVariant.success == variant,
-            [`${theme.colors.bg.info} text-white`] : ColorVariant.info == variant,
-            [`${theme.colors.bg.warning} text-white`] : ColorVariant.warning == variant,
-            [`${theme.colors.bg.danger} text-white`] : ColorVariant.danger == variant,
-            
-           
+            [`bg-${theme.colors.default.default} text-white`]: ColorVariant.default == variant,
+            [`bg-${theme.colors.primary.default} text-white`] : ColorVariant.primary == variant,
+            [`bg-${theme.colors.secondary.default} text-slate-500`] : ColorVariant.secondary == variant,
+            [`bg-${theme.colors.success.default} text-white`] : ColorVariant.success == variant,
+            [`bg-${theme.colors.info.default} text-white`] : ColorVariant.info == variant,
+            [`bg-${theme.colors.warning.default} text-white`] : ColorVariant.warning == variant,
+            [`bg-${theme.colors.danger.default} text-white`] : ColorVariant.danger == variant,
         })}>
             {label}
         </span>
