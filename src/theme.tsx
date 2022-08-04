@@ -1,13 +1,13 @@
 export default {
     colors: {
         bg: {
-            default: 'bg-gray-200',
-            primary: 'bg-teal-200',
-            secondary: 'bg-orange-200',
-            success: 'bg-teal-200 ',
-            info: 'bg-cyan-200',
-            warning: 'bg-amber-200',
-            danger: 'bg-red-200',
+            default: 'bg-slate-500',
+            primary: 'bg-blue-500',
+            secondary: 'bg-slate-300',
+            success: 'bg-green-700	 ',
+            info: 'bg-blue-800',
+            warning: 'bg-amber-600',
+            danger: 'bg-red-500',
         },
         text: {
             default: 'text-gray-600 ',
