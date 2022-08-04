@@ -14,7 +14,6 @@ export default {
 
   args: {
     //👇 Now all Button stories will be primary.
-    outlined: false,
     rounded: false,
   },
   argTypes: {
@@ -22,7 +21,6 @@ export default {
       options: [ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
-    outlined : { control : 'boolean'},
     rounded : { control : 'boolean'},
   }
 } as ComponentMeta<typeof Badge>;
