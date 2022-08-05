@@ -16,7 +16,6 @@ export enum ButtonVariant {
 export enum ButtonSize {
     sm = 'sm',
     md = 'md',
-    lg = 'lg',
 }
 
 export interface IProps {
@@ -46,7 +45,7 @@ export const Button: React.FC<IProps> = ({
  }) => {
 
     const getIcon = (icon: string) => {
-        return <i className={`fas fa-${icon}`}></i>
+        return <i className={`${icon}`}></i>
     }
 
     const getLeftIcon = () => {
@@ -57,9 +56,9 @@ export const Button: React.FC<IProps> = ({
         if (rightIcon) return getIcon(rightIcon);
     }
 
-    const getLoading = () => <ReactLoading type='spin' color='#FFF' height={"20px"} width={"20px"}/>;
+    const getLoading = () => <ReactLoading className= 'mx-auto' type='spin' color='#FFF' height={"20px"} width={"20px"} />;
 
-    const getRealContent = () => <span>{getLeftIcon()} {label} {getRightIcon()}</span>
+    const getRealContent = () => <span>{getLeftIcon()}<span className='mx-2'>{label}</span>{getRightIcon()}</span>
 
     const getContent = () => {
         if(loading) {
@@ -74,32 +73,31 @@ export const Button: React.FC<IProps> = ({
             classname({
                 'font-bold uppercase rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150' :  true,
                 // Outline none
-                'bg-gray-600 text-white enabled:active:bg-gray-700 enabled:hover:bg-gray-700' : ButtonVariant.default == variant,
-                'bg-teal-300 text-white enabled:active:bg-teal-500 enabled:hover:bg-teal-500' : ButtonVariant.primary == variant,
-                'bg-orange-400 text-white enabled:active:bg-orange-600 enabled:hover:bg-orange-600' : ButtonVariant.secondary == variant,
-                'bg-teal-400 text-white enabled:active:bg-teal-500 enabled:hover:bg-teal-500' : ButtonVariant.success == variant,
-                'bg-cyan-300 text-white enabled:active:bg-cyan-500 enabled:hover:bg-cyan-500' : ButtonVariant.info == variant,
-                'bg-amber-400 text-white enabled:active:bg-amber-500 enabled:hover:bg-amber-500' : ButtonVariant.warning == variant,
-                'bg-red-400 text-white enabled:active:bg-red-500 enabled:hover:bg-red-500' : ButtonVariant.danger == variant,
+                'bg-secondary text-white' : ButtonVariant.default == variant && !outlined || ButtonVariant.secondary == variant && !outlined,
+                'bg-primary text-white' : ButtonVariant.primary == variant && !outlined,
+                'bg-success text-white' : ButtonVariant.success == variant && !outlined,
+                'bg-info text-white' : ButtonVariant.info == variant && !outlined,
+                'bg-warning text-white' : ButtonVariant.warning == variant && !outlined,
+                'bg-danger text-white' : ButtonVariant.danger == variant && !outlined,
             
                 // Outline
                 'outline outline-2 bg-transparent' : outlined,
-                'text-gray-600 outline-gray-600  enabled:active:outline-gray-700 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-gray-700' : ButtonVariant.default == variant && outlined,
-                'text-teal-300 outline-teal-300  enabled:active:outline-teal-500 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-teal-500' : ButtonVariant.primary == variant && outlined,
-                'text-orange-400 outline-orange-400  enabled:active:outline-orange-600 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-orange-600' : ButtonVariant.secondary == variant && outlined,
-                'text-teal-400 outline-teal-400  enabled:active:outline-teal-500 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-teal-500' : ButtonVariant.success == variant && outlined,
-                'text-cyan-300 outline-cyan-300  enabled:active:outline-cyan-500 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-cyan-500' : ButtonVariant.info == variant && outlined,
-                'text-amber-400 outline-amber-400  enabled:active:outline-amber-500 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-amber-500' : ButtonVariant.warning == variant && outlined,
-                'text-red-400 outline-red-400  enabled:active:outline-red-500 enabled:hover:text-white enabled:active:text-white enabled:hover:outline-red-500' : ButtonVariant.danger == variant && outlined,
+                'outline-secondary text-secondary' : ButtonVariant.default == variant && outlined,
+                'outline-primary text-primary' : ButtonVariant.primary == variant && outlined,
+                'outline-secondary' : ButtonVariant.secondary == variant && outlined,
+                'outline-success text-success' : ButtonVariant.success == variant && outlined,
+                'outline-info text-info' : ButtonVariant.info == variant && outlined,
+                'outline-warning text-warning' : ButtonVariant.warning == variant && outlined,
+                'outline-danger text-danger' : ButtonVariant.danger == variant && outlined,
 
                 // Size
-                'text-xs px-4 py-2 ' : ButtonSize.sm == size,
-                'text-sm px-6 py-3 ' : ButtonSize.md == size,
-                'px-8 py-3 ' : ButtonSize.lg == size,
+                'text-sm py-1.5 px-3' : ButtonSize.sm == size,
+                'text-base px-4 py-2 ' : ButtonSize.md == size,
 
+                //disabled
                 'opacity-25' : disabled,
 
-
+                //full
                 'w-screen' : full
             })
         }>

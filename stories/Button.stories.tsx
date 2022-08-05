@@ -17,7 +17,9 @@ export default {
     outlined: false,
     disabled: false,
     full: false,
-    loading: false
+    loading: false,
+    leftIcon:'',
+    rightIcon:'',
   },
   argTypes: {
     variant: {
@@ -25,23 +27,15 @@ export default {
       control: { type: 'select' }
     },
     size: {
-      options: [ ButtonSize.sm, ButtonSize.md, ButtonSize.lg],
+      options: [ ButtonSize.sm, ButtonSize.md],
       control: 'inline-radio' 
     },
     outlined : { control : 'boolean'},
     loading : { control : 'boolean'},
     disabled : { control : 'boolean'},
     full : { control : 'boolean'},
-    leftIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
-    },
-    rightIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
-    },
+    leftIcon:{type:'string'},
+    rightIcon: {type:'string'}
   }
 } as ComponentMeta<typeof Button>;
 
