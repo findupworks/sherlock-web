@@ -1,81 +1,80 @@
-import React from "react";
+import React, {useState} from "react";
 import { createPopper } from '@popperjs/core';
+import classNames from "classnames";
+import { useDetectClickOutside } from 'react-detect-click-outside';
+
+export interface DropdownItem {
+  label?: string;
+  isDivider?: boolean;
+  icon?: string;
+  subLabel?: string;
+  image?: string;
+}
 
 export interface IProps {
   label: string,
+  items: DropdownItem[]
 }
 
-export const Dropdown: React.FC<IProps> = ({label, ...props}) => {
-  // dropdown props
-  const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
-  const btnDropdownRef: React.LegacyRef<any> = React.createRef();
-  const popoverDropdownRef: React.LegacyRef<any> = React.createRef();
-  const openDropdownPopover = () => {
-    createPopper(btnDropdownRef.current!, popoverDropdownRef.current!, {
-      placement: "bottom-start"
-    });
-    setDropdownPopoverShow(true);
-  };
-  const closeDropdownPopover = () => {
-    setDropdownPopoverShow(false);
-  };
+export const Dropdown: React.FC<IProps> = ({label, items, ...props}) => {
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const ref = useDetectClickOutside({ onTriggered: () => setShowDropdown(false) });
+
+  const getSimple = (item: DropdownItem) => {
+    return (
+      <a href="#" className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+          {item.icon != undefined ? <i className={`fas fa-${item.icon}`}></i> : ''}
+          
+          <span className="mx-2">
+            {item.label}
+          </span>
+      </a>
+    )
+  }
+
+  const getDivider = () => <hr className="border-gray-200 dark:border-gray-700 " />
+
   return (
     <>
-      <div className="flex flex-wrap">
-        <div className="w-full sm:w-6/12 md:w-4/12 px-4">
-          <div className="relative inline-flex align-middle w-full">
-            <button
-              className="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 bg-teal-500 active:bg-teal-600 ease-linear transition-all duration-150"
-              type="button"
-              ref={btnDropdownRef}
-              onClick={() => {
-                dropdownPopoverShow
-                  ? closeDropdownPopover()
-                  : openDropdownPopover();
-              }}
+      <div className="flex items-center justify-center h-screen" ref={ref}>
+        <div className="relative inline-block" >
+            {/* <!-- Dropdown toggle button --> */}
+            <button 
+              className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
+              onClick={() => setShowDropdown(!showDropdown)}
             >
               {label}
             </button>
-            <div
-              ref={popoverDropdownRef}
-              className={
-                (dropdownPopoverShow ? "block " : "hidden ") +
-                "bg-teal-500 text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1 min-w-48"
+
+            
+
+            {/* <!-- Dropdown menu --> */}
+            <div className={
+              classNames(
+                "absolute right-0 z-20  w-56  py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800 transition duration-150 ease-out transform", {
+                'hidden' : !showDropdown,
+                'scale-100 opacity-100' : showDropdown
+            })}>
+
+                <a href="#" onClick={() => alert('erick')} className="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <img className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9" src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200" alt="jane avatar" />
+                    <div className="mx-1">
+                        <h1 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Jane Doe</h1>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">janedoe@exampl.com</p>
+                    </div>
+                </a>
+
+
+              {
+                items.map(item => (
+                  <>
+                    {item.isDivider ? getDivider() :  getSimple(item)}
+                  </>
+                ))
               }
-            >
-              <a
-                href="#pablo"
-                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
-                onClick={e => e.preventDefault()}
-              >
-                Action
-              </a>
-              <a
-                href="#pablo"
-                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
-                onClick={e => e.preventDefault()}
-              >
-                Another action
-              </a>
-              <a
-                href="#pablo"
-                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
-                onClick={e => e.preventDefault()}
-              >
-                Something else here
-              </a>
-              <div className="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25" />
-              <a
-                href="#pablo"
-                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
-                onClick={e => e.preventDefault()}
-              >
-                Seprated link
-              </a>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
     </>
   );
 };
