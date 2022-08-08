@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { Dropdown } from '../src';
 import { ColorVariant } from '../src/types';
-
 
 
 export default {
@@ -20,6 +18,16 @@ export default {
   },
   argTypes: {
     outlined : { control : 'boolean'},
+    leftIcon: {
+      options: [ 'user', 'heart', 'check'],
+      control: 'select' ,
+      description: "Icones do FontAwsome, passar somente o nome dele."
+    },
+    rightIcon: {
+      options: [ 'user', 'heart', 'check'],
+      control: 'select' ,
+      description: "Icones do FontAwsome, passar somente o nome dele."
+    },
   }
 } as ComponentMeta<typeof Dropdown>;
 
@@ -29,4 +37,4 @@ const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} 
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Default' };
+Default.args = { label: 'Default' , items: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}]};
