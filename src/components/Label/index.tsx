@@ -13,46 +13,52 @@ export interface IProps {
     label: string,
     variant?: ColorVariant,
     size:LabelSize
-    outline:boolean
+    outlined:boolean
+    iconRight:string
 }
 
 export const Label: React.FC<IProps> = ({ 
     label,
     variant = ColorVariant.default,
     size = LabelSize.md,
-    outline = false,
+    outlined = false,
+    iconRight,
     ...props
  }) => {
+    
+   
+   const getIconRIght = ()=>{
+    if(iconRight) return <i className={iconRight}></i>
+   }  
     
 
     return (
         <span className={classname({
-            "rounded-sm	": true,
+            "rounded-sm	flex items-center gap-2": true,
             // Variant,  Outline none
-            'bg-secondary text-white': ColorVariant.default == variant && !outline ,
-            'bg-secondary text-dark': ColorVariant.secondary == variant && !outline,
-            'bg-success text-white' : ColorVariant.success == variant && !outline,
-            'bg-info text-white' : ColorVariant.info == variant && !outline, 
-            'bg-warning text-white' : ColorVariant.warning == variant && !outline,
-            'bg-danger text-white' : ColorVariant.danger == variant && !outline,
+            'bg-secondary text-white': ColorVariant.default == variant && !outlined ,
+            'bg-secondary text-dark': ColorVariant.secondary == variant && !outlined,
+            'bg-success text-white' : ColorVariant.success == variant && !outlined,
+            'bg-info text-white' : ColorVariant.info == variant && !outlined, 
+            'bg-warning text-white' : ColorVariant.warning == variant && !outlined,
+            'bg-danger text-white' : ColorVariant.danger == variant && !outlined,
             
+           
+            //outline
+             'bg-transparent outline outline-2 ':outlined,
+             'outline-secondaryL2 text-secondary': ColorVariant.default == variant && outlined ,
+             'outline-secondaryL2 text-dark': ColorVariant.secondary == variant && outlined,
+             'outline-successL1 text-success' : ColorVariant.success == variant && outlined,
+             'outline-infoL1 text-info' : ColorVariant.info == variant && outlined,
+             'outline-warningL1 text-warning' : ColorVariant.warning == variant && outlined,
+             'outline-dangerL1 text-danger' : ColorVariant.danger == variant && outlined,
             
             // Size
             'py-px px-1 text-[10px]' : LabelSize.sm == size,
             'text-xs py-[3px] px-2' : LabelSize.md == size,
-           
-           //outline
-             'bg-transparent outline outline-2 ':outline,
-             'outline-secondaryL2 text-secondary': ColorVariant.default == variant && outline ,
-             'outline-secondaryL2 text-dark': ColorVariant.secondary == variant && outline,
-             'outline-successL1 text-success' : ColorVariant.success == variant && outline,
-             'outline-infoL1 text-info' : ColorVariant.info == variant && outline,
-             'outline-warningL1 text-warning' : ColorVariant.warning == variant && outline,
-             'outline-dangerL1 text-danger' : ColorVariant.danger == variant && outline,
-            
-
         })}>
             {label}
+            {getIconRIght()}
         </span>
     )
 }
