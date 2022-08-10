@@ -13,6 +13,7 @@ export default {
   title: 'Data Display/Label',
   component: Label,
   size:LabelSize.md,
+  outline:false,
   args: {
     //👇 Now all Button stories will be primary.
   },
@@ -21,6 +22,7 @@ export default {
       options: [ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
+    outline:{control:'boolean'},
     size:{
       options:[LabelSize.sm,LabelSize.md],
       control: 'inline-radio' 
