@@ -52,20 +52,26 @@ export const MultiStep: React.FC<IProps> = ({
         
     }
    
-  
+ 
+
     return (
       <div className='text-center'>
-      <div className='font-semibold	text-sm	text-secondary text-left mb-2'>{label}</div>
+      <div className='font-semibold	text-sm	text-secondary  mb-2 text-center'>{label}</div>
       <div className={classname({
-         'flex':true,
-         //type 01
-         '  ':TypeOptions.type1 == type,
+         'flex items-center':true,
 
-        //type 02
-        '':TypeOptions.type2 == type,
+        //type 01
+        'after:min-w-[2.75rem] after:w- after:h-1':TypeOptions.type1 == type,
+        'before:min-w-[2.75rem] before:h-1':TypeOptions.type1 == type && step == 1,
+         //type 01
+        'after:w-11 after:h-1 ':TypeOptions.type2 == type,
+        'after:w-0':TypeOptions.type2 == type && step == steps.length,
+
         // colors 
-        'after:bg-secondary before:bg-secondary':stepCurrent == step || stepCurrent > step,
+        'after:bg-secondary before:bg-secondary':stepCurrent > step,
         'after:bg-secondaryL3 before:bg-secondaryL3':stepCurrent < step,
+        'before:bg-secondary after:bg-secondaryL3':stepCurrent == step && stepCurrent != steps.length,
+        'after:bg-secondary':stepCurrent == steps.length
         })}>
           <div className={classname({
            'w-8 h-8 rounded-full flex justify-center items-center primary':true,
