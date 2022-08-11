@@ -18,7 +18,7 @@ export interface IProps {
     labelButtonConfirm?:string
     showModal:boolean
     size?:ModalSize
-    onHide?: () => void,
+    onHide: () => void,
     onCancel?: () => void,
     onConfirm?: () => void,
     children?: ReactNode,
@@ -32,32 +32,36 @@ export const Modal: React.FC<IProps> = ({
     children,
     labelButtonCancel = 'Cancelar',
     labelButtonConfirm = 'Confirmar',
-    onHide = undefined,
+    onHide,
     onCancel = undefined,
     onConfirm = undefined,
     icon,
     ...props
  }) => {
 
-    const ref = useDetectClickOutside({ onTriggered: () => {if(showModal){ onHide!()} }});
+   const handleOnHide = (e:any)=>{
+    if(e.target.classList.value.includes('fixed')) onHide!()
+
+   }
+  
 
     return (
         <>
           {/* backgroiund */}
-          <div  className={classname({
+          <div   className={classname({
             'bg-black opacity-70 fixed w-full h-screen mx-auto top-0 left-0  overflow-x-hidden overflow-y-auto z-50' :true,
              //visible
             'block':showModal,
             'hidden':!showModal
             })}></div>
 
-            <div className={classname({
+            <div onClick={handleOnHide} className={classname({
               'fixed w-full h-screen mx-auto top-0 left-0  overflow-x-hidden overflow-y-auto z-50' :true,
               //visible
               'block':showModal,
               'hidden':!showModal
               })}>
-            <div ref={ref}  className={classname({
+            <div  className={classname({
               'mx-auto w-full bg-white  mt-16 rounded drop-shadow-[0_4px_16px_rgba(39,40,51,0.4)]':true,
               //size 
               'max-w-[18.75rem]':ModalSize.sm == size,
@@ -77,7 +81,7 @@ export const Modal: React.FC<IProps> = ({
                 <i className={`fas fa-${icon} mr-2`}></i>
                 <span className='font-bold text-xl'>{title}</span> 
                 </h1>
-                { onHide && <button onClick={onHide}><i className="fa-solid fa-xmark text-2xl"></i></button> }
+                 <button onClick={onHide}><i className="fa-solid fa-xmark text-2xl"></i></button>
               </header>  
               <div className='py-4 px-6'>
                 {children}           

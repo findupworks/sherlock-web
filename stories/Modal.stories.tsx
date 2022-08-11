@@ -12,10 +12,11 @@ export default {
   */
   title: 'Data Display/Modal',
   component: Modal,
-
+ 
   args: {
     //👇 Now all Button stories will be primary.   
     title:"Title",
+    icon:'',
     size:ModalSize.md,
     labelButtonCancel:'Cancelar',
     labelButtonConfirm:'Confirmar',
@@ -34,13 +35,10 @@ export default {
     title:{type:"string"},
     labelButtonCancel:{type:'string'},
     labelButtonConfirm:{type:'string'},
-    initShowModal:{type:'boolean'},
-    icon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
-    },
-
+    icon:{type:'string'},
+    onHide:{type:'function'},
+    onCancel:{type:'function'},
+    onConfirm:{type:'function'}
   }
 } as ComponentMeta<typeof Modal>;
 
@@ -51,23 +49,43 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
 Default.args = { 
-  variant: ColorVariant.default, 
+  variant: ColorVariant.default,
   onConfirm: () => alert('Confirmar'),
   onHide: () => alert('Esconder'),
   onCancel: () => alert('Cancelar'),
 };
 
 export const Success = Template.bind({});
-Success.args = { variant: ColorVariant.success };
+Success.args = { 
+  variant: ColorVariant.success,
+  onConfirm: () => alert('Confirmar'),
+  onHide: () => alert('Esconder'),
+  onCancel: () => alert('Cancelar'),
+ };
 
 export const Danger = Template.bind({});
-Danger.args = {   variant: ColorVariant.danger, onCancel: undefined };
+Danger.args = {
+  variant: ColorVariant.danger, 
+  onConfirm: () => alert('Confirmar'),
+  onHide: () => alert('Esconder'),
+  onCancel: () => alert('Cancelar'),
+};
 
 export const Warning = Template.bind({});
-Warning.args = { variant: ColorVariant.warning };
+Warning.args = {
+  variant: ColorVariant.warning,
+  onConfirm: () => alert('Confirmar'),
+  onHide: () => alert('Esconder'),
+  onCancel: () => alert('Cancelar'), 
+};
 
 export const Info = Template.bind({});
-Info.args = { variant: ColorVariant.info };
+Info.args = { 
+  variant: ColorVariant.info,
+  onConfirm: () => alert('Confirmar'),
+  onHide: () => alert('Esconder'),
+  onCancel: () => alert('Cancelar'), 
+};
 
 export const Example = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -91,7 +109,7 @@ export const Example = () => {
         <div>
           <Button label='Abrir modal' variant={ColorVariant.default} onClick={() => setShowModal(true)}/>
 
-          <Modal title={"Meu Modal"} showModal={showModal} onHide={() => setShowModal(!showModal)} onConfirm={() => alert('confirmado')} onCancel={() => setShowModal(!showModal)} icon="user">
+          <Modal title={"Meu Modal"} showModal={showModal} onHide={() => setShowModal(!showModal)} onConfirm={() => alert('confirmado oficialmente')} onCancel={() => setShowModal(!showModal)} icon="user">
             Você está vendo o conteudo do modal
           </Modal>
         </div>
