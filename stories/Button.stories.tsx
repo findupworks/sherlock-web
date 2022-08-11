@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Button } from '../src';
-import { ButtonSize, ButtonVariant } from '../src/components/Button';
+import { ButtonSize } from '../src/components/Button';
+import { ColorVariant } from '../src/types';
 
 export default {
   /* 👇 The title prop is optional.
@@ -21,7 +22,7 @@ export default {
   },
   argTypes: {
     variant: {
-      options: [ButtonVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: [ ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
     size: {
@@ -51,22 +52,22 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Button Default', variant: ButtonVariant.default };
+Default.args = { label: 'Button Default', variant:  ColorVariant.default };
 
 export const Primary = Template.bind({});
-Primary.args = { label: 'Button Primary', variant: ButtonVariant.primary };
+Primary.args = { label: 'Button Primary', variant:  ColorVariant.primary };
 
 export const Secondary = Template.bind({});
-Secondary.args = { label: 'Button Secondary', variant: ButtonVariant.secondary };
+Secondary.args = { label: 'Button Secondary', variant:  ColorVariant.secondary };
 
 export const Success = Template.bind({});
-Success.args = { label: 'Button Success', variant: ButtonVariant.success };
+Success.args = { label: 'Button Success', variant:  ColorVariant.success };
 
 export const Danger = Template.bind({});
-Danger.args = { label: 'Button Danger', variant: ButtonVariant.danger };
+Danger.args = { label: 'Button Danger', variant:  ColorVariant.danger };
 
 export const Warning = Template.bind({});
-Warning.args = { label: 'Button Warning', variant: ButtonVariant.warning };
+Warning.args = { label: 'Button Warning', variant:  ColorVariant.warning };
 
 export const Info = Template.bind({});
-Info.args = { label: 'Button Info', variant: ButtonVariant.info };
+Info.args = { label: 'Button Info', variant:  ColorVariant.info };
