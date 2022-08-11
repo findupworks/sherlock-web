@@ -28,7 +28,7 @@ export const Label: React.FC<IProps> = ({
     
    
    const getIconRIght = ()=>{
-    if(iconRight) return <i className={iconRight}></i>
+    if(iconRight) return <i className={`fas fa-${iconRight}`}></i>
    }  
     
 
