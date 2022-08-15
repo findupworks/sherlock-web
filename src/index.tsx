@@ -8,3 +8,4 @@ export { Skeleton, SkeletonRounded } from './components/Skeleton';
 export { Card } from './components/Card';
 export { CardNavigation } from './components/CardNavigation';
 export { Modal } from './components/Modal'
+export { Label } from './components/Label';
