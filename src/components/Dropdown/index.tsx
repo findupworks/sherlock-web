@@ -13,7 +13,7 @@ export interface DropdownItem {
 }
 
 export interface IProps {
-  label: string,
+  label?: string,
   items: DropdownItem[],
   leftIcon?: string,
   rightIcon?: string,
@@ -53,7 +53,7 @@ export const Dropdown: React.FC<IProps> = ({label, items,
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen" ref={ref}>
+      <div className="flex items-center justify-center" ref={ref}>
         <div className="relative inline-block" >
             {/* <!-- Dropdown toggle button --> */}
             <button 
