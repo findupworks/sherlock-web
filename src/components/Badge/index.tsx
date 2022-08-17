@@ -8,7 +8,6 @@ export interface IProps {
     label: string,
     variant?: ColorVariant,
 }
-
 export const Badge: React.FC<IProps> = ({ 
     label,
     variant = ColorVariant.default,
