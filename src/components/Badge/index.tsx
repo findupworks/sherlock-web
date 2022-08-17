@@ -13,19 +13,19 @@ export const Badge: React.FC<IProps> = ({
     variant = ColorVariant.default,
     ...props
  }) => {
-    
+    //bg-
 
     return (
         <span className={classname({
-            "text-xs font-semibold inline-block py-1 px-2 uppercase last:mr-0 mr-1 rounded-full ": true,
+            "text-xs font-semibold inline-block py-px px-1 uppercase last:mr-0 mr-1 rounded-full": true,
             // Outline none
-            [`${theme.colors.bg.default} text-white`]: ColorVariant.default == variant,
-            [`${theme.colors.bg.primary} text-white`] : ColorVariant.primary == variant,
-            [`${theme.colors.bg.secondary} text-slate-500`] : ColorVariant.secondary == variant,
-            [`${theme.colors.bg.success} text-white`] : ColorVariant.success == variant,
-            [`${theme.colors.bg.info} text-white`] : ColorVariant.info == variant,
-            [`${theme.colors.bg.warning} text-white`] : ColorVariant.warning == variant,
-            [`${theme.colors.bg.danger} text-white`] : ColorVariant.danger == variant,
+            'bg-secondary text-secondaryL3': ColorVariant.default == variant,
+            'bg-primary text-white' : ColorVariant.primary == variant,
+            'bg-secondaryL3 text-secondary': ColorVariant.secondary == variant,
+            'bg-success text-white' : ColorVariant.success == variant,
+            'bg-info text-white' : ColorVariant.info == variant,
+            'bg-warning text-white': ColorVariant.warning == variant,
+            'bg-danger text-white': ColorVariant.danger == variant,
             
            
         })}>

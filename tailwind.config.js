@@ -14,6 +14,8 @@ module.exports = {
         primaryL2:"#80C3EB",
         primaryL3:"#E5F3FB",
         //secondary
+        secondaryD1:'#2A9A87',
+        secondaryD2:"#1E6D90",
         secondary:"#3CDBC0",
         secondaryL1:"#63E2CD",
         secondaryL2:"#9EEDE0",
@@ -34,7 +36,7 @@ module.exports = {
         successD1:"#226A33",
         successD2:"#1C5629",
         success:"#287D3C",
-        sucessL1:"#5ACA75",
+        successL1:"#5ACA75",
         successL2:"#EDF9F0",
         //warning
         warningD1:"#9F4500",
