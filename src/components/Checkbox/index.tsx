@@ -1,59 +1,57 @@
 import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import ReactLoading from 'react-loading';
-import { ColorVariant } from '../../types';
-import  theme from '../../theme'
 
 export interface IProps {
-    label: string,
+    label?: string,
     checked: boolean;
-    onClick?: () => void;
+    onClick: () => void;
     disabled?: boolean;
-    size?: RadioSize,
+    size?: CheckBoxSize,
+    icon: string,
 }
 
-export enum RadioSize {
+export enum CheckBoxSize {
     sm = 'sm',
     md = 'md',
+    lg = 'lg'
 }
 
 export const Checkbox: React.FC<IProps> = ({ 
     label,
-    size = RadioSize.sm,
+    size = CheckBoxSize.md,
     disabled,
     checked,
     onClick,
+    icon,
     ...props
  }) => {
     
 
     return (
-        // <div className='flex items-center'>
-        //  <input type="checkbox" id="html" name="fav_language" value="HTML" className={classname({
-        //     "appeara/nce-none  border border-secondary bg-white focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2" : true,
-        //     'h-4 w-4 ' : RadioSize.sm == size,
-        //     'h-5 w-5 ' : RadioSize.md == size,
-        //     // 'bg-white border-primary border-4':checked,
-        //     'bg-gray-500 border-white' : !checked && disabled,
-        //     'border-white border-2 opacity-50 cursor-default' : disabled,
-        //     'cursor-pointer': !disabled,
-        // })}  disabled={disabled} 
-        // checked={checked} onClick={onClick}
-        // ></input>
-        //   <p className={classname({
-        //     'text-gray-600': true,
-        //     'opacity-50':disabled
-        // })}>{label}</p>
-        // </div>
-        <div className="p-4">
-  <div className="flex items-center mr-4 mb-2">
-	<input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 absolute h-8 w-8" checked/>
-	<div className="bg-white border-2 rounded-md border-blue-400 w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">
-		
-	</div>
-	<label htmlFor="A3-yes" className="select-none">Yes</label>
-  </div>
-</div>
+      <div className={classname({
+        "flex items-center mr-4 mb-2 cursor-pointer": true,
+        "opacity-50":disabled
+      })}>
+        <div className={classname({
+            "bg-white rounded-sm border border-secondary flex flex-shrink-0 justify-center items-center mr-2":true,
+            "bg-primary border-none" : checked,
+            'bg-gray-500 border-white border-1' : !checked && disabled,
+            "cursor-pointer" : !disabled,
+            'w-4 h-4 fa-xs' : CheckBoxSize.sm == size,
+            'w-5 h-5 ' : CheckBoxSize.md == size,
+            'w-6 h-6 ' : CheckBoxSize.lg == size
+          })}>
+          {checked ? <i className={`fas fa-${icon} text-white`}></i> : null}
+        </div>
+
+        {label != '' && label != null && label != undefined ? (
+          <label className={classname({
+            'text-sm ' : CheckBoxSize.sm == size,
+            'text-md ' : CheckBoxSize.md == size,
+            'text-lg' : CheckBoxSize.lg == size
+          })}>{label}</label>
+        ): <div/> }
+      </div>
     )
 }

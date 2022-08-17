@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 export interface IProps {
     label?: string,
     checked: boolean;
-    onClick?: () => void;
+    onClick: () => void;
     disabled?: boolean;
     size?: RadioSize,
 }
@@ -13,13 +13,14 @@ export interface IProps {
 export enum RadioSize {
     sm = 'sm',
     md = 'md',
+    lg = 'lg',
 }
 
 export const Radio: React.FC<IProps> = ({ 
     label,
-    size = RadioSize.sm,
+    size = RadioSize.md,
     disabled,
-    checked,
+    checked = false,
     onClick,
     ...props
  }) => {
@@ -29,19 +30,23 @@ export const Radio: React.FC<IProps> = ({
         <div className='flex items-center'>
          <input  type="radio" id="html" name="fav_language" value="HTML" className={classname({
             "appearance-none rounded-full border border-secondary bg-white focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2" : true,
-            'h-4 w-4 ' : RadioSize.sm == size,
-            'h-5 w-5 ' : RadioSize.md == size,
+            'h-3 w-3 ' : RadioSize.sm == size,
+            'h-4 w-4 ' : RadioSize.md == size,
+            'h-5 w-5 ' : RadioSize.lg == size,
             'bg-white border-primary border-4':checked,
-            ' bg-gray-500 border-white' : !checked && disabled,
-            'border-white border-2 opacity-50 cursor-default' : disabled,
+            'bg-gray-500 border-white border-2' : !checked && disabled,
+            'opacity-50 cursor-default' : disabled,
             'cursor-pointer': !disabled,
         })}  disabled={disabled} 
         checked={checked} onClick={onClick}
         ></input>
-        {label != null || label != '' ? (
+        {label != null && label != '' && label != undefined ? (
           <p className={classname({
             'text-gray-600': true,
-            'opacity-50':disabled
+            'opacity-50':disabled,
+            'text-xs': RadioSize.sm == size,
+            ' text-sm': RadioSize.md == size,
+            'text-md': RadioSize.lg == size,
         })}>{label}</p>): <div></div>}
         </div>
     )

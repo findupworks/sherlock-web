@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Checkbox } from '../src/components/Checkbox';
+import { Checkbox, CheckBoxSize } from '../src/components/Checkbox';
 import { RadioSize } from '../src/components/Radio';
 
 export default {
@@ -15,10 +15,13 @@ export default {
   args: {
     //👇 Now all Button stories will be primary.
     disabled: false,
+    checked:false,
+    label: "",
+    icon: "check"
   },
   argTypes: {
     size: {
-      options: [ RadioSize.sm, RadioSize.md],
+      options: [ CheckBoxSize.sm, CheckBoxSize.md, CheckBoxSize.lg],
       control: 'inline-radio' 
     },
     disabled : { control : 'boolean'},
@@ -35,4 +38,4 @@ const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} 
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Default' };
+Default.args = { label: '' };

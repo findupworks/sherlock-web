@@ -1,50 +1,91 @@
 import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import ReactLoading from 'react-loading';
 import { ColorVariant } from '../../types';
-import  theme from '../../theme'
-
 export interface IProps {
-    label: string,
+    label?: string,
     checked: boolean;
-    onClick?: () => void;
+    onClick: () => void;
     disabled?: boolean;
-    size?: RadioSize,
+    size?: SwitchSize,
+    checkedIcon?: string;
+    notCheckedIcon?: string;
+    variant?: ColorVariant;
 }
 
-export enum RadioSize {
+export enum SwitchVariant {
+    default = 'default',
+    primary = 'primary',
+    secondary = 'secondary',
+    success = 'success',
+    info = 'info',
+    danger = 'danger',
+    warning = 'warning',
+}
+
+export enum SwitchSize {
     sm = 'sm',
     md = 'md',
 }
 
 export const Switch: React.FC<IProps> = ({ 
     label,
-    size = RadioSize.sm,
+    size = SwitchSize.sm,
     disabled,
     checked,
     onClick,
+    variant = ColorVariant.default,
+    checkedIcon,
+    notCheckedIcon,
     ...props
  }) => {
     
-
     return (
-        <div className='flex items-center'>
-         <input  type="radio" id="html" name="fav_language" value="HTML" className={classname({
-            "appearance-none rounded-full border border-secondary bg-white focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2" : true,
-            'h-4 w-4 ' : RadioSize.sm == size,
-            'h-5 w-5 ' : RadioSize.md == size,
-            'bg-white border-primary border-4':checked,
-            ' bg-gray-500 border-white' : !checked && disabled,
-            'border-white border-2 opacity-50 cursor-default' : disabled,
-            'cursor-pointer': !disabled,
-        })}  disabled={disabled} 
-        checked={checked} onClick={onClick}
-        ></input>
-          <p className={classname({
-            'text-gray-600': true,
-            'opacity-50':disabled,
-        })}>{label}</p>
-        </div>
+        <>
+            <label  className={classname({
+                "inline-flex relative items-center cursor-pointer": true,
+                "opacity-50": disabled
+            })} onClick={onClick}>
+                
+                <div className='relative'>
+                    <div className={classname({
+                        'block rounded-full': true,
+                        'bg-primary' :ColorVariant.default ==variant,
+                        'bg-secondary':ColorVariant.secondary == variant,
+                        'bg-success':ColorVariant.success == variant,
+                        'bg-info':ColorVariant.info == variant,
+                        'bg-danger':ColorVariant.danger == variant,
+                        'bg-warning':ColorVariant.warning == variant,
+                        'w-[60px] h-8': SwitchSize.sm == size,
+                        'w-[70px] h-9': SwitchSize.md == size,
+                    })}/>
+                    <div className='absolute left-1 top-1'>
+                        <div className={classname({
+                            'bg-white rounded-full transition': true,
+                            ' p-[0.01em] px-[0.23em]': SwitchSize.sm == size,
+                            'p-[0.1em] px-[0.3em]': SwitchSize.md == size,
+                            " translate-x-full ": checked
+                        })}>
+                        <i className={classname({
+                            "fas fa-fw  fa-s/m fa-be/ll-slash": true,
+                            "text-primary" : ColorVariant.default == variant,
+                            "text-secondary": ColorVariant.secondary ==  variant,
+                            "fa-sm" : SwitchSize.sm == size,
+                            "fa-md" : SwitchSize.md == size,
+                            [`fa-${checkedIcon}`] : checked,
+                            [`fa-${notCheckedIcon}`] : !checked,
+                        })}></i>
+                        </div>
+                    </div>
+                </div>
+                {label != ''  && label != null && label != undefined? (
+                    <span className={classname({
+                        "ml-3 font-medium text-darkD1": true,
+                        'text-sm': SwitchSize.sm == size,
+                        "text-md": SwitchSize.md == size,
+                    })}>{label}</span>
+                ): <div></div>} 
+            </label>
+        </>
     )
 }

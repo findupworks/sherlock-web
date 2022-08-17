@@ -15,10 +15,12 @@ export default {
   args: {
     //👇 Now all Button stories will be primary.
     disabled: false,
+    checked:false,
+    label: "",
   },
   argTypes: {
     size: {
-      options: [ RadioSize.sm, RadioSize.md],
+      options: [ RadioSize.sm, RadioSize.md, RadioSize.lg],
       control: 'inline-radio' 
     },
     disabled : { control : 'boolean'},

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Switch } from '../src/components/Switch';
-import { RadioSize } from '../src/components/Radio';
+import { Switch, SwitchSize } from '../src/components/Switch';
 
 export default {
   /* 👇 The title prop is optional.
@@ -15,10 +14,13 @@ export default {
   args: {
     //👇 Now all Button stories will be primary.
     disabled: false,
+    checkedIcon: "check",
+    notCheckedIcon: "",
+    checked: false
   },
   argTypes: {
     size: {
-      options: [ RadioSize.sm, RadioSize.md],
+      options: [ SwitchSize.sm, SwitchSize.md],
       control: 'inline-radio' 
     },
     disabled : { control : 'boolean'},
