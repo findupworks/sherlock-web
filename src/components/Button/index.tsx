@@ -98,8 +98,7 @@ export const Button: React.FC<IProps> = ({
 
                 'opacity-25' : disabled,
 
-
-                'w-full' : full
+                'w-full overflow-hidden' : full
             })
         }>
             {getContent()}
