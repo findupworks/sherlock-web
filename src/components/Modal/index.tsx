@@ -71,7 +71,7 @@ export const Modal: React.FC<IProps> = ({
               <header className={classname({
                 'p-6  border-b-[1px] flex items-start justify-between rounded-t':true,
                 //variant 
-                'border-secondaryL3 text-dark':ColorVariant.default == variant,
+                'border-darkL2 text-dark':ColorVariant.default == variant,
                 'border-danger bg-dangerL2 text-danger' : ColorVariant.danger == variant,
                 'border-success text-success bg-successL2' : ColorVariant.success == variant,
                 'border-warning text-warning bg-warningL2' : ColorVariant.warning == variant,
@@ -86,7 +86,7 @@ export const Modal: React.FC<IProps> = ({
               <div className='py-4 px-6'>
                 {children}           
               </div>
-              <footer className='flex justify-end border-t-[1px] border-secondaryL3 p-6 gap-2'>
+              <footer className='flex justify-end border-t-[1px] border-darkL2 p-6 gap-2'>
                 {onCancel &&  <button className='border-[1px] border-secondaryL2 py-2	px-4 text-secondary rounded' onClick={onCancel}>{labelButtonCancel}</button> }
                 { onConfirm &&   <button onClick={onConfirm} className={classname({
                   'py-2	px-4 text-white rounded':true,

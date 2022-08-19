@@ -35,7 +35,8 @@
     "classnames": "^2.3.1",
     "react-detect-click-outside": "^1.1.7",
     "react-loading": "^2.0.3",
-    "react-popper": "^2.3.0"
+    "react-popper": "^2.3.0",
+    "swiper": "^8.3.2"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
