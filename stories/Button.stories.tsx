@@ -18,11 +18,7 @@ export default {
     outlined: false,
     disabled: false,
     full: false,
-    loading: false,
-    leftIcon:'',
-    rightIcon:'',
-    size:ButtonSize.md,
-    textButton:false
+    loading: false
   },
   argTypes: {
     variant: {
@@ -37,9 +33,16 @@ export default {
     loading : { control : 'boolean'},
     disabled : { control : 'boolean'},
     full : { control : 'boolean'},
-    leftIcon:{type:'string'},
-    rightIcon:{type:'string'},
-    textButton:{type:'boolean'}
+    leftIcon: {
+      options: [ 'user', 'heart', 'check'],
+      control: 'select' ,
+      description: "Icones do FontAwsome, passar somente o nome dele."
+    },
+    rightIcon: {
+      options: [ 'user', 'heart', 'check'],
+      control: 'select' ,
+      description: "Icones do FontAwsome, passar somente o nome dele."
+    },
   }
 } as ComponentMeta<typeof Button>;
 
