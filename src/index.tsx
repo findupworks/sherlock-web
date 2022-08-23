@@ -13,4 +13,5 @@ export { ConfirmationMessage } from './components/ConfirmationMessage'
 export { MultiStep } from './components/MultiStep';
 export { Pagination } from './components/Pagination';
 export { Tabs } from './components/Tabs';
+export { VerticalBar } from './components/VerticalBar';
 
