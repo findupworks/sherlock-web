@@ -12,4 +12,5 @@ export { Label } from './components/Label';
 export { ConfirmationMessage } from './components/ConfirmationMessage'
 export { MultiStep } from './components/MultiStep';
 export { Pagination } from './components/Pagination';
+export { Tabs } from './components/Tabs';
 
