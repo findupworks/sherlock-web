@@ -12,8 +12,8 @@ export type OptionsProps ={
 
 export interface IProps {
     options:Array<OptionsProps>
-    onChange:(option:any)=> void 
-    onClickButton?:(event:any)=> void
+    onChange:(option)=> void 
+    onClickButton?:(event)=> void
     labelButton?:string
     isDisabled?:boolean
     isLoading?:boolean
