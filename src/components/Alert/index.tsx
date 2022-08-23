@@ -1,66 +1,168 @@
-import React from 'react';
+import React, { useEffect,useRef } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import ReactLoading from 'react-loading';
+import { ColorVariant } from '../../types';
+import { Button, ButtonSize } from '../Button';
+import { useState } from 'react';
 
-export enum AlertVariant {
-    default = 'default',
-    primary = 'primary',
-    secondary = 'secondary',
-    success = 'success',
-    info = 'info',
-    danger = 'danger',
-    warning = 'warning',
+
+export enum  AlertTypes {
+  alertFixed = 'alertFixed',
+  alertTemporary = 'alertTemporary'
 }
-
 export interface IProps {
-    outlined?: boolean;
-    text: string,
-    title: string,
-    variant?: AlertVariant
-    icon?: string,
+  
+    variant?: ColorVariant
+    text:string
+    onHiden:()=> void
+    onClickOne?:() => void 
+    labelButtonOne?:string
+    onClickTwo?:()=> void
+    labelButtonTwo?:string
+    showAlert:boolean
+    onAlertBorderBottom?:boolean
 }
 
 export const Alert: React.FC<IProps> = ({ 
+    variant = ColorVariant.default,
+    onClickOne  = undefined,
+    onClickTwo = undefined,
+    labelButtonOne = "Small button",
+    labelButtonTwo = 'Small button',
+    onHiden,
+    showAlert,
+    onAlertBorderBottom = false,
     text,
-    title,
-    icon = "warning",
-    outlined = false,
-    variant = AlertVariant.default,
     ...props
  }) => {
 
-    const getIcon = () => {
-        return <i className={`fas fa-${icon}`}></i>
+   const ref = useRef<HTMLDivElement>(null)
+
+
+   const ButtonsActions = ()=>{
+
+    
+    const colorButton = ()=>{
+
+        if(variant == ColorVariant.default){
+          return ColorVariant.primary
+        }
+        if(variant == ColorVariant.info){
+            return ColorVariant.info
+          }
+          if(variant == ColorVariant.success){
+            return ColorVariant.success
+          }
+          if(variant == ColorVariant.warning){
+            return ColorVariant.warning
+          }
+          if(variant == ColorVariant.danger){
+            return ColorVariant.danger
+          }
     }
 
-    return (
-        <div className={classname({
-            "text-white px-6 py-3 border-0 rounded relative mb-3": true,
-            // Outline none
-            'bg-gray-600 ' : AlertVariant.default == variant,
-            'bg-teal-300 ' : AlertVariant.primary == variant,
-            'bg-orange-400 ' : AlertVariant.secondary == variant,
-            'bg-teal-400 ' : AlertVariant.success == variant,
-            'bg-cyan-300 ' : AlertVariant.info == variant,
-            'bg-amber-400 ' : AlertVariant.warning == variant,
-            'bg-red-400 ' : AlertVariant.danger == variant,
-            // Outline
-            'outline outline-1 bg-transparent' : outlined,
-            'text-gray-600 outline-gray-600' : AlertVariant.default == variant && outlined,
-            'text-teal-300 outline-teal-300' : AlertVariant.primary == variant && outlined,
-            'text-orange-400 outline-orange-400' : AlertVariant.secondary == variant && outlined,
-            'text-teal-400 outline-teal-400' : AlertVariant.success == variant && outlined,
-            'text-cyan-300 outline-cyan-300' : AlertVariant.info == variant && outlined,
-            'text-amber-400 outline-amber-400' : AlertVariant.warning == variant && outlined,
-            'text-red-400 outline-red-400' : AlertVariant.danger == variant && outlined,
-        })}>
-            <span className="text-xl inline-block mr-5 align-middle">
-                {getIcon()}
-            </span>
-            <span className="inline-block align-middle mr-8">
-                <b className="capitalize">{title}</b> {text}
-            </span>
+    if(onClickOne || onClickTwo){
+     return (
+         <div className='flex items-center mt-4 gap-2 ml-8'>
+            {onClickOne && (
+              <Button label={labelButtonOne} onClick={onClickOne} size={ButtonSize.sm} variant={colorButton()}/>
+            )}
+            {onClickTwo && (
+              <button>
+                <Button label={labelButtonTwo} onClick={onClickTwo} size={ButtonSize.sm} variant={colorButton()} outlined  />
+              </button>
+              )  
+            }
         </div>
+       )
+    }
+   return <></>
+ }
+
+   const textAlert = ()=>{
+    
+    if(variant == ColorVariant.info){
+      return 'Info:'  
+    } 
+    if(variant == ColorVariant.success){
+      return 'Success:'
+    }
+    if(variant == ColorVariant.warning){
+        return 'Warning:'
+    }
+
+    if(variant == ColorVariant.danger){
+        return 'Danger:'
+    }
+
+   }
+
+   
+   useEffect(()=>{
+    const divNode = ref?.current;
+    if(!onClickOne && !onClickTwo){
+      if(showAlert){
+        divNode !== null && divNode.classList.remove("opacity-0")
+        divNode !== null && divNode.classList.add("opacity-100")
+        setTimeout(()=>{
+           divNode !== null && divNode.classList.remove("opacity-100")
+           divNode !== null && divNode.classList.add("opacity-0")
+        },5000)
+        setTimeout(()=>{  
+            onHiden()
+          },7000)
+      }
+    }
+   },[showAlert])
+   
+  
+
+
+   return (
+       <div ref={ref} className={classname({
+
+        'w-[24.5rem]  p-4 rounded break-words fixed top-4 right-4 z-50':true,
+        // hidden  
+        'ease-out duration-[4000ms] opacity-100  transition-opacity':!onClickOne && !onClickTwo,
+    
+         // variant
+        'bg-white text-secondary':variant == ColorVariant.default,
+        'bg-primaryL3 border-infoL1 text-info':variant == ColorVariant.info,
+        'bg-successL2 border-successL1 text-success':variant == ColorVariant.success,
+        'bg-warningL2 border-warningL1 text-warning':variant == ColorVariant.warning,
+        'bg-dangerL2 border-dangerL1 text-danger':variant == ColorVariant.danger,
+         
+         // showAlert visible
+        'block':showAlert,
+        'hidden':!showAlert,
+
+         'border':!onAlertBorderBottom,
+         'border-b':onAlertBorderBottom,
+         })}>
+         <header className={classname({
+             'flex items-start justify-between':true,
+             })}>
+            <div className='flex gap-2 items-start'>
+              <i className={classname({
+                'text-base mt-1':true,
+                //icon type variant 
+                'fa-solid fa-circle-check text-[#6B6C7E]':variant == ColorVariant.default,
+                'fa-solid fa-circle-info':variant == ColorVariant.info,
+                'fa-solid fa-circle-check':variant == ColorVariant.success, 
+                'fa-solid fa-triangle-exclamation':variant == ColorVariant.warning,
+                'fa-solid fa-circle-exclamation':variant == ColorVariant.danger
+               })}></i>
+             
+                <span className='font-semibold text-sm flex items-start'>
+                  {textAlert()}
+                  <span className='ml-1 font-normal'>{text}</span>
+                </span>              
+            </div>
+            <button onClick={onHiden}>
+                <i className="fa-solid fa-xmark text-base ml-1"></i>
+            </button>
+         </header>
+         <ButtonsActions />
+       </div>
     )
 }

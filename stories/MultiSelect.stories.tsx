@@ -43,7 +43,7 @@ Example1.args = {onChange:(option)=> console.log(option), onClickButton:()=> ale
 
 //👇 Each story then reuses that template
 export const Example2 = ()=>{
-   const onChange   = (option:any)=>{
+   const onChange   = (option)=>{
       console.log(option)
    }
    const options = [
@@ -65,7 +65,7 @@ export const Example2 = ()=>{
 }
 //👇 Each story then reuses that template
 export const Example3 = ()=>{
-  const onChange   = (option:any)=>{
+  const onChange   = (option)=>{
     console.log(option)
   }
   const options = [

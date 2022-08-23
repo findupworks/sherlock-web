@@ -2,7 +2,10 @@ import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Alert } from '../src';
-import { AlertVariant } from '../src/components/Alert';
+import { ColorVariant } from '../src/types';
+import { Button} from '../src/components/Button'
+
+
 
 export default {
   /* 👇 The title prop is optional.
@@ -11,22 +14,18 @@ export default {
   */
   title: 'Data Display/Alert',
   component: Alert,
-
   args: {
     //👇 Now all Button stories will be primary.
-    outlined: false,
+   labelButton1:'Small button',
+   labelButton2:'Small button'
   },
   argTypes: {
     variant: {
-      options: [AlertVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: [ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
-    outlined : { control : 'boolean'},
-    icon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
-    },
+   labelButton1:{type:'string'},
+   labelButton2:{type:'string'}
   }
 } as ComponentMeta<typeof Alert>;
 
@@ -35,23 +34,106 @@ export default {
 const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 
 //👇 Each story then reuses that template
-export const Default = Template.bind({});
-Default.args = { title: 'Alert Default!', text: 'Decrição Default',  variant: AlertVariant.default };
+export const Default = ()=>{
 
-export const Primary = Template.bind({});
-Primary.args = { title: 'Alert Primary!', text: 'Decrição Primary',  variant: AlertVariant.primary };
+  const [showAlert,setShowAlert] =  useState(false)
+  return (
+      <div>
+        <Alert
+         showAlert={showAlert} 
+         onHiden={()=> setShowAlert(false)} 
+         onClickOne={()=> alert("Clicou")}  
+         onClickTwo={()=> alert("Clicou")} text="Main Feedback Indicator" 
+         onAlertBorderBottom />
+        <Button 
+          label="Clique aqui para abrir o alert" 
+          onClick={()=> setShowAlert(true)} 
+          variant={ColorVariant.primary}  />
+      </div>
+  )
+}
+export const Success = ()=>{
 
-export const Secondary = Template.bind({});
-Secondary.args = { title: 'Alert Secondary!', text: 'Decrição Secondary',  variant: AlertVariant.secondary };
+  const [showAlert,setShowAlert] =  useState(false)
 
-export const Success = Template.bind({});
-Success.args = { title: 'Alert Success!', text: 'Decrição Success',  variant: AlertVariant.success };
+  return (
+      <div>
+        <Alert 
+          showAlert={showAlert} 
+          onHiden={()=> setShowAlert(false)} 
+          variant={ColorVariant.success} 
+          text="This is an success message"  
+          onAlertBorderBottom
+           />
+        <Button 
+          label="Clique aqui para abrir o alert" 
+          onClick={()=> setShowAlert(true)} 
+          variant={ColorVariant.success} 
+           />
+      </div>
+  )
+}
+export const Danger = ()=>{
 
-export const Danger = Template.bind({});
-Danger.args = { title: 'Alert Danger!', text: 'Decrição Danger',  variant: AlertVariant.danger };
+  const [showAlert,setShowAlert] =  useState(false)
 
-export const Warning = Template.bind({});
-Warning.args = { title: 'Alert Warning!', text: 'Decrição Warning',  variant: AlertVariant.warning };
+  return (
+      <div>
+        <Alert 
+          showAlert={showAlert} 
+          onHiden={()=> setShowAlert(false)} 
+          onClickTwo={()=> alert("Clicou")} 
+          variant={ColorVariant.danger} 
+          text="This is an example of the info alert" />
+        <Button 
+          label="Clique aqui para abrir o alert" 
+          onClick={()=> setShowAlert(true)} 
+          variant={ColorVariant.danger} 
+          />
+      </div>
+  )
+}
 
-export const Info = Template.bind({});
-Info.args = { title: 'Alert Info!', text: 'Decrição Info',  variant: AlertVariant.info };
+export const Warning = ()=>{
+
+  const [showAlert,setShowAlert] =  useState(false)
+
+  return (
+      <div>
+        <Alert 
+          showAlert={showAlert} 
+          onHiden={()=> setShowAlert(false)} 
+          variant={ColorVariant.warning} 
+          text="This is an example of the info alert" 
+          />
+        <Button 
+          label="Clique aqui para abrir o alert" 
+          onClick={()=> setShowAlert(true)} 
+          variant={ColorVariant.warning}
+           />
+      </div>
+  )
+}
+export const Info = ()=>{
+
+  const [showAlert,setShowAlert] =  useState(false)
+
+  return (
+      <div>
+        <Alert 
+          showAlert={showAlert} 
+          onHiden={()=> setShowAlert(false)} 
+          variant={ColorVariant.info} 
+          onClickOne={()=> alert("Clicou")} 
+          onClickTwo={()=> alert("Clicou")} 
+          text="This is an example of the info alert" 
+          onAlertBorderBottom 
+          />
+        <Button 
+          label="Clique aqui para abrir o alert" 
+          onClick={()=> setShowAlert(true)} 
+          variant={ColorVariant.info} 
+          />
+      </div>
+  )
+}

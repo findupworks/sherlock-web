@@ -11,6 +11,8 @@ export { Modal } from './components/Modal'
 export { Label } from './components/Label';
 export { ConfirmationMessage } from './components/ConfirmationMessage'
 export { MultiStep } from './components/MultiStep';
+export { Pagination } from './components/Pagination';
+export { Tabs } from './components/Tabs';
+export { VerticalBar } from './components/VerticalBar';
 export { MultiSelect } from './components/MultiSelect';
-
 
