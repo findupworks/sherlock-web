@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { Button } from '../src';
 import { ButtonSize } from '../src/components/Button';
 import { ColorVariant } from '../src/types';
