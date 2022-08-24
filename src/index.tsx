@@ -15,4 +15,5 @@ export { Pagination } from './components/Pagination';
 export { Tabs } from './components/Tabs';
 export { VerticalBar } from './components/VerticalBar';
 export { MultiSelect } from './components/MultiSelect';
+export { EmptyState } from './components/EmptyState';
 
