@@ -14,4 +14,5 @@ export { MultiStep } from './components/MultiStep';
 export { Pagination } from './components/Pagination';
 export { Tabs } from './components/Tabs';
 export { VerticalBar } from './components/VerticalBar';
+export { MultiSelect } from './components/MultiSelect';
 
