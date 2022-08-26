@@ -42,7 +42,6 @@ export const Section: React.FC<IProps> = ({
                 'max-w-[900px] min-w-[850px]' : SectionSize.lg == size,
             })}>
             {items.map((item, index) => {
-              { console.log(index) }
               return <SectionItem label={item.label} index={index} hasIcon={!item.icon} disabled={item.disabled} />
            })}
         </div>
