@@ -17,29 +17,31 @@ export default {
     outlined: false,
     disabled: false,
     full: false,
-    loading: false
+    loading: false,
+    textButton:false,
+    leftIcon:'',
+    rightIcon:''
   },
   argTypes: {
     variant: {
       options: [ ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
+    outlined : { control : 'boolean'},
     size: {
       options: [ ButtonSize.sm, ButtonSize.md],
       control: 'inline-radio' 
     },
-    outlined : { control : 'boolean'},
+    textButton : { control : 'boolean'},
     loading : { control : 'boolean'},
     disabled : { control : 'boolean'},
     full : { control : 'boolean'},
     leftIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
+      type:'string',
       description: "Icones do FontAwsome, passar somente o nome dele."
     },
     rightIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
+      type:'string',
       description: "Icones do FontAwsome, passar somente o nome dele."
     },
   }
