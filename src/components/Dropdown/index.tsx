@@ -33,7 +33,6 @@ export interface DropdownItem {
   isDivider?: boolean;
   icon?: string;
   value?:any
-  image?: string;
   subItens?:Array<SubItem>
   isTitleFilterBy?:boolean
   typeInput?:inputType
