@@ -17,7 +17,7 @@ export default {
     outlined: false,
     disabled: false,
     full: false,
-    loading: false
+    loading: false,
   },
   argTypes: {
     variant: {
