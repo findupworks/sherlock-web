@@ -17,3 +17,4 @@ export { VerticalBar } from './components/VerticalBar';
 export { MultiSelect } from './components/MultiSelect';
 export { EmptyState } from './components/EmptyState';
 export { Section } from './components/Section';
+export { DatePicker } from './components/DatePicker';
