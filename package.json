@@ -1,7 +1,7 @@
 {
   "name": "@findupworks/sherlock-ui-kit",
   "description": "FindUP Sherlock React Components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "readmeFilename": "README.md" ,
   "main": "dist/index.js",
   "author": "<erick.haendel@findup.com.br>",
