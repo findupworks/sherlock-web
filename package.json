@@ -1,5 +1,5 @@
 {
-  "name": "sherlock-ui-kit",
+  "name": "@findupworks/sherlock-ui-kit",
   "description": "FindUP Sherlock React Components",
   "version": "1.0.0",
   "readmeFilename": "README.md" ,
@@ -11,6 +11,10 @@
     "Dennis Lima <dennis.farias@findup.com.br> (https://github.com/dennisdelima19pe)",
     "Dayanne Carolina <dayanne.carolina@findup.com.br> (https://github.com/dayannefindup)"
   ],
+  "repository": {
+    "url": "https://github.com/findupworks/sherlock-web",
+    "type": "git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.9",
