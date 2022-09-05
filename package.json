@@ -12,7 +12,7 @@
     "Dayanne Carolina <dayanne.carolina@findup.com.br> (https://github.com/dayannefindup)"
   ],
   "repository": {
-    "url": "https://github.com/findupworks/sherlock-web",
+    "url": "git+https://github.com/findupworks/sherlock-web.git",
     "type": "git"
   },
   "license": "MIT",
