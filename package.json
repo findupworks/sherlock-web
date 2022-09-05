@@ -15,6 +15,11 @@
     "url": "git+https://github.com/findupworks/sherlock-web.git",
     "type": "git"
   },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.9",
