@@ -1,7 +1,6 @@
 import React,{ButtonHTMLAttributes} from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import ReactLoading from 'react-loading';
 import { ColorVariant } from '../../types';
 
 export enum ButtonSize {
@@ -49,13 +48,13 @@ export const Button: React.FC<IProps> = ({
         if (rightIcon) return getIcon(rightIcon);
     }
 
-    const getLoading = () => <ReactLoading type='spin' color='#D9D9D9' height={"20px"} width={"20px"}/>;
+    // const getLoading = () => <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24" />;
 
     const getRealContent = () => <span>{getLeftIcon()} <span className='px-2'>{label}</span>{getRightIcon()}</span>
 
     const getContent = () => {
         if(loading) {
-            return getLoading();
+            return <svg className="animate-spin" height="25px" version="1.1" viewBox="0 0 32 32" width="25px" ><g id="Layer_1"/><g id="spin_x5F_alt"><g><path d="M4.691,27.32C1.664,24.297,0,20.281,0,16C0,7.18,7.176,0,16,0l2,2l-2,2C9.383,4,4,9.383,4,16    c0,3.211,1.25,6.227,3.52,8.492l-2.457,0.32L4.691,27.32L4.691,27.32z" fill="#F2F0F3" /><path d="M16,32l-2-1.992L16,28c6.617,0,12-5.383,12-12c0-3.203-1.25-6.219-3.523-8.488l2.461-0.324    l0.367-2.504C30.332,7.707,32,11.727,32,16C32,24.82,24.82,32,16,32L16,32z" fill="#F2F0F3" /></g></g></svg>
         }
 
         return getRealContent();
