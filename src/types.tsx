@@ -1,10 +1,2 @@
-
-export enum ColorVariant {
-    default = 'default',
-    primary = 'primary',
-    secondary = 'secondary',
-    success = 'success',
-    info = 'info',
-    danger = 'danger',
-    warning = 'warning',
-}
+export type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'info' | 'danger' | 'warning' ;
+export type SizeVariant = 'sm' | 'md' | 'lg';

@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Dropdown } from '../Dropdown';
+import { Dropdown, DropwdonVariant } from '../Dropdown';
 
 export enum CardVariant {
     default = 'default',
@@ -15,15 +15,6 @@ export enum CardSize {
     md = 'md',
     lg = 'lg',
 }
-
-export interface DropdownItem {
-    label?: string;
-    isDivider?: boolean;
-    icon?: string;
-    subLabel?: string;
-    image?: string;
-}
-
 export interface TagItem {
     text?: string;
 }
@@ -39,7 +30,7 @@ export interface IProps {
     iconCard?: string,
     userCard: string,
     iconButton?: string,
-    items: DropdownItem[],
+    items: [],
     tags: TagItem[],
     onTapCheck?: (check: boolean) => void;
     onTapMenu?: () => void;
@@ -196,7 +187,7 @@ export const Card: React.FC<IProps> = ({
                 </div>
                 
                 <div className="h-10 w-5 pl-3">
-                    <Dropdown items={items} leftIcon="fa-solid fa-ellipsis-vertical" />
+                    <Dropdown itemsMenu={items} leftIcon="fa-solid fa-ellipsis-vertical" variant={DropwdonVariant.default} />
                 </div>    
                 
             </div>
@@ -268,7 +259,7 @@ export const Card: React.FC<IProps> = ({
             </div>
 
             <div className="h-10 col-end-10">
-                <Dropdown items={items} leftIcon="fa-solid fa-ellipsis-vertical" />
+                <Dropdown itemsMenu={items} leftIcon="fa-solid fa-ellipsis-vertical" variant={DropwdonVariant.default} />
             </div>
             
         </div>

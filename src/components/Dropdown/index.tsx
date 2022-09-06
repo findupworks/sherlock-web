@@ -45,9 +45,9 @@ export interface IProps {
   itemsMenu: DropdownItem[],
   leftIcon?: string,
   rightIcon?: string,
-  onClickButtonDropwdon:(event)=> void
+  onClickButtonDropwdon?:(event)=> void
   onChange?:(event:any,item:DropdownItem,index:number,isSubItem:boolean)=> void
-  labelButtonDropdown:string
+  labelButtonDropdown?:string
   variant:DropwdonVariant
   isSearch?:boolean
 }
@@ -308,7 +308,7 @@ const listFilter =  itemsMenu?.filter((item)=> item?.label?.toLocaleLowerCase().
              }
              {listFilter.map((item,index)=> variantTypeCheck(item,index))}
             <div className="mt-4">
-              {onClickButtonDropwdon && <Button label={labelButtonDropdown} full variant={ColorVariant.primary} onClick={onClickButtonDropwdon} />}
+              {onClickButtonDropwdon && <Button label={labelButtonDropdown} full variant={'primary'} onClick={onClickButtonDropwdon} />}
             </div>
           </div>
       </div>
