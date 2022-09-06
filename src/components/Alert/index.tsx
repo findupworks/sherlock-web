@@ -2,8 +2,7 @@ import React, { useEffect,useRef } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ColorVariant } from '../../types';
-import { Button, ButtonSize } from '../Button';
-import { useState } from 'react';
+import { Button } from '../Button';
 
 
 export enum  AlertTypes {
@@ -24,7 +23,7 @@ export interface IProps {
 }
 
 export const Alert: React.FC<IProps> = ({ 
-    variant = ColorVariant.default,
+    variant = 'default',
     onClickOne  = undefined,
     onClickTwo = undefined,
     labelButtonOne = "Small button",
@@ -44,20 +43,20 @@ export const Alert: React.FC<IProps> = ({
     
     const colorButton = ()=>{
 
-        if(variant == ColorVariant.default){
-          return ColorVariant.primary
+        if(variant == 'default'){
+          return "primary"
         }
-        if(variant == ColorVariant.info){
-            return ColorVariant.info
+        if(variant == "info"){
+            return "info"
           }
-          if(variant == ColorVariant.success){
-            return ColorVariant.success
+          if(variant == "success"){
+            return "success"
           }
-          if(variant == ColorVariant.warning){
-            return ColorVariant.warning
+          if(variant == "warning"){
+            return "warning"
           }
-          if(variant == ColorVariant.danger){
-            return ColorVariant.danger
+          if(variant == "danger"){
+            return "danger"
           }
     }
 
@@ -65,11 +64,11 @@ export const Alert: React.FC<IProps> = ({
      return (
          <div className='flex items-center mt-4 gap-2 ml-8'>
             {onClickOne && (
-              <Button label={labelButtonOne} onClick={onClickOne} size={ButtonSize.sm} variant={colorButton()}/>
+              <Button label={labelButtonOne} onClick={onClickOne} size={"sm"} variant={colorButton()}/>
             )}
             {onClickTwo && (
               <button>
-                <Button label={labelButtonTwo} onClick={onClickTwo} size={ButtonSize.sm} variant={colorButton()} outlined  />
+                <Button label={labelButtonTwo} onClick={onClickTwo} size={"sm"} variant={colorButton()} outlined  />
               </button>
               )  
             }
@@ -81,17 +80,17 @@ export const Alert: React.FC<IProps> = ({
 
    const textAlert = ()=>{
     
-    if(variant == ColorVariant.info){
+    if(variant == "info"){
       return 'Info:'  
     } 
-    if(variant == ColorVariant.success){
+    if(variant == "success"){
       return 'Success:'
     }
-    if(variant == ColorVariant.warning){
+    if(variant == "warning"){
         return 'Warning:'
     }
 
-    if(variant == ColorVariant.danger){
+    if(variant == "danger"){
         return 'Danger:'
     }
 
@@ -126,11 +125,11 @@ export const Alert: React.FC<IProps> = ({
         'ease-out duration-[4000ms] opacity-100  transition-opacity':!onClickOne && !onClickTwo,
     
          // variant
-        'bg-white text-secondary':variant == ColorVariant.default,
-        'bg-primaryL3 border-infoL1 text-info':variant == ColorVariant.info,
-        'bg-successL2 border-successL1 text-success':variant == ColorVariant.success,
-        'bg-warningL2 border-warningL1 text-warning':variant == ColorVariant.warning,
-        'bg-dangerL2 border-dangerL1 text-danger':variant == ColorVariant.danger,
+        'bg-white text-secondary':variant == "default",
+        'bg-primaryL3 border-infoL1 text-info':variant == "info",
+        'bg-successL2 border-successL1 text-success':variant == "success",
+        'bg-warningL2 border-warningL1 text-warning':variant == "warning",
+        'bg-dangerL2 border-dangerL1 text-danger':variant == "danger",
          
          // showAlert visible
         'block':showAlert,
@@ -146,11 +145,11 @@ export const Alert: React.FC<IProps> = ({
               <i className={classname({
                 'text-base mt-1':true,
                 //icon type variant 
-                'fa-solid fa-circle-check text-[#6B6C7E]':variant == ColorVariant.default,
-                'fa-solid fa-circle-info':variant == ColorVariant.info,
-                'fa-solid fa-circle-check':variant == ColorVariant.success, 
-                'fa-solid fa-triangle-exclamation':variant == ColorVariant.warning,
-                'fa-solid fa-circle-exclamation':variant == ColorVariant.danger
+                'fa-solid fa-circle-check text-[#6B6C7E]':variant == "default",
+                'fa-solid fa-circle-info':variant == "info",
+                'fa-solid fa-circle-check':variant == "success", 
+                'fa-solid fa-triangle-exclamation':variant == "warning",
+                'fa-solid fa-circle-exclamation':variant == "danger"
                })}></i>
              
                 <span className='font-semibold text-sm flex items-start'>

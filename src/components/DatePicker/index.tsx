@@ -3,15 +3,11 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/light.css";
 import classname from 'classnames'
-export enum DatePickerType {
-    datetime = 'datetime',
-    date = 'date',
-    time = 'time'
-}
+import { DatePickerVariant } from '../../types';
 
 export interface IProps {
     label: string,
-    type: DatePickerType,
+    type: DatePickerVariant,
     onChange:(date:Date)=> void
     value:Date
 }
@@ -25,7 +21,7 @@ export interface CalendarComponentProps {
 
 export const DatePicker: React.FC<IProps> = ({ 
     label,
-    type = DatePickerType.datetime,
+    type = 'datetime',
     onChange,
     value
  }) => {
@@ -40,13 +36,13 @@ export const DatePicker: React.FC<IProps> = ({
 
  const changeCalendar = ()=>{
 
-    if(type == DatePickerType.datetime){
+    if(type == 'datetime'){
         setOptions({...options,dateFormat:"d-m-Y H:i",noCalendar:false,enableTime:true,placeholder:'YYYY-MM-DD   --:--'})
     }
-    if(type == DatePickerType.date){
+    if(type == 'date'){
       setOptions({...options,dateFormat:"d-m-Y H:i",noCalendar:false,enableTime:false,placeholder:'YYYY-MM-DD'})
     }
-    if(type == DatePickerType.time){
+    if(type == 'time'){
         setOptions({...options,dateFormat: "H:i",noCalendar:true,enableTime:true,placeholder:'--:--'})
     }
 
@@ -83,8 +79,8 @@ export const DatePicker: React.FC<IProps> = ({
        value={value}
        className={classname({
         'py-2	px-4 border-[1px] border-dark rounded ':true,
-         'w-44':type == DatePickerType.datetime || type == DatePickerType.date,
-         'text-center w-20':type == DatePickerType.time,
+         'w-44':type == 'datetime' || type == 'date',
+         'text-center w-20':type == 'time',
 
        })}
        options={options}

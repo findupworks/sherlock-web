@@ -1,24 +1,8 @@
 import React, {useState} from "react";
-import { createPopper } from '@popperjs/core';
 import classname from "classnames";
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import { Button } from "../Button";
-import { ColorVariant } from "../../types";
-
-
-export enum DropwdonVariant {
-  default = 'default',
-  icon = 'icon',
-  radio = 'radio',
-  checkbox = 'checkbox',
-  filter = 'filter'
-}
-
-export enum inputType {
-  radio = 'radio',
-  checkbox = 'checkbox'
-
-}
+import { DropwdonVariant, InputDropdownVariant } from "../../types";
 
 export interface SubItem {
   label:string
@@ -35,7 +19,7 @@ export interface DropdownItem {
   value?:any
   subItens?:Array<SubItem>
   isTitleFilterBy?:boolean
-  typeInput?:inputType
+  typeInput?: InputDropdownVariant
   onClickActionRight?:()=> void
   checked?:boolean
 }
@@ -60,7 +44,7 @@ export const Dropdown: React.FC<IProps> = ({
   onClickButtonDropwdon = undefined,
   onChange = undefined,
   labelButtonDropdown = "Apply",
-  variant = DropwdonVariant.default,
+  variant = "default",
   isSearch = false,
 }) => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -255,20 +239,20 @@ export const Dropdown: React.FC<IProps> = ({
 
 const variantTypeCheck =  (item: DropdownItem,index:number)=>{
 
-  if(variant === DropwdonVariant.default){
+  if(variant === "default"){
    return getDefault(item)
   }
-  if(variant === DropwdonVariant.icon){
+  if(variant === "icon"){
     return getIcon(item)
    }
   
-  if(variant === DropwdonVariant.checkbox){
+  if(variant === "checkbox"){
     return getCheckBox(item,String(index))
    }
-   if(variant === DropwdonVariant.radio){
+   if(variant === "radio"){
     return getRadio(item,index)
    }
-   if(variant === DropwdonVariant.filter){
+   if(variant === "filter"){
     return getFilter(item,String(index))
    }
 }

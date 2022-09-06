@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Pagination, } from '../src/components/Pagination';
-import { PaginationVariant, PaginationEntries } from '../src/components/Pagination';
+import { PaginationEntries } from '../src/components/Pagination';
 
 export default {
   /* 👇 The title prop is optional.
@@ -18,7 +18,7 @@ export default {
   },
   argTypes: {
     variant: {
-      options: [PaginationVariant.default, PaginationVariant.vertical],
+      options: ['default', 'vertical'],
       control: { type: 'select' }
     },
     outlined : { control : 'boolean'},
@@ -36,7 +36,7 @@ const Template: ComponentStory<typeof Pagination> = (args) => <Pagination {...ar
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
 Default.args = {
-  variant: PaginationVariant.default,
+  variant: 'default',
   totalPages: 10,
   totalEntries: 100,
   currentPage: 3,

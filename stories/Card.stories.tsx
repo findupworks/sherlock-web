@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Card } from '../src/components/Card';
-import { CardSize, CardVariant } from '../src/components/Card';
 
 export default {
   /* 👇 The title prop is optional.
@@ -18,11 +17,11 @@ export default {
   },
   argTypes: {
     variant: {
-      options: [CardVariant.default, CardVariant.iconCard, CardVariant.userCard, CardVariant.horizontalCard],
+      options: ['default', 'iconCard', 'userCard', 'horizontalCard'],
       control: { type: 'select' }
     },
     size: {
-      options: [ CardSize.sm, CardSize.md, CardSize.lg],
+      options: [ 'sm', 'md', 'lg'],
       control: 'inline-radio' 
     },
     iconCard: {
@@ -45,44 +44,44 @@ const TemplateMain: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 //👇 Each story then reuses that template
 export const Default = TemplateMain.bind({});
 Default.args = {
-  variant: CardVariant.default,
-  size: CardSize.sm,
+  variant: 'default',
+  size: 'sm',
   onTapCheck: (check) => alert(check),
   onTapCard: () => alert('Tap card'),
   onTapIcon: () => alert('Tap icon'),
-  items: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
+  itemsMenu: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
   tags: [{text: 'Tag 1'}, {text: 'Tag 2'}, {text: 'Tag 3'}]
 };
 
 export const IconCard = TemplateMain.bind({});
 IconCard.args = {
-  variant: CardVariant.iconCard,
-  size: CardSize.sm,
+  variant: 'iconCard',
+  size: 'sm',
   onTapCheck: (check) => alert(check),
   onTapCard: () => alert('Tap card'),
   onTapIcon: () => alert('Tap icon'),
-  items: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
+  itemsMenu: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
   tags: [{text: 'Tag 1'}, {text: 'Tag 2'}, {text: 'Tag 3'}]
 };
 
 export const UserCard = TemplateMain.bind({});
 UserCard.args = {
-  variant: CardVariant.userCard,
-  size: CardSize.sm,
+  variant: 'userCard',
+  size: 'sm',
   onTapCheck: (check) => alert(check),
   onTapCard: () => alert('Tap card'),
   onTapIcon: () => alert('Tap icon'),
-  items: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
+  itemsMenu: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
   tags: [{text: 'Tag 1'}, {text: 'Tag 2'}, {text: 'Tag 3'}]
 };
 
 export const HorizontalCard = TemplateMain.bind({});
 HorizontalCard.args = {
-  variant: CardVariant.horizontalCard,
-  size: CardSize.sm,
+  variant: 'horizontalCard',
+  size: 'sm',
   onTapCheck: (check) => alert(check),
   onTapCard: () => alert('Tap card'),
   onTapIcon: () => alert('Tap icon'),
-  items: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
+  itemsMenu: [{label: 'Opção sem icon'}, {label: 'Opção com icon', icon: 'cog'}],
   tags: [{text: 'Tag 1'}]
 };

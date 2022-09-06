@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Section } from '../src/components/Section';
-import { SectionSize } from '../src/components/Section';
 
 export default {
   /* 👇 The title prop is optional.
@@ -17,7 +16,7 @@ export default {
   },
   argTypes: {
     size: {
-      options: [ SectionSize.sm, SectionSize.md, SectionSize.lg],
+      options: [ 'sm', 'md', 'lg'],
       control: 'inline-radio' 
     },
     items: {

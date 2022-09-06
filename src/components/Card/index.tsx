@@ -1,20 +1,8 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Dropdown, DropwdonVariant } from '../Dropdown';
-
-export enum CardVariant {
-    default = 'default',
-    iconCard = 'iconCard',
-    userCard = 'userCard',
-    horizontalCard = 'horizontalCard'
-}
-
-export enum CardSize {
-    sm = 'sm',
-    md = 'md',
-    lg = 'lg',
-}
+import { Dropdown, DropdownItem } from '../Dropdown';
+import { CardVariant, SizeVariant } from '../../types';
 export interface TagItem {
     text?: string;
 }
@@ -25,12 +13,12 @@ export interface IProps {
     title: string,
     body: string,
     variant?: CardVariant,
-    size?: CardSize,
+    size?: SizeVariant,
     checked?: boolean,
     iconCard?: string,
     userCard: string,
     iconButton?: string,
-    items: [],
+    itemsMenu: DropdownItem[],
     tags: TagItem[],
     onTapCheck?: (check: boolean) => void;
     onTapMenu?: () => void;
@@ -46,9 +34,9 @@ export const Card: React.FC<IProps> = ({
     iconCard,
     userCard,
     iconButton,
-    size = CardSize.md,
-    variant = CardVariant.default,
-    items,
+    size = "md",
+    variant = "default",
+    itemsMenu,
     tags,
     onTapCheck,
     onTapCard,
@@ -90,18 +78,18 @@ export const Card: React.FC<IProps> = ({
 
     function getVariant() {
 
-        if (CardVariant.default === variant) {
+        if ("default" === variant) {
             return <img className="w-full" src={imageCard ? imageCard : 'https://v1.tailwindcss.com/img/card-top.jpg'} />
         }
 
-        if (CardVariant.userCard === variant) {
+        if ("userCard" === variant) {
             return (
                 <div className={classname({
                     'flex justify-center items-center' : true,
 
-                    'h-[140px]' : CardSize.sm == size,
-                    'h-[178px]' : CardSize.md == size,
-                    'h-[217px]' : CardSize.lg == size,
+                    'h-[140px]' : "sm" == size,
+                    'h-[178px]' : "md" == size,
+                    'h-[217px]' : "lg" == size,
 
                 })}> 
                     {
@@ -111,14 +99,14 @@ export const Card: React.FC<IProps> = ({
             );
         }
 
-        if (CardVariant.iconCard === variant) {
+        if ("iconCard" === variant) {
             return (
                 <div className={classname({
                     'flex justify-center items-center' : true,
 
-                    'h-[140px]' : CardSize.sm == size,
-                    'h-[178px]' : CardSize.md == size,
-                    'h-[217px]' : CardSize.lg == size,
+                    'h-[140px]' : "sm" == size,
+                    'h-[178px]' : "md" == size,
+                    'h-[217px]' : "lg" == size,
 
                 })}> 
                     {
@@ -145,9 +133,9 @@ export const Card: React.FC<IProps> = ({
             classname({
                 'rounded shadow-lg bg-white hover:border-sky-600 hover:border box-content' : true,
 
-                'max-w-[230px] min-w-[166px]' : CardSize.sm == size,
-                'max-w-[294px] min-w-[230px]' : CardSize.md == size,
-                'max-w-[358px] min-w-[294px]' : CardSize.lg == size,
+                'max-w-[230px] min-w-[166px]' : "sm" == size,
+                'max-w-[294px] min-w-[230px]' : "md" == size,
+                'max-w-[358px] min-w-[294px]' : "lg" == size,
 
                 'border-sky-600 border' : check
 
@@ -163,7 +151,7 @@ export const Card: React.FC<IProps> = ({
                     />
 
                 {
-                    variant === CardVariant.userCard ? ''
+                    variant === "userCard" ? ''
                     : <button className="absolute bottom-5 left-3 h-8 w-8 border rounded bg-white focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                         onClick={onTapIcon}
                     >
@@ -187,7 +175,7 @@ export const Card: React.FC<IProps> = ({
                 </div>
                 
                 <div className="h-10 w-5 pl-3">
-                    <Dropdown itemsMenu={items} leftIcon="fa-solid fa-ellipsis-vertical" variant={DropwdonVariant.default} />
+                    <Dropdown itemsMenu={itemsMenu} leftIcon="fa-solid fa-ellipsis-vertical" variant="default" />
                 </div>    
                 
             </div>
@@ -213,9 +201,9 @@ export const Card: React.FC<IProps> = ({
             classname({
                 'rounded grid grid-cols-2 shadow-lg bg-white hover:border-sky-600 hover:border box-content' : true,
 
-                'max-w-[250px] min-w-[196px]' : CardSize.sm == size,
-                'max-w-[294px] min-w-[230px]' : CardSize.md == size,
-                'max-w-[358px] min-w-[294px]' : CardSize.lg == size,
+                'max-w-[250px] min-w-[196px]' : "sm" == size,
+                'max-w-[294px] min-w-[230px]' : "md" == size,
+                'max-w-[358px] min-w-[294px]' : "lg" == size,
 
                 'border-sky-600 border' : check
 
@@ -259,7 +247,7 @@ export const Card: React.FC<IProps> = ({
             </div>
 
             <div className="h-10 col-end-10">
-                <Dropdown itemsMenu={items} leftIcon="fa-solid fa-ellipsis-vertical" variant={DropwdonVariant.default} />
+                <Dropdown itemsMenu={itemsMenu} leftIcon="fa-solid fa-ellipsis-vertical" variant="default" />
             </div>
             
         </div>
@@ -267,6 +255,6 @@ export const Card: React.FC<IProps> = ({
 
 
     return (
-        CardVariant.horizontalCard === variant ? getHorizontalCard() : getContent()
+        "horizontalCard" === variant ? getHorizontalCard() : getContent()
     )
 }

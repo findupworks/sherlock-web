@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { DatePickerType } from '../src/components/DatePicker';
 import { DatePicker } from '../src';
-import { ColorVariant } from '../src/types';
 
 export default {
   /* 👇 The title prop is optional.
@@ -17,7 +15,7 @@ export default {
   },
   argTypes: {
     type: {
-      options: [DatePickerType.datetime,DatePickerType.date,DatePickerType.time],
+      options: ['datetime','date','time'],
       control: { type: 'select' }
     },
   }
@@ -29,13 +27,13 @@ const Template: ComponentStory<typeof DatePicker> = (args) => <DatePicker {...ar
 
 //👇 Each story then reuses that template
 export const Datetime = Template.bind({});
-Datetime.args = { label: 'Datetime',  type: DatePickerType.datetime};
+Datetime.args = { label: 'Datetime',  type: 'datetime'};
 
 export const Date = Template.bind({});
-Date.args = { label: 'Date',  type: DatePickerType.date };
+Date.args = { label: 'Date',  type: 'date' };
 
 export const Time = Template.bind({});
-Time.args = { label: 'Time',  type:DatePickerType.time };
+Time.args = { label: 'Time',  type: 'time' };
 
 export const example = ()=>{
 }

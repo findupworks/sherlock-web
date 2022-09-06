@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Dropdown } from '../src';
-import { ColorVariant } from '../src/types';
-import { DropwdonVariant,inputType } from '../src/components/Dropdown';
 
 export default {
   /* 👇 The title prop is optional.
@@ -24,7 +22,7 @@ export default {
   },
   argTypes: {
     variant:{
-      options: [DropwdonVariant.default,DropwdonVariant.icon,DropwdonVariant.radio,DropwdonVariant.checkbox,DropwdonVariant.filter],
+      options: ['default','icon', 'radio', 'checkbox', 'filter'],
       control: 'select',
       description:'São as variações de tipos,podendo ser personalizadas.'
     },
@@ -70,7 +68,7 @@ const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} 
 export const Default = Template.bind({});
 Default.args = { 
    label: 'Default',
-   variant:DropwdonVariant.default,
+   variant: 'default',
    isSearch:true,
    onClickButtonDropwdon:()=> alert('Clicou.'),
    itemsMenu: [
@@ -80,7 +78,7 @@ Default.args = {
     isDivider:true,
     onClickActionRight:()=> alert('Clicou'),
     value:"option1",
-    typeInput:inputType.checkbox,
+    typeInput: 'checkbox',
     subItens:[
        {label:"Opção 1",value:'1'},
        {label:"Opção 2",value:'2'},
@@ -91,7 +89,7 @@ Default.args = {
      isDivider:true,
      onClickActionRight:()=> alert('Clicou'),
      value:'option2',
-     typeInput:inputType.radio,
+     typeInput: 'radio',
     }
   ]  
 };
@@ -100,7 +98,7 @@ Default.args = {
 export const Icon = Template.bind({});
 Icon.args = { 
    label: 'Default',
-   variant:DropwdonVariant.icon,
+   variant: 'icon',
    isSearch:true,
    onClickButtonDropwdon:()=> alert('Clicou'),
    itemsMenu: [
@@ -109,7 +107,7 @@ Icon.args = {
     icon:'user',
     isDivider:true,
     value:"option1",
-    typeInput:inputType.checkbox,
+    typeInput: 'checkbox',
     subItens:[
        {label:"Opção 1",value:'1'},
        {label:"Opção 2",value:'2'},
@@ -120,7 +118,7 @@ Icon.args = {
      isDivider:true,
      onClickActionRight:()=> alert('Clicou'),
      value:'option2',
-     typeInput:inputType.radio,
+     typeInput: 'radio',
     }
   ]  
 };
@@ -128,7 +126,7 @@ Icon.args = {
 export const Radio = Template.bind({});
 Radio.args = { 
    label: 'Default',
-   variant:DropwdonVariant.radio,
+   variant: 'radio',
    onChange:(event,item,index)=> console.log(event,item,index), 
    isSearch:true,
    onClickButtonDropwdon:()=> alert('Clicou'),
@@ -138,7 +136,7 @@ Radio.args = {
     icon:'user',
     isDivider:true,
     value:"option1",
-    typeInput:inputType.checkbox,
+    typeInput: 'checkbox',
     subItens:[
        {label:"Opção 1",value:'1'},
        {label:"Opção 2",value:'2'},
@@ -149,7 +147,7 @@ Radio.args = {
      isDivider:true,
      onClickActionRight:()=> alert('Clicou'),
      value:'option2',
-     typeInput:inputType.radio,
+     typeInput: 'radio',
     }
   ]  
 };
@@ -157,7 +155,7 @@ Radio.args = {
 export const Checkbox = Template.bind({});
 Checkbox.args = { 
    label: 'Default',
-   variant:DropwdonVariant.checkbox,
+   variant: 'checkbox',
    onChange:(event,item,index,isSubItem)=> console.log(event,item,index,isSubItem), 
    isSearch:true,
    onClickButtonDropwdon:()=> alert('Clicou'),
@@ -168,7 +166,7 @@ Checkbox.args = {
     isDivider:true,
     onClickActionRight:()=> alert('Clicou'),
     value:"option1",
-    typeInput:inputType.checkbox,
+    typeInput: 'checkbox',
     subItens:[
        {label:"Opção 1",value:'1',checked:true},
        {label:"Opção 2",value:'2'},
@@ -202,7 +200,7 @@ Checkbox.args = {
 export const Filter = Template.bind({});
 Filter.args = { 
    label: 'Default',
-   variant:DropwdonVariant.filter,
+   variant: 'filter',
    onChange:(event,item,index)=> console.log(event,item,index), 
    isSearch:true,
    onClickButtonDropwdon:()=> alert('clicou'),
@@ -214,7 +212,7 @@ Filter.args = {
     icon:'user',
     onClickActionRight:()=> alert('Clicou'),
     value:"option1",
-    typeInput:inputType.checkbox,
+    typeInput: 'checkbox',
     subItens:[
        {label:"PRIMEIRO SUBITEM DE TESTE",value:'1'},
        {label:"PRIMEIRO SUBITEM DE TESTE",value:'1'},
@@ -228,7 +226,7 @@ Filter.args = {
      isDivider:true,
      isTitleFilterBy:true,
      value:'option2',
-     typeInput:inputType.radio,
+     typeInput: 'radio',
      subItens:[{label:"PRIMEIRO SUBITEM DE TESTE",value:'2'}]
     }
   ]  
