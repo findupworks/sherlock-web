@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Checkbox, CheckBoxSize } from '../src/components/Checkbox';
-import { RadioSize } from '../src/components/Radio';
+import { Checkbox } from '../src/components/Checkbox';
 
 export default {
   /* 👇 The title prop is optional.
@@ -21,7 +20,7 @@ export default {
   },
   argTypes: {
     size: {
-      options: [ CheckBoxSize.sm, CheckBoxSize.md, CheckBoxSize.lg],
+      options: [ 'sm', 'md', 'lg'],
       control: 'inline-radio' 
     },
     disabled : { control : 'boolean'},

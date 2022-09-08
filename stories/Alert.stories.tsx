@@ -16,16 +16,16 @@ export default {
   component: Alert,
   args: {
     //👇 Now all Button stories will be primary.
-   labelButton1:'Small button',
-   labelButton2:'Small button'
+   labelButtonOne:'Small button',
+   labelButtonTwo:'Small button'
   },
   argTypes: {
     variant: {
-      options: [ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: ['default','primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
-   labelButton1:{type:'string'},
-   labelButton2:{type:'string'}
+   labelButtonOne:{ type:'string' },
+   labelButtonTwo:{ type:'string' }
   }
 } as ComponentMeta<typeof Alert>;
 
@@ -48,7 +48,7 @@ export const Default = ()=>{
         <Button 
           label="Clique aqui para abrir o alert" 
           onClick={()=> setShowAlert(true)} 
-          variant={ColorVariant.primary}  />
+          variant="primary" />
       </div>
   )
 }
@@ -61,14 +61,14 @@ export const Success = ()=>{
         <Alert 
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
-          variant={ColorVariant.success} 
+          variant="success"
           text="This is an success message"  
           onAlertBorderBottom
            />
         <Button 
           label="Clique aqui para abrir o alert" 
           onClick={()=> setShowAlert(true)} 
-          variant={ColorVariant.success} 
+          variant="success"
            />
       </div>
   )
@@ -83,12 +83,12 @@ export const Danger = ()=>{
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
           onClickTwo={()=> alert("Clicou")} 
-          variant={ColorVariant.danger} 
+          variant="danger"
           text="This is an example of the info alert" />
         <Button 
           label="Clique aqui para abrir o alert" 
           onClick={()=> setShowAlert(true)} 
-          variant={ColorVariant.danger} 
+          variant="danger"
           />
       </div>
   )
@@ -103,13 +103,13 @@ export const Warning = ()=>{
         <Alert 
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
-          variant={ColorVariant.warning} 
+          variant="warning" 
           text="This is an example of the info alert" 
           />
         <Button 
           label="Clique aqui para abrir o alert" 
           onClick={()=> setShowAlert(true)} 
-          variant={ColorVariant.warning}
+          variant="warning"
            />
       </div>
   )
@@ -123,7 +123,7 @@ export const Info = ()=>{
         <Alert 
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
-          variant={ColorVariant.info} 
+          variant="info"
           onClickOne={()=> alert("Clicou")} 
           onClickTwo={()=> alert("Clicou")} 
           text="This is an example of the info alert" 
@@ -132,7 +132,7 @@ export const Info = ()=>{
         <Button 
           label="Clique aqui para abrir o alert" 
           onClick={()=> setShowAlert(true)} 
-          variant={ColorVariant.info} 
+          variant="info"
           />
       </div>
   )

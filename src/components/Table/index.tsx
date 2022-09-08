@@ -6,33 +6,21 @@ import {Label} from '../Label'
 import {Badge } from '../Badge'
 import { Button } from '../Button';
 import { Switch } from '../Switch';
-import {Sticker, StickerSize } from '../Sticker';
+import {Sticker } from '../Sticker';
+import {Dropdown,DropdownItem } from '../Dropdown';
 
-export type teste = 'blank' | 'checkbox' | 'progressbar' | 'text' | 'textSticker' | 'label' | 'button' | 'sticker' | 'action' | 'input' | 'toggle' | 'badge' | 'icon'
-export enum TdVariant   {
-    blank = 'blank',
-    checkbox = 'checkbox',
-    progressbar = 'progressbar',
-    text = 'text',
-    textStickker = 'textSticker',
-    label = 'label',
-    button = 'button',
-    sticker = 'sticker',
-    action = 'action',
-    input = 'input',
-    toggle = 'toggle',
-    badge = 'badge',
-    icon = 'icon'
-}
+import { StickerSizeVariant,TableTdVariant } from '../../types';
+
+
 export interface TheadProps {
     th:String
-    orderBy?:boolean
     onClickOrderBy?:()=> void 
+    itemsMenuAction?: DropdownItem[],
 }
 
 export interface TdProps {
-    variant?:teste
-    stickerSize?: StickerSize,
+    variant:TableTdVariant
+    stickerSize?: StickerSizeVariant,
     stickerRounded?: boolean,
     stickerImg?: string,
     text?:String
@@ -40,10 +28,15 @@ export interface TdProps {
     progressbar?:number
     value?:any;
     checked?:boolean
-    onChange?:(event)=> void
-    onClick?:(event)=> void 
+    onChange?:(value)=> void
+    onClick?:(event)=> void
+    onClickInfo?:(value)=> void 
+    onClickDelete?:(value)=> void 
+    onClickCopy?:(value)=> void 
+    itemsMenuAction?: DropdownItem[],
     indexTd?:number
     isRowSelected?:boolean
+    trKey?:any;
   }
 export interface TrProps {
   td:TdProps
@@ -55,7 +48,7 @@ export interface TbodyProps{
 export interface IProps {
   thead:Array<TheadProps>
   tbody:Array<TbodyProps>
-  onChangeItemsSelected?:(itemsSelected)=> void
+  onChangeItemsSelected:(itemsSelected)=> void
 }
 
 
@@ -70,9 +63,15 @@ export const Td  = ({
       checked,
       onChange,
       onClick,
+      onClickInfo,
+      onClickDelete,
+      onClickCopy,
       indexTd,
       isRowSelected,
-      progressbar}:TdProps)=>{
+      progressbar,
+      itemsMenuAction,
+      trKey,
+    }:TdProps)=>{
  
    switch(variant){
     case 'blank':
@@ -86,7 +85,7 @@ export const Td  = ({
        <td className='py-4 px-6'>
         <div className='flex items-center gap-2'>
            {indexTd == 0 && <input type="checkbox" checked={isRowSelected} /> }
-           <input type="checkbox" onChange={onChange}   value={value}/>
+           <input type="checkbox" onChange={onChange}   value={value} checked={checked}/>
         </div>
        </td>
       )
@@ -132,7 +131,7 @@ export const Td  = ({
         <td className='py-4 px-6'>
           <div className='flex items-center gap-2'>
            {indexTd == 0 && <input type="checkbox" checked={isRowSelected} /> }
-            <Button label='Botão' onClick={onClick} />
+            <Button label={String(text)} onClick={onClick} />
           </div>
          </td>
         )
@@ -157,8 +156,22 @@ export const Td  = ({
     case 'action':
      return(
       <td className='py-4 px-6'>
-        
-         action
+        <div className='flex items-center gap-4'>
+          <button onClick={()=> onClickInfo && onClickInfo(trKey)}>
+            <i className="fa-thin fa-info text-base"></i>
+          </button>
+          <button onClick={()=> onClickDelete &&  onClickDelete(trKey)}>
+            <i className="fa-regular fa-trash-can text-base"></i>
+          </button>
+          <button onClick={()=> onClickCopy && onClickCopy(trKey)}>
+            <i className="fa-regular fa-copy text-base"></i>
+          </button>
+          <Dropdown 
+            itemsMenu={itemsMenuAction ? itemsMenuAction:[]} 
+            leftIcon="fa-solid fa-ellipsis-vertical" 
+            variant="default"
+          />            
+        </div>
       </td>
         )
     case 'badge':
@@ -222,19 +235,29 @@ export const Table: React.FC<IProps> = ({
 
 
   
+
+  
     return (
       <div className="overflow-x-auto relative" >
        <table className="w-full text-sm text-left">
          <thead className="text-sm text-primary">
           <tr className='bg-white'>
             {thead?.map((thead)=>(
+             thead?.itemsMenuAction ? 
+              <th>
+                <Dropdown 
+                 itemsMenu={thead?.itemsMenuAction ? thead?.itemsMenuAction:[]} 
+                 leftIcon="fa-solid fa-ellipsis-vertical" 
+                 variant="default"
+                />       
+             </th>:
              <th className='py-3.5 px-6 cursor-pointer' onClick={()=>{
               thead?.onClickOrderBy &&  thead?.onClickOrderBy()
               setShowarrowordeBy(!showarrowordeBy)
              
             }}>
-               {thead?.th}
-               {thead?.orderBy ? showarrowordeBy ?<i className="fa-solid fa-arrow-up ml-2"></i>:<i className="fa-solid fa-arrow-down ml-2"></i>:''}
+              {thead?.th}
+              {thead?.itemsMenuAction ? showarrowordeBy ?<i className="fa-solid fa-arrow-up ml-2"></i>:<i className="fa-solid fa-arrow-down ml-2"></i>:''}
               </th>
             ))}
           </tr>            
@@ -259,9 +282,15 @@ export const Table: React.FC<IProps> = ({
              progressbar={tr?.td?.progressbar}
              value={tr?.td?.value}
              onChange={tr?.td?.onChange}
+             key={tbody?.trKey}
              onClick={tr?.td?.onClick}
              indexTd={indexTd}
              isRowSelected={listKeySelected.includes(tbody.trKey)}
+             itemsMenuAction={tr?.td?.itemsMenuAction}
+             onClickCopy={tr?.td?.onClickCopy}
+             onClickDelete={tr?.td?.onClickDelete}
+             onClickInfo={tr?.td?.onClickInfo}
+             trKey={tbody?.trKey}
             />
            ))}
           </tr>

@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { ColorVariant } from '../../types';
-
-export enum InputSize {
-    sm = 'sm',
-    lg = 'lg',
-}
-
-export enum InputType {
-    default = 'default',
-    textarea = 'textarea',
-    selector = 'selector',
-    icon = 'icon',
-}
+import { ColorVariant, SizeVariant, InputTypeVariant  } from '../../types';
 
 export interface SelectorItem {
     label?: string;
@@ -23,8 +11,8 @@ export interface SelectorItem {
 export interface IProps {
     label?: string;
     placeholder?: string;
-    size?: string;
-    inputType: InputType;
+    size?: SizeVariant;
+    inputType: InputTypeVariant;
     selectorItems: SelectorItem[],
     colorVariant?: ColorVariant,
     tag?: boolean;
@@ -67,15 +55,15 @@ export const Input: React.FC<IProps> = ({
                 <i className={
                     classNames(
                         "fa", {
-                        "fa-circle-check text-success" : ColorVariant.success == colorVariant,
-                        "fa-warning text-warning" : ColorVariant.warning == colorVariant,
-                        "fa-circle-exclamation text-danger" : ColorVariant.danger == colorVariant,
+                        "fa-circle-check text-success" : 'success' == colorVariant,
+                        "fa-warning text-warning" : 'warning' == colorVariant,
+                        "fa-circle-exclamation text-danger" : 'danger' == colorVariant,
                     })}>
                 </i>
                 <label className="block mb-2 pl-2 pt-2 text-sm font-medium text-gray-900 dark:text-dark">
-                    { ColorVariant.success == colorVariant ? 'Sucesso' : '' }
-                    { ColorVariant.danger == colorVariant ? 'Erro' : '' }
-                    { ColorVariant.warning == colorVariant ? 'Cuidado' : '' }
+                    { 'success' == colorVariant ? 'Sucesso' : '' }
+                    { 'danger' == colorVariant ? 'Erro' : '' }
+                    { 'warning' == colorVariant ? 'Cuidado' : '' }
                 </label>
             </div> 
             : ''
@@ -85,7 +73,7 @@ export const Input: React.FC<IProps> = ({
     function getContentByType() {
         return <>
                 {
-                    InputType.textarea === inputType 
+                    'textarea' === inputType 
                     ? 
                     <div className="flex flex-col justify-center">
                         <div className="w-72">
@@ -93,15 +81,15 @@ export const Input: React.FC<IProps> = ({
                             <textarea className={
                                     classNames(
                                         'resize w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-solid rounded transition ease-in-out m-0', {
-                                        'h-24' : InputSize.sm == size,
-                                        'h-36' : InputSize.lg == size,
-                                        'bg-gray-50 border border-gray-300' : ColorVariant.default == colorVariant,
-                                        'border-success bg-successL1 bg-opacity-10' : ColorVariant.success == colorVariant,
-                                        'border-warning bg-warningL1 bg-opacity-10': ColorVariant.warning == colorVariant,
-                                        'border-danger bg-dangerL1 bg-opacity-10' : ColorVariant.danger == colorVariant,
-                                        'border-info bg-infoL1 bg-opacity-10' : ColorVariant.info == colorVariant,
-                                        'border-primary bg-primaryL1 bg-opacity-10' : ColorVariant.primary == colorVariant,
-                                        'border-secondary bg-secondaryL1 bg-opacity-10' : ColorVariant.secondary == colorVariant,
+                                        'h-24' : 'sm' == size,
+                                        'h-36' : 'lg' == size,
+                                        'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
+                                        'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
+                                        'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
+                                        'border-danger bg-dangerL1 bg-opacity-10' : 'danger' == colorVariant,
+                                        'border-info bg-infoL1 bg-opacity-10' : 'info' == colorVariant,
+                                        'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
+                                        'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                                     })}
                                 placeholder={placeholder ? placeholder : 'Your message'}
                             ></textarea>
@@ -113,29 +101,29 @@ export const Input: React.FC<IProps> = ({
                     :
                     <div className="mb-6 relative">
                             {
-                                InputType.icon == inputType ?
+                                'icon' == inputType ?
                                 <>
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label ? label : 'Label' }</label>
                                 <div className="flex justify-between w-72">
                                     <input type="text" className={
                                         classNames(
                                             "border text-gray-900 text-sm rounded-md block w-72 p-3", {
-                                            'h-8' : InputSize.sm == size,
-                                            'bg-gray-50 border border-gray-300' : ColorVariant.default == colorVariant,
-                                            'border-success bg-successL1 bg-opacity-10' : ColorVariant.success == colorVariant,
-                                            'border-warning bg-warningL1 bg-opacity-10': ColorVariant.warning == colorVariant,
-                                            'border-danger bg-dangerL1 bg-opacity-10' : ColorVariant.danger == colorVariant,
-                                            'border-info bg-infoL1 bg-opacity-10' : ColorVariant.info == colorVariant,
-                                            'border-primary bg-primaryL1 bg-opacity-10' : ColorVariant.primary == colorVariant,
-                                            'border-secondary bg-secondaryL1 bg-opacity-10' : ColorVariant.secondary == colorVariant,
+                                            'h-8' : 'sm' == size,
+                                            'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
+                                            'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
+                                            'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
+                                            'border-danger bg-dangerL1 bg-opacity-10' : 'danger' == colorVariant,
+                                            'border-info bg-infoL1 bg-opacity-10' : 'info' == colorVariant,
+                                            'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
+                                            'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                                         })}
                                         placeholder={placeholder ? placeholder : 'Default text'}
                                     />
                                     <i onClick={onClickIcon} className={
                                         classNames(
                                             `absolute right-4 text-gray-600 fa fa-${icon}`, {
-                                            'text-sm top-9' : InputSize.sm == size,
-                                            'text-lg top-10' : InputSize.lg == size,
+                                            'text-sm top-9' : 'sm' == size,
+                                            'text-lg top-10' : 'lg' == size,
                                         })}></i>
                                 </div>
                                 {
@@ -145,21 +133,21 @@ export const Input: React.FC<IProps> = ({
                                 : ''
                             }
                             {
-                                InputType.selector == inputType ? 
+                                'selector' == inputType ? 
                                 <>
                                     <div className="w-72">
                                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{ label ? label : 'Label' }</label>
                                         <select className={
                                                 classNames(
                                                     'text-gray-900 text-sm border rounded-lg block w-full p-2.5', {
-                                                    'h-8' : InputSize.sm == size,
-                                                    'bg-gray-50 border border-gray-300' : ColorVariant.default == colorVariant,
-                                                    'border-success bg-successL1 bg-opacity-10' : ColorVariant.success == colorVariant,
-                                                    'border-warning bg-warningL1 bg-opacity-10': ColorVariant.warning == colorVariant,
-                                                    'border-danger bg-dangerL1 bg-opacity-10' : ColorVariant.danger == colorVariant,
-                                                    'border-info bg-infoL1 bg-opacity-10' : ColorVariant.info == colorVariant,
-                                                    'border-primary bg-primaryL1 bg-opacity-10' : ColorVariant.primary == colorVariant,
-                                                    'border-secondary bg-secondaryL1 bg-opacity-10' : ColorVariant.secondary == colorVariant,
+                                                    'h-8' : 'sm' == size,
+                                                    'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
+                                                    'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
+                                                    'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
+                                                    'border-danger bg-dangerL1 bg-opacity-10' : 'danger' == colorVariant,
+                                                    'border-info bg-infoL1 bg-opacity-10' : 'info' == colorVariant,
+                                                    'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
+                                                    'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                                                 })}
                                         >
                                             <option defaultValue={'-'} className="text-xs">-</option>
@@ -187,19 +175,19 @@ export const Input: React.FC<IProps> = ({
                     <div className={
                             classNames(
                                 "flex relative justify-between w-72", {
-                                'h-8' : InputSize.sm == size,
+                                'h-8' : 'sm' == size,
                                 
                         })}>
                         <input type={typeInput} className={
                             classNames(
                                 "border text-dark text-sm rounded-sm block w-72 p-3", {
-                                'bg-gray-50 border border-gray-300' : ColorVariant.default == colorVariant,
-                                'border-success bg-successL1 bg-opacity-10' : ColorVariant.success == colorVariant,
-                                'border-warning bg-warningL1 bg-opacity-10': ColorVariant.warning == colorVariant,
-                                'border-danger bg-dangerL1 bg-opacity-10' : ColorVariant.danger == colorVariant,
-                                'border-info bg-infoL1 bg-opacity-10' : ColorVariant.info == colorVariant,
-                                'border-primary bg-primaryL1 bg-opacity-10' : ColorVariant.primary == colorVariant,
-                                'border-secondary bg-secondaryL1 bg-opacity-10' : ColorVariant.secondary == colorVariant,
+                                'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
+                                'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
+                                'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
+                                'border-danger bg-dangerL1 bg-opacity-10' : 'danger' == colorVariant,
+                                'border-info bg-infoL1 bg-opacity-10' : 'info' == colorVariant,
+                                'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
+                                'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                             })}
                             placeholder={placeholder ? placeholder : 'Defaul text'}
                         />
@@ -215,6 +203,6 @@ export const Input: React.FC<IProps> = ({
         }
 
     return (
-        InputType.default == inputType ? getContentDefault() : getContentByType()
+        'default' == inputType ? getContentDefault() : getContentByType()
       );
 }

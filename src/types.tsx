@@ -1,10 +1,13 @@
-
-export enum ColorVariant {
-    default = 'default',
-    primary = 'primary',
-    secondary = 'secondary',
-    success = 'success',
-    info = 'info',
-    danger = 'danger',
-    warning = 'warning',
-}
+export type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'info' | 'danger' | 'warning';
+export type SizeVariant = 'default'| 'sm' | 'md' | 'lg';
+export type CardVariant = 'default' | 'iconCard' | 'userCard' | 'horizontalCard';
+export type DropwdonVariant = 'default' | 'icon' | 'radio' | 'checkbox' | 'filter';
+export type InputDropdownVariant = 'radio' | 'checkbox';
+export type DatePickerVariant = 'datetime' | 'date' | 'time';
+export type EmptyStateVariant = 'default' | 'noImage';
+export type InputTypeVariant = 'default' | 'textarea' | 'selector' | 'icon';
+export type TypeOptionsVariant = 'stepCircle' | 'stepCircleCondensed' | 'stepBar';
+export type PaginationVariant = 'default' | 'vertical';
+export type StickerSizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type SwitchSize = 'sm' | 'md';
+export type TableTdVariant = 'blank' | 'checkbox' | 'progressbar' | 'text' | 'textSticker' | 'label' | 'button' | 'sticker' | 'action' | 'input' | 'toggle' | 'badge' | 'icon'

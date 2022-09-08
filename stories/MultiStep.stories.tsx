@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Button, MultiStep } from '../src';
-import { TypeOptions,SlidePreviosButton,SlideNextButton } from '../src/components/MultiStep';
+import { MultiStep } from '../src';
+import { SlidePreviosButton,SlideNextButton } from '../src/components/MultiStep';
 
 export default {
   /* 👇 The title prop is optional.
@@ -13,19 +13,19 @@ export default {
   component: MultiStep,
   args: {
     //👇 Now all Button stories will be primary.
-   type:TypeOptions.stepCircle,
+   type: 'stepCircle',
    stepCurrent:1,
    steps:[
-    {stepName:'Etapa 1'},
-    {stepName:"Etapa 2"},
-    {stepName:"Etapa 3"},
-    {stepName:"Etapa 4"},
-    {stepName:"Etapa 5"},
+    { stepName:"Etapa 1" },
+    { stepName:"Etapa 2" },
+    { stepName:"Etapa 3" },
+    { stepName:"Etapa 4" },
+    { stepName:"Etapa 5" },
   ]
   },
   argTypes: {
     type: {
-      options: [TypeOptions.stepCircle,TypeOptions.stepCircleCondensed,TypeOptions.stepBar],
+      options: ['stepCircle', 'stepCircleCondensed', 'stepBar'],
       control: 'select' ,
 
     },
@@ -39,7 +39,7 @@ const Template: ComponentStory<typeof MultiStep> = (args) => <MultiStep {...args
 
 //👇 Each story then reuses that template
 export const stepCircle = Template.bind({});
-stepCircle.args = {type:TypeOptions.stepCircle};
+stepCircle.args = { type: 'stepCircle'};
 
 export const stepCircleCondensed = ()=>{
   const [step,setStepCurrent] = useState(1);
@@ -79,7 +79,7 @@ export const stepCircleCondensed = ()=>{
 
   return (
     <div style={{width:'40vw',height:'162.rem'}}>
-    <MultiStep steps={steps} stepCurrent={step} type={TypeOptions.stepCircleCondensed}>
+    <MultiStep steps={steps} stepCurrent={step} type="stepCircleCondensed">
       <div style={{width:'100%',display:'flex',justifyContent:'space-between',margin:'2rem auto'}}>
         {step != 1 ?
         <SlidePreviosButton  onClick={previos} style={{background:'transparent',color:"#e2e8f0",border:'1px solid #e2e8f0',width:'8rem',padding:"0.5rem 1.25rem",borderRadius:'5px'}}>
@@ -95,7 +95,7 @@ export const stepCircleCondensed = ()=>{
   )
 }
 export const stepBar = Template.bind({});
-stepBar.args = {type:TypeOptions.stepBar};
+stepBar.args = { type: 'stepBar' };
 
 export const ExampleStepCircle = ()=>{
 
@@ -244,7 +244,7 @@ export const ExampleStepCircle = ()=>{
   }
 return (
   <div style={{width:'40vw'}}>
-    <MultiStep stepCurrent={step} steps={steps} type={TypeOptions.stepCircle} />
+    <MultiStep stepCurrent={step} steps={steps} type="stepCircle" />
     <Content />
     <div style={{margin:'1rem 0'}}>
       <button onClick={previos} style={{background:'transparent',color:"#e2e8f0",border:'1px solid #e2e8f0',width:'8rem',padding:"0.5rem 1.25rem",borderRadius:'5px',marginRight:'0.5rem'}}>
@@ -411,7 +411,7 @@ export const ExampleStepCircleCondesed  = ()=>{
 
  return ( 
   <div style={{width:'40vw',height:'162.rem'}}>
-    <MultiStep steps={steps} stepCurrent={step} type={TypeOptions.stepCircleCondensed}>
+    <MultiStep steps={steps} stepCurrent={step} type="stepCircleCondensed">
       <div style={{margin:'2rem 0px'}}>
          <Content />
       </div>
@@ -584,7 +584,7 @@ return (
         Próximo 
       </button>
     </div>
-    <MultiStep stepCurrent={step} steps={steps} type={TypeOptions.stepBar} />
+    <MultiStep stepCurrent={step} steps={steps} type="stepBar" />
   </div>
 )
 

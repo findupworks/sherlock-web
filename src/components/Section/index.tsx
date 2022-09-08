@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-export enum SectionSize {
-    sm = 'sm',
-    md = 'md',
-    lg = 'lg',
-}
+import { SizeVariant } from '../../types';
 
 export interface SectionItem {
     label?: string;
@@ -21,8 +16,8 @@ export interface IProps {
 
 export interface SectionProps {
     label?: string;
-    index: number;
-    hasIcon: boolean;
+    index?: number;
+    hasIcon?: boolean;
     disabled?: boolean;
 }
 
@@ -37,9 +32,9 @@ export const Section: React.FC<IProps> = ({
     return (
         <div className={
             classname({
-                'max-w-[550px] min-w-[500px]' : SectionSize.sm == size,
-                'max-w-[750px] min-w-[700px]' : SectionSize.md == size,
-                'max-w-[900px] min-w-[850px]' : SectionSize.lg == size,
+                'max-w-[550px] min-w-[500px]' : 'sm' == size,
+                'max-w-[750px] min-w-[700px]' : 'md' == size,
+                'max-w-[900px] min-w-[850px]' : 'lg' == size,
             })}>
             {items.map((item, index) => {
               return <SectionItem label={item.label} index={index} hasIcon={!item.icon} disabled={item.disabled} />
@@ -77,7 +72,7 @@ export const SectionItem: React.FC<SectionProps> = ({
             <h1 className={ disabled || hasIcon ? 'pointer-events-none' : ''} onClick={() => onClickSection(index)}>
                 <button type="button" className="flex disabled items-center justify-between w-full p-5 font-medium text-left text-gray-500 border-b-2 border-secondaryL2">
                     <span className="text-secondary hover:text-dark">  { label } </span>
-                    { hasIcon ? '' : <i className={`w-6 h-6 shrink-0 pl-2 pt-1 fas fa-${ index.toString() == openSection ? 'angle-down' : 'angle-right' }`}></i>}
+                    { hasIcon ? '' : <i className={`w-6 h-6 shrink-0 pl-2 pt-1 fas fa-${ index?.toString() == openSection ? 'angle-down' : 'angle-right' }`}></i>}
                 </button>
             </h1>
             <div className={

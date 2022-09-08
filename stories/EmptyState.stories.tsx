@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { EmptyState } from '../src';
-
-// .storybook/preview.js
 
 export default {
   /* 👇 The title prop is optional.

@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Spinner } from '../src';
-import { ColorVariant } from '../src/types';
 
 export default {
   title: 'Feedback/Spinner',
@@ -9,7 +8,7 @@ export default {
 
   argTypes: {
     variant: {
-      options: [ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: ['default', 'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
     size: {

@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import classNames from 'classnames';
-import { Dropdown, DropdownItem } from '../Dropdown';
+import { PaginationVariant } from '../../types';
 
-export enum PaginationVariant {
-    default = 'default',
-    vertical = 'vertical',
-}
 
 export enum PaginationEntries {
     ten = 10,
@@ -209,6 +205,6 @@ export const Pagination: React.FC<IProps> = ({
     }
 
     return (
-        PaginationVariant.default == variant ? getContent() : getVertical()
+        'default' == variant ? getContent() : getVertical()
     );
 }

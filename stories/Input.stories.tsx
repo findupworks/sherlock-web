@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Input } from '../src/components/Input';
-import { InputSize, InputType } from '../src/components/Input';
 
 export default {
   /* 👇 The title prop is optional.
@@ -42,12 +41,12 @@ export default {
       description: 'A TAG se refere a mensagem de sucesso, aviso e erro que é possivel exibir abaixo do input usando esta flag.'
     },
     size: {
-      options: [ InputSize.sm, InputSize.lg],
+      options: [ 'sm', 'lg'],
       control: 'inline-radio',
       description: 'Tamanho do input'
     },
     inputType: {
-      options: [ InputType.default, InputType.icon, InputType.selector, InputType.textarea],
+      options: [ 'default', 'icon', 'selector', 'textarea'],
       control: 'select',
       description: 'Tipos do input disponíveis'
     },

@@ -1,8 +1,25 @@
 {
-  "name": "findup-ui-kit",
-  "version": "1.0.0",
+  "name": "@findupworks/sherlock-ui-kit",
+  "description": "FindUP Sherlock React Components",
+  "version": "1.0.5",
+  "readmeFilename": "README.md" ,
   "main": "dist/index.js",
   "author": "<erick.haendel@findup.com.br>",
+  "contributors": [
+    "Erick Haendel <erick.haendel@findup.com.br> (https://github.com/erickhaendel)",
+    "Italo Gama <italo.gama@findup.com.br> (https://github.com/italogama)",
+    "Dennis Lima <dennis.farias@findup.com.br> (https://github.com/dennisdelima19pe)",
+    "Dayanne Carolina <dayanne.carolina@findup.com.br> (https://github.com/dayannefindup)"
+  ],
+  "repository": {
+    "url": "git+https://github.com/findupworks/sherlock-web.git",
+    "type": "git"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -31,11 +48,9 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@popperjs/core": "^2.11.5",
     "classnames": "^2.3.1",
     "react-detect-click-outside": "^1.1.7",
-    "react-loading": "^2.0.3",
-    "react-popper": "^2.3.0",
+    "react-flatpickr": "^3.10.13",
     "react-select": "^5.4.0",
     "swiper": "^8.3.2"
   },

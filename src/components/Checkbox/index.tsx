@@ -1,25 +1,19 @@
 import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import { SizeVariant } from '../../types';
 export interface IProps {
     label?: string,
     checked: boolean;
     onClick: () => void;
     disabled?: boolean;
-    size?: CheckBoxSize,
+    size?: SizeVariant,
     icon: string,
-}
-
-export enum CheckBoxSize {
-    sm = 'sm',
-    md = 'md',
-    lg = 'lg'
 }
 
 export const Checkbox: React.FC<IProps> = ({ 
     label,
-    size = CheckBoxSize.md,
+    size = 'md',
     disabled,
     checked,
     onClick,
@@ -38,18 +32,18 @@ export const Checkbox: React.FC<IProps> = ({
             "bg-primary border-none" : checked,
             'bg-gray-500 border-white border-1' : !checked && disabled,
             "cursor-pointer" : !disabled,
-            'w-4 h-4 fa-xs' : CheckBoxSize.sm == size,
-            'w-5 h-5 ' : CheckBoxSize.md == size,
-            'w-6 h-6 ' : CheckBoxSize.lg == size
+            'w-4 h-4 fa-xs' : 'sm' == size,
+            'w-5 h-5 ' : 'md' == size,
+            'w-6 h-6 ' : 'lg' == size
           })}>
           {checked ? <i className={`fas fa-${icon} text-white`}></i> : null}
         </div>
 
         {label != '' && label != null && label != undefined ? (
           <label className={classname({
-            'text-sm ' : CheckBoxSize.sm == size,
-            'text-md ' : CheckBoxSize.md == size,
-            'text-lg' : CheckBoxSize.lg == size
+            'text-sm ' : 'sm' == size,
+            'text-md ' : 'md' == size,
+            'text-lg' : 'lg' == size
           })}>{label}</label>
         ): <div/> }
       </div>

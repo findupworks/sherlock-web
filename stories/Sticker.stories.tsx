@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
-import { ColorVariant } from '../src/types';
-import { Sticker, StickerSize } from '../src/components/Sticker';
+import { Sticker } from '../src/components/Sticker';
 
 export default {
   /* 👇 The title prop is optional.
@@ -22,7 +20,7 @@ export default {
   argTypes: {
     rounded : { control: 'boolean'},
     size: {
-      options: [ StickerSize.xs, StickerSize.sm, StickerSize.md, StickerSize.lg, StickerSize.xl],
+      options: [ 'xs', 'sm', 'md', 'lg', 'xl'],
       control: 'inline-radio' 
     },
  

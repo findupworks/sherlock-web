@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Dropdown } from '../Dropdown';
 
 export interface MenuItem {
     label?: string;

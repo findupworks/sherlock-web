@@ -1,13 +1,11 @@
-import React,{MouseEventHandler} from 'react';
-import classname from 'classnames';
+import React from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Select from 'react-select';
 import { Button } from '../Button';
-import { ColorVariant } from '../../types';
 
 export type OptionsProps ={
-   value:any 
-   label:any
+   value: any 
+   label: any
 }
 
 export interface IProps {
@@ -69,7 +67,7 @@ export const MultiSelect: React.FC<IProps> = ({
             isLoading={isLoading}
             onChange={onChange}
           />
-        {onClickButton &&  <Button label={labelButton} variant={ColorVariant.primary} outlined  onClick={onClickButton} />}
+        {onClickButton &&  <Button label={labelButton} variant="primary" outlined  onClick={onClickButton} />}
        </div>     
     )
     
