@@ -1,17 +1,8 @@
-import React, { Ref, useState } from 'react';
+import React, { useState } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Modifier, usePopper } from 'react-popper';
-import { Options } from '@popperjs/core';
-
-
-export enum PopoverDirection {
-    r = 'right',
-    l = 'left',
-    t = 'top',
-    b = 'bottom'
-}
-
+import { usePopper } from 'react-popper';
+import { PopoverDirection } from '../../types';
 export interface IProps {
     tooltipText: String,
     popoverText: String,
@@ -24,7 +15,7 @@ export const Popover: React.FC<IProps> = ({
     tooltipText,
     popoverText,
     showPopover = false,
-    direction = PopoverDirection.t,
+    direction = 'top',
     target,
     ...props
  }) => {
@@ -73,10 +64,10 @@ export const Popover: React.FC<IProps> = ({
                 style={styles.arrow}
                  className={classname({
                     " h-0 w-0 border-slate-100": true,
-                    "-top-1 border-x-[18px] border-x-transparent border-b-[16px] ": PopoverDirection.b == direction,
-                    "-bottom-1 border-x-[18px] border-x-transparent border-t-[16px]": PopoverDirection.t == direction,
-                    "-right-1 border-y-[9px] border-y-transparent border-l-[8px]": PopoverDirection.l == direction,
-                    "-left-1 border-y-[9px] border-y-transparent border-r-[8px]": PopoverDirection.r == direction,
+                    "-top-1 border-x-[18px] border-x-transparent border-b-[16px] ": 'bottom' == direction,
+                    "-bottom-1 border-x-[18px] border-x-transparent border-t-[16px]": 'top' == direction,
+                    "-right-1 border-y-[9px] border-y-transparent border-l-[8px]": 'left' == direction,
+                    "-left-1 border-y-[9px] border-y-transparent border-r-[8px]": 'right' == direction,
                 })} id="arrow" />
 
                 <div className=' font-semibold p-2 border-b border-slate-50 break-words'>

@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ColorVariant } from '../src/types';
-import { Tooltip, TooltipDirection } from '../src/components/Tooltip';
+import { Tooltip } from '../src/components/Tooltip';
 import { Button } from '../src';
 
 export default {
@@ -15,7 +14,7 @@ export default {
 
   args: {
     tooltipText: "Tooltip text",
-    direction: TooltipDirection.t,
+    direction: 'top',
     //👇 Now all Button stories will be primary.
   },
   argTypes: {
@@ -25,10 +24,10 @@ export default {
     },
     direction:{
       options: [
-        TooltipDirection.t, TooltipDirection.ts, TooltipDirection.te, 
-        TooltipDirection.b, TooltipDirection.bs, TooltipDirection.be, 
-        TooltipDirection.l, TooltipDirection.ls, TooltipDirection.le,  
-        TooltipDirection.r, TooltipDirection.rs, TooltipDirection.re,  
+        'right', 'right-start', 'right-end', 
+        'left', 'left-start', 'left-end', 
+        'top', 'top-start', 'top-end', 
+        'bottom', 'bottom-start', 'bottom-end'
       ],
       control: {type:"select"},
       description: "Direções que o tooltip pode ter em relação ao seu target."
@@ -52,7 +51,6 @@ const Template: ComponentStory<typeof Tooltip> = (args)=>{
       />
       <Button
         label="Mostrar Tooltip"
-        variant={ColorVariant.primary}
         id="referenceElement"
       />
     </div>

@@ -1,10 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ColorVariant } from '../src/types';
-import { Popover, PopoverDirection } from '../src/components/Popover';
-import { Badge, Button } from '../src';
-import { ButtonSize } from '../src/components/Button';
+import { Popover } from '../src/components/Popover';
+import { Button } from '../src';
 
 export default {
   /* 👇 The title prop is optional.
@@ -18,7 +16,7 @@ export default {
     tooltipText: "Tooltip text",
     popoverText: "Popover text",
     showPopover:false,
-    direction: PopoverDirection.t,
+    direction: 'top',
     //👇 Now all Button stories will be primary.
   },
   argTypes: {
@@ -35,7 +33,7 @@ export default {
       description: "Variável de controle para aparecer ou não o popover."
     },
     direction:{
-      options: [PopoverDirection.t, PopoverDirection.b, PopoverDirection.l, PopoverDirection.r],
+      options: ['top', 'bottom', 'left', 'right'],
       control: {type:"select"},
       description: "Direções em que o popover pode aparecer em relação ao seu target."
     },
@@ -69,9 +67,8 @@ const Template: ComponentStory<typeof Popover> = (args)=>{
       <Button
         label="Mostrar Popover"
         onClick={()=>setShowPopover(!showPopover)}
-        variant={ColorVariant.primary}
         id="referenceElement"
-        size={ButtonSize.sm}
+        size={"sm"}
       />
     </div>
   )

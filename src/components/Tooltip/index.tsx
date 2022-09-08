@@ -1,24 +1,8 @@
-import React, { Ref, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Modifier, usePopper } from 'react-popper';
-import { Options } from '@popperjs/core';
-
-
-export enum TooltipDirection {
-    r = 'right',
-    rs = 'right-start',
-    re = 'right-end',
-    l = 'left',
-    ls = 'left-start',
-    le = 'left-end',
-    t = 'top',
-    ts = 'top-start',
-    te = 'top-end',
-    b = 'bottom',
-    bs = 'bottom-start',
-    be = 'bottom-end'
-}
+import { usePopper } from 'react-popper';
+import { TooltipDirection } from '../../types';
 
 export interface IProps {
     tooltipText: String,
@@ -32,7 +16,7 @@ export interface ArrowProps {
 
 export const Tooltip: React.FC<IProps> = ({ 
     tooltipText,
-    direction = TooltipDirection.t,
+    direction = 'top',
     target,
     ...props
  }) => {
@@ -112,10 +96,10 @@ export const Tooltip: React.FC<IProps> = ({
                     style={styles.arrow}
                     className={classname({
                         "h-0 w-0 border-darkD2": true,
-                        " -top-1 border-x-[18px] border-x-transparent border-b-[16px]": TooltipDirection.b == direction || TooltipDirection.bs == direction || TooltipDirection.be == direction,
-                        " -bottom-1 border-x-[18px] border-x-transparent border-t-[16px]": TooltipDirection.t == direction || TooltipDirection.ts == direction || TooltipDirection.te == direction,
-                        "-right-1 border-y-[9px] border-y-transparent border-l-[8px]": TooltipDirection.l == direction || TooltipDirection.ls == direction || TooltipDirection.le == direction,
-                        "-left-1 border-y-[9px] border-y-transparent border-r-[8px]": TooltipDirection.r == direction || TooltipDirection.rs == direction || TooltipDirection.re == direction,
+                        " -top-1 border-x-[18px] border-x-transparent border-b-[16px]": 'bottom' == direction || 'bottom-start' == direction || 'bottom-end' == direction,
+                        " -bottom-1 border-x-[18px] border-x-transparent border-t-[16px]": 'top' == direction || 'top-start' == direction || 'top-end' == direction,
+                        "-right-1 border-y-[9px] border-y-transparent border-l-[8px]": 'left' == direction || 'left-start' == direction || 'left-end' == direction,
+                        "-left-1 border-y-[9px] border-y-transparent border-r-[8px]": 'right' == direction || 'right-start' == direction || 'right-end' == direction,
                     })} 
                     id="arrow" 
                 />
