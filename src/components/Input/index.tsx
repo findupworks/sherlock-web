@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ColorVariant, SizeVariant, InputTypeVariant  } from '../../types';
@@ -8,12 +8,12 @@ export interface SelectorItem {
     value?: string;
 }
 
-export interface IProps {
+
+export type IProps = InputHTMLAttributes<HTMLInputElement> &  {
     label?: string;
-    placeholder?: string;
     size?: SizeVariant;
     inputType: InputTypeVariant;
-    selectorItems: SelectorItem[],
+    selectorItems?: SelectorItem[],
     colorVariant?: ColorVariant,
     tag?: boolean;
     icon?: string;
@@ -23,7 +23,6 @@ export interface IProps {
 
 export const Input: React.FC<IProps> = ({
     label,
-    placeholder,
     size,
     inputType,
     colorVariant,
@@ -91,7 +90,6 @@ export const Input: React.FC<IProps> = ({
                                         'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
                                         'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                                     })}
-                                placeholder={placeholder ? placeholder : 'Your message'}
                             ></textarea>
                         </div>
                         {
@@ -117,7 +115,7 @@ export const Input: React.FC<IProps> = ({
                                             'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
                                             'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                                         })}
-                                        placeholder={placeholder ? placeholder : 'Default text'}
+                                        {...props}
                                     />
                                     <i onClick={onClickIcon} className={
                                         classNames(
@@ -189,7 +187,7 @@ export const Input: React.FC<IProps> = ({
                                 'border-primary bg-primaryL1 bg-opacity-10' : 'primary' == colorVariant,
                                 'border-secondary bg-secondaryL1 bg-opacity-10' : 'secondary' == colorVariant,
                             })}
-                            placeholder={placeholder ? placeholder : 'Defaul text'}
+                            {...props}
                         />
                         { isVisible ?
                             <i onClick={changleToggleIcon} className={`fa fa-${toggleIcon} right-3 top-3 text-lg absolute text-gray-600`}></i>
