@@ -24,4 +24,6 @@ export { ProgressBar } from './components/ProgressBar';
 export { Radio } from './components/Radio';
 export { Sticker } from './components/Sticker';
 export { Switch } from './components/Switch';
-
+export { Tooltip } from './components/Tooltip';
+export { Popover } from './components/Popover';
+ 
