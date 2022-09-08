@@ -76,7 +76,7 @@ export const Input: React.FC<IProps> = ({
                     ? 
                     <div className="flex flex-col justify-center">
                         <div className="w-72">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label ? label : 'Label' }</label>
+                            { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label }</label> : '' }
                             <textarea className={
                                     classNames(
                                         'resize w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-solid rounded transition ease-in-out m-0', {
@@ -97,7 +97,7 @@ export const Input: React.FC<IProps> = ({
                         }
                     </div>
                     :
-                    <div className="mb-6 relative">
+                    <div className="relative">
                             {
                                 'icon' == inputType ?
                                 <>
@@ -134,7 +134,7 @@ export const Input: React.FC<IProps> = ({
                                 'selector' == inputType ? 
                                 <>
                                     <div className="w-72">
-                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{ label ? label : 'Label' }</label>
+                                        { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{ label }</label> : '' }
                                         <select className={
                                                 classNames(
                                                     'text-gray-900 text-sm border rounded-lg block w-full p-2.5', {
@@ -168,8 +168,8 @@ export const Input: React.FC<IProps> = ({
     }
 
     function getContentDefault() {
-        return <div className="mb-6">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label ? label : 'Label' }</label>
+        return <div>
+                    { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label }</label> : ''}
                     <div className={
                             classNames(
                                 "flex relative justify-between w-72", {
