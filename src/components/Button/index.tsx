@@ -35,7 +35,8 @@ export const Button: React.FC<IProps> = ({
     textButton = false,
     ...props
  }) => {
-    
+
+
 
     const getIcon = (icon: string) => {
         return <i className={`fas fa-${icon}`}></i>
@@ -60,6 +61,8 @@ export const Button: React.FC<IProps> = ({
 
         return getRealContent();
     }
+
+
 
     return (
         <button disabled={disabled} 

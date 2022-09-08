@@ -12,9 +12,9 @@ export enum LabelSize {
 export interface IProps {
     label: string,
     variant?: ColorVariant,
-    size:LabelSize
-    outlined:boolean
-    iconRight:string
+    size?:LabelSize
+    outlined?:boolean
+    iconRight?:string
 }
 
 export const Label: React.FC<IProps> = ({ 
