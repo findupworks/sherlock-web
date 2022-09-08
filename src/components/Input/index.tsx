@@ -1,7 +1,7 @@
 import React, { useState, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { ColorVariant, SizeVariant, InputTypeVariant  } from '../../types';
+import { ColorVariant, InputTypeVariant  } from '../../types';
 
 export interface SelectorItem {
     label?: string;
@@ -11,7 +11,6 @@ export interface SelectorItem {
 
 export type IProps = InputHTMLAttributes<HTMLInputElement> &  {
     label?: string;
-    size?: SizeVariant;
     inputType: InputTypeVariant;
     selectorItems?: SelectorItem[],
     colorVariant?: ColorVariant,
@@ -23,8 +22,7 @@ export type IProps = InputHTMLAttributes<HTMLInputElement> &  {
 
 export const Input: React.FC<IProps> = ({
     label,
-    size,
-    inputType,
+    inputType = "default",
     colorVariant,
     selectorItems,
     tag,
@@ -49,7 +47,7 @@ export const Input: React.FC<IProps> = ({
 
     function getTag(){
         return (
-            tag ?
+            colorVariant == "success" || colorVariant == "danger"  || colorVariant == "warning"?
             <div className="flex items-center">
                 <i className={
                     classNames(
@@ -75,13 +73,11 @@ export const Input: React.FC<IProps> = ({
                     'textarea' === inputType 
                     ? 
                     <div className="flex flex-col justify-center">
-                        <div className="w-72">
+                        <div>
                             { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label }</label> : '' }
                             <textarea className={
                                     classNames(
                                         'resize w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-solid rounded transition ease-in-out m-0', {
-                                        'h-24' : 'sm' == size,
-                                        'h-36' : 'lg' == size,
                                         'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
                                         'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
                                         'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
@@ -93,7 +89,7 @@ export const Input: React.FC<IProps> = ({
                             ></textarea>
                         </div>
                         {
-                            getTag()
+                            tag ? getTag() : ''
                         }
                     </div>
                     :
@@ -101,12 +97,11 @@ export const Input: React.FC<IProps> = ({
                             {
                                 'icon' == inputType ?
                                 <>
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label ? label : 'Label' }</label>
-                                <div className="flex justify-between w-72">
+                                { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label }</label> : ''}
+                                <div className="flex justify-between">
                                     <input type="text" className={
                                         classNames(
-                                            "border text-gray-900 text-sm rounded-md block w-72 p-3", {
-                                            'h-8' : 'sm' == size,
+                                            "border text-gray-900 text-sm rounded-md block w-full p-3", {
                                             'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
                                             'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
                                             'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
@@ -119,13 +114,11 @@ export const Input: React.FC<IProps> = ({
                                     />
                                     <i onClick={onClickIcon} className={
                                         classNames(
-                                            `absolute right-4 text-gray-600 fa fa-${icon}`, {
-                                            'text-sm top-9' : 'sm' == size,
-                                            'text-lg top-10' : 'lg' == size,
+                                            `absolute right-4 top-3 text-gray-600 fa fa-${icon}`, {
                                         })}></i>
                                 </div>
                                 {
-                                    getTag()
+                                    tag ? getTag() : ''
                                 }
                                 </>
                                 : ''
@@ -133,12 +126,11 @@ export const Input: React.FC<IProps> = ({
                             {
                                 'selector' == inputType ? 
                                 <>
-                                    <div className="w-72">
+                                    <div>
                                         { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{ label }</label> : '' }
                                         <select className={
                                                 classNames(
                                                     'text-gray-900 text-sm border rounded-lg block w-full p-2.5', {
-                                                    'h-8' : 'sm' == size,
                                                     'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
                                                     'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
                                                     'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
@@ -172,13 +164,12 @@ export const Input: React.FC<IProps> = ({
                     { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label }</label> : ''}
                     <div className={
                             classNames(
-                                "flex relative justify-between w-72", {
-                                'h-8' : 'sm' == size,
+                                "flex relative justify-between", {
                                 
                         })}>
                         <input type={typeInput} className={
                             classNames(
-                                "border text-dark text-sm rounded-sm block w-72 p-3", {
+                                "border text-dark text-sm rounded-lg block w-full p-3", {
                                 'bg-gray-50 border border-gray-300' : 'default' == colorVariant,
                                 'border-success bg-successL1 bg-opacity-10' : 'success' == colorVariant,
                                 'border-warning bg-warningL1 bg-opacity-10': 'warning' == colorVariant,
@@ -195,7 +186,7 @@ export const Input: React.FC<IProps> = ({
                         }
                     </div>
                     {
-                        getTag()
+                        tag ? getTag() : ''
                     }
                 </div>
         }
