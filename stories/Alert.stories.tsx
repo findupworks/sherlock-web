@@ -40,6 +40,7 @@ export const Default = ()=>{
   return (
       <div>
         <Alert
+        title='Primary'
          showAlert={showAlert} 
          onHiden={()=> setShowAlert(false)} 
          onClickOne={()=> alert("Clicou")}  
@@ -59,6 +60,7 @@ export const Success = ()=>{
   return (
       <div>
         <Alert 
+          title='Success'
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
           variant="success"
@@ -80,6 +82,7 @@ export const Danger = ()=>{
   return (
       <div>
         <Alert 
+          title='Danger'
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
           onClickTwo={()=> alert("Clicou")} 
@@ -101,6 +104,7 @@ export const Warning = ()=>{
   return (
       <div>
         <Alert 
+          title='Warning'
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
           variant="warning" 
@@ -121,6 +125,7 @@ export const Info = ()=>{
   return (
       <div>
         <Alert 
+          title='Info'
           showAlert={showAlert} 
           onHiden={()=> setShowAlert(false)} 
           variant="info"
