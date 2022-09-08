@@ -17,4 +17,14 @@ export { VerticalBar } from './components/VerticalBar';
 export { MultiSelect } from './components/MultiSelect';
 export { EmptyState } from './components/EmptyState';
 export { Section } from './components/Section';
+export { DatePicker } from './components/DatePicker';
+export { Checkbox } from './components/Checkbox';
+export { Input } from './components/Input';
+export { ProgressBar } from './components/ProgressBar';
+export { Radio } from './components/Radio';
+export { Sticker } from './components/Sticker';
+export { Switch } from './components/Switch';
+export { Tooltip } from './components/Tooltip';
+export { Popover } from './components/Popover';
 export { Table } from './components/Table';
+

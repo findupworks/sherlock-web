@@ -10,4 +10,3 @@ export type TypeOptionsVariant = 'stepCircle' | 'stepCircleCondensed' | 'stepBar
 export type PaginationVariant = 'default' | 'vertical';
 export type StickerSizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type SwitchSize = 'sm' | 'md';
-export type TableTdVariant = 'blank' | 'checkbox' | 'progressbar' | 'text' | 'textSticker' | 'label' | 'button' | 'sticker' | 'action' | 'input' | 'toggle' | 'badge' | 'icon'

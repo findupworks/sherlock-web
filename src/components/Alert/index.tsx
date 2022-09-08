@@ -10,16 +10,16 @@ export enum  AlertTypes {
   alertTemporary = 'alertTemporary'
 }
 export interface IProps {
-  
     variant?: ColorVariant
-    text:string
+    title: string
+    text: string
     onHiden:()=> void
     onClickOne?:() => void 
-    labelButtonOne?:string
+    labelButtonOne?: string
     onClickTwo?:()=> void
-    labelButtonTwo?:string
-    showAlert:boolean
-    onAlertBorderBottom?:boolean
+    labelButtonTwo?: string
+    showAlert: boolean
+    onAlertBorderBottom?: boolean
 }
 
 export const Alert: React.FC<IProps> = ({ 
@@ -31,6 +31,7 @@ export const Alert: React.FC<IProps> = ({
     onHiden,
     showAlert,
     onAlertBorderBottom = false,
+    title,
     text,
     ...props
  }) => {
@@ -77,25 +78,6 @@ export const Alert: React.FC<IProps> = ({
     }
    return <></>
  }
-
-   const textAlert = ()=>{
-    
-    if(variant == "info"){
-      return 'Info:'  
-    } 
-    if(variant == "success"){
-      return 'Success:'
-    }
-    if(variant == "warning"){
-        return 'Warning:'
-    }
-
-    if(variant == "danger"){
-        return 'Danger:'
-    }
-
-   }
-
    
    useEffect(()=>{
     const divNode = ref?.current;
@@ -153,7 +135,7 @@ export const Alert: React.FC<IProps> = ({
                })}></i>
              
                 <span className='font-semibold text-sm flex items-start'>
-                  {textAlert()}
+                  { title }
                   <span className='ml-1 font-normal'>{text}</span>
                 </span>              
             </div>

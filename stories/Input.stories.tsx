@@ -24,10 +24,6 @@ export default {
       type: "string",
       description: 'Label do input'
     },
-    placeholder: {
-      type: "string",
-      description: 'Mensagem do placeholder'
-    },
     icon: {
       type: "string",
       description: 'Icone do fonts awesome para o tipo Icon (utilizar apenas o nome do icone diretamente)'
@@ -39,11 +35,6 @@ export default {
     tag: {
       type: "boolean",
       description: 'A TAG se refere a mensagem de sucesso, aviso e erro que é possivel exibir abaixo do input usando esta flag.'
-    },
-    size: {
-      options: [ 'sm', 'lg'],
-      control: 'inline-radio',
-      description: 'Tamanho do input'
     },
     inputType: {
       options: [ 'default', 'icon', 'selector', 'textarea'],
