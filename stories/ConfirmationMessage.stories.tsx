@@ -1,9 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ColorVariant } from '../src/types';
 import { ConfirmationMessage } from '../src';
-import { ConfirmationMessageSize } from '../src/components/ConfirmationMessage';
 
 export default {
   /* 👇 The title prop is optional.
@@ -15,18 +13,18 @@ export default {
  
   args: {
     //👇 Now all Button stories will be primary.   
-    size: ConfirmationMessageSize.md,
+    size: 'md',
     labelButtonCancel: 'Cancelar',
     labelButtonConfirm: 'Confirmar',
     showConfirmationMessage: false,
   },
   argTypes: {
     variant: {
-      options: [ColorVariant.default,'default','success', 'danger', 'warning', 'info'],
+      options: ['default','success', 'danger', 'warning', 'info'],
       control: { type: 'select' }
     },
     size: {
-      options: [ ConfirmationMessageSize.sm, ConfirmationMessageSize.md, ConfirmationMessageSize.lg],
+      options: [ 'sm', 'md', 'lg'],
       control: 'inline-radio' 
     },
     labelButtonCancel:{type:'string'},
@@ -42,8 +40,8 @@ const Template: ComponentStory<typeof ConfirmationMessage> = (args) => <Confirma
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
 Default.args = { 
-  variant: ColorVariant.success,
-  size: ConfirmationMessageSize.lg,
+  variant: 'success',
+  size: 'lg',
   onConfirm: () => alert('Confirmar'),
   onCancel: () => alert('Cancelar'),
 };

@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Switch, SwitchSize } from '../src/components/Switch';
+import { Switch } from '../src/components/Switch';
 
 export default {
   /* 👇 The title prop is optional.
@@ -20,7 +20,7 @@ export default {
   },
   argTypes: {
     size: {
-      options: [ SwitchSize.sm, SwitchSize.md],
+      options: [ 'sm', 'md'],
       control: 'inline-radio' 
     },
     disabled : { control : 'boolean'},

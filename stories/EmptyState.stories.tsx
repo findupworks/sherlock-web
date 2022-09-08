@@ -1,39 +1,35 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Radio } from '../src/components/Radio';
+import { EmptyState } from '../src';
 
 export default {
   /* 👇 The title prop is optional.
   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Form/Radio',
-  component: Radio,
+  title: 'Data Display/Empty State',
+  component: EmptyState,
 
   args: {
     //👇 Now all Button stories will be primary.
-    disabled: false,
-    checked:false,
-    label: "",
+    
   },
   argTypes: {
-    size: {
-      options: [ 'sm', 'md', 'lg'],
-      control: 'inline-radio' 
-    },
-    disabled : { control : 'boolean'},
-    checked : { control : 'boolean'},
     onClick:{
-      action:'clicked'
-    }
+      description: "Metodo para function personalizada",
+    },
   }
-} as ComponentMeta<typeof Radio>;
-
+} as ComponentMeta<typeof EmptyState>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
+const Template: ComponentStory<typeof EmptyState> = (args) => <EmptyState {...args} />;
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Default' };
+Default.args = { 
+  title: 'Place your title here',
+  bodyMessage: 'Please, fill this text box with your content',
+  buttonLabel: 'New',
+  onClickButton: () => alert('Click button'),
+};

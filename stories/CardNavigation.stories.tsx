@@ -3,11 +3,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { CardNavigation, } from '../src/components/CardNavigation';
 
-import { 
-    CardNavigationVariant,
-    CardNavigationSize 
-} from '../src/components/CardNavigation';
-
 export default {
   /* 👇 The title prop is optional.
   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
@@ -21,11 +16,11 @@ export default {
   },
   argTypes: {
     variant: {
-      options: [CardNavigationVariant.default, CardNavigationVariant.small],
+      options: ['default', 'small'],
       control: { type: 'select' }
     },
     size: {
-      options: [ CardNavigationSize.sm, CardNavigationSize.md, CardNavigationSize.lg],
+      options: [ 'sm', 'md', 'lg'],
       control: 'inline-radio' 
     },
     iconCard: {
@@ -42,12 +37,12 @@ const TemplateMain: ComponentStory<typeof CardNavigation> = (args) => <CardNavig
 //👇 Each story then reuses that template
 export const Default = TemplateMain.bind({});
 Default.args = {
-  variant: CardNavigationVariant.default,
-  size: CardNavigationSize.sm
+  variant: 'default',
+  size: 'sm'
 };
 
 export const Small = TemplateMain.bind({});
 Small.args = {
-  variant: CardNavigationVariant.small,
-  size: CardNavigationSize.sm
+  variant: 'sm',
+  size: 'sm'
 };

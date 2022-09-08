@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { Button } from '../src';
-import { ButtonSize } from '../src/components/Button';
-import { ColorVariant } from '../src/types';
 
 export default {
   /* 👇 The title prop is optional.
@@ -18,29 +15,31 @@ export default {
     outlined: false,
     disabled: false,
     full: false,
-    loading: false
+    loading: false,
+    textButton:false,
+    leftIcon:'',
+    rightIcon:''
   },
   argTypes: {
     variant: {
-      options: [ ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: [ 'default','primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
+    outlined : { control : 'boolean'},
     size: {
-      options: [ ButtonSize.sm, ButtonSize.md],
+      options: [ 'sm', 'md'],
       control: 'inline-radio' 
     },
-    outlined : { control : 'boolean'},
+    textButton : { control : 'boolean'},
     loading : { control : 'boolean'},
     disabled : { control : 'boolean'},
     full : { control : 'boolean'},
     leftIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
+      type:'string',
       description: "Icones do FontAwsome, passar somente o nome dele."
     },
     rightIcon: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
+      type:'string',
       description: "Icones do FontAwsome, passar somente o nome dele."
     },
   }
@@ -52,22 +51,22 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Button Default', variant:  ColorVariant.default };
+Default.args = { label: 'Button Default', variant: 'default' };
 
 export const Primary = Template.bind({});
-Primary.args = { label: 'Button Primary', variant:  ColorVariant.primary };
+Primary.args = { label: 'Button Primary', variant:  'primary' };
 
 export const Secondary = Template.bind({});
-Secondary.args = { label: 'Button Secondary', variant:  ColorVariant.secondary };
+Secondary.args = { label: 'Button Secondary', variant:  'secondary' };
 
 export const Success = Template.bind({});
-Success.args = { label: 'Button Success', variant:  ColorVariant.success };
+Success.args = { label: 'Button Success', variant: 'success' };
 
 export const Danger = Template.bind({});
-Danger.args = { label: 'Button Danger', variant:  ColorVariant.danger };
+Danger.args = { label: 'Button Danger', variant: 'danger' };
 
 export const Warning = Template.bind({});
-Warning.args = { label: 'Button Warning', variant:  ColorVariant.warning };
+Warning.args = { label: 'Button Warning', variant: 'warning' };
 
 export const Info = Template.bind({});
-Info.args = { label: 'Button Info', variant:  ColorVariant.info };
+Info.args = { label: 'Button Info', variant: 'info' };

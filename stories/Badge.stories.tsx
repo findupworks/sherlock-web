@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Badge } from '../src';
-import { ColorVariant } from '../src/types';
 
 export default {
   /* 👇 The title prop is optional.
@@ -17,7 +16,7 @@ export default {
   },
   argTypes: {
     variant: {
-      options: [ColorVariant.default,'primary', 'secondary', 'danger', 'warning', 'info', 'success'],
+      options: ['default','primary', 'secondary', 'danger', 'warning', 'info', 'success'],
       control: { type: 'select' }
     },
   }
@@ -29,22 +28,22 @@ const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { label: 'Default',  variant: ColorVariant.default };
+Default.args = { label: 'Default',  variant: "default" };
 
 export const Primary = Template.bind({});
-Primary.args = { label: 'Primary',  variant: ColorVariant.primary };
+Primary.args = { label: 'Primary',  variant: "primary" };
 
 export const Secondary = Template.bind({});
-Secondary.args = { label: 'Secondary',  variant: ColorVariant.secondary };
+Secondary.args = { label: 'Secondary',  variant: "secondary" };
 
 export const Success = Template.bind({});
-Success.args = { label: 'Success',  variant: ColorVariant.success };
+Success.args = { label: 'Success',  variant: "success" };
 
 export const Danger = Template.bind({});
-Danger.args = { label: 'Danger',  variant: ColorVariant.danger };
+Danger.args = { label: 'Danger',  variant: "danger" };
 
 export const Warning = Template.bind({});
-Warning.args = { label: 'Warning',  variant: ColorVariant.warning };
+Warning.args = { label: 'Warning',  variant: "warning" };
 
 export const Info = Template.bind({});
-Info.args = { label: 'Info',  variant: ColorVariant.info };
+Info.args = { label: 'Info',  variant: "info" };

@@ -1,16 +1,11 @@
 import React from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { ColorVariant } from '../../types';
+import { ColorVariant, SizeVariant } from '../../types';
 import classNames from 'classnames';
-
-export enum SpinnerSize {
-    sm = 'sm',
-    md = 'md',
-}
 
 export interface IProps {
     variant?: ColorVariant,
-    size?: SpinnerSize,
+    size?: SizeVariant,
 }
 
 export const Spinner: React.FC<IProps> = ({
@@ -22,14 +17,14 @@ export const Spinner: React.FC<IProps> = ({
         <svg className={
             classNames({
                 "animate-spin -ml-1 mr-3 text-white" : true,
-                "text-primary" : ColorVariant.primary == variant,
-                "text-secondary" : ColorVariant.secondary == variant,
-                "text-success" : ColorVariant.success == variant,
-                "text-info" : ColorVariant.info == variant,
-                "text-danger" : ColorVariant.danger == variant,
-                "text-warning" : ColorVariant.warning == variant,
-                'w-2 h-2' : size == SpinnerSize.sm,
-                'w-5 h-5' : size == SpinnerSize.md
+                "text-primary" : 'primary' == variant,
+                "text-secondary" : 'secondary' == variant,
+                "text-success" : 'success' == variant,
+                "text-info" : 'info' == variant,
+                "text-danger" : 'danger' == variant,
+                "text-warning" : 'warning' == variant,
+                'w-2 h-2' : size == 'sm',
+                'w-5 h-5' : size == 'md'
             })
         } xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width={4}></circle>

@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Modal, Button } from '../src';
-import { ColorVariant } from '../src/types';
-import {ModalSize } from '../src/components/Modal';
 
 export default {
   /* 👇 The title prop is optional.
@@ -15,20 +13,20 @@ export default {
  
   args: {
     //👇 Now all Button stories will be primary.   
-    title:"Title",
-    icon:'',
-    size:ModalSize.md,
-    labelButtonCancel:'Cancelar',
-    labelButtonConfirm:'Confirmar',
-    showModal:false,
+    title: "Title",
+    icon: '',
+    size: 'md',
+    labelButtonCancel: 'Cancelar',
+    labelButtonConfirm: 'Confirmar',
+    showModal: false,
   },
   argTypes: {
     variant: {
-      options: [ColorVariant.default,'default','success', 'danger', 'warning', 'info'],
+      options: ['default','success', 'danger', 'warning', 'info'],
       control: { type: 'select' }
     },
     size: {
-      options: [ ModalSize.sm, ModalSize.md, ModalSize.lg],
+      options: [ 'sm', 'md', 'lg'],
       control: 'inline-radio' 
     },
     children:{},
@@ -49,7 +47,7 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
 Default.args = { 
-  variant: ColorVariant.default,
+  variant: 'default',
   onConfirm: () => alert('Confirmar'),
   onHide: () => alert('Esconder'),
   onCancel: () => alert('Cancelar'),
@@ -57,7 +55,7 @@ Default.args = {
 
 export const Success = Template.bind({});
 Success.args = { 
-  variant: ColorVariant.success,
+  variant: 'success',
   onConfirm: () => alert('Confirmar'),
   onHide: () => alert('Esconder'),
   onCancel: () => alert('Cancelar'),
@@ -65,7 +63,7 @@ Success.args = {
 
 export const Danger = Template.bind({});
 Danger.args = {
-  variant: ColorVariant.danger, 
+  variant: 'danger', 
   onConfirm: () => alert('Confirmar'),
   onHide: () => alert('Esconder'),
   onCancel: () => alert('Cancelar'),
@@ -73,7 +71,7 @@ Danger.args = {
 
 export const Warning = Template.bind({});
 Warning.args = {
-  variant: ColorVariant.warning,
+  variant: 'warning',
   onConfirm: () => alert('Confirmar'),
   onHide: () => alert('Esconder'),
   onCancel: () => alert('Cancelar'), 
@@ -81,7 +79,7 @@ Warning.args = {
 
 export const Info = Template.bind({});
 Info.args = { 
-  variant: ColorVariant.info,
+  variant: 'info',
   onConfirm: () => alert('Confirmar'),
   onHide: () => alert('Esconder'),
   onCancel: () => alert('Cancelar'), 
@@ -107,7 +105,7 @@ export const Example = () => {
 
 
         <div>
-          <Button label='Abrir modal' variant={ColorVariant.default} onClick={() => setShowModal(true)}/>
+          <Button label='Abrir modal' variant="default" onClick={() => setShowModal(true)}/>
 
           <Modal title={"Meu Modal"} showModal={showModal} onHide={() => setShowModal(!showModal)} onConfirm={() => alert('confirmado oficialmente')} onCancel={() => setShowModal(!showModal)} icon="user">
             Você está vendo o conteudo do modal

@@ -1,19 +1,13 @@
 import React, { useState, Fragment } from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { ColorVariant } from '../../types';
-
-export enum ConfirmationMessageSize {
-    sm = 'sm',
-    md = 'md',
-    lg = 'lg',
-}
+import { ColorVariant, SizeVariant } from '../../types';
 
 export interface IProps {
     message: string,
     labelButtonCancel?:string,
     labelButtonConfirm?:string,
-    size?: ConfirmationMessageSize,
+    size?: SizeVariant,
     variant?: ColorVariant,
     showConfirmationMessage:boolean,
     onCancel?: () => void,
@@ -24,8 +18,8 @@ export const ConfirmationMessage: React.FC<IProps> = ({
     message,
     labelButtonCancel = 'Cancelar',
     labelButtonConfirm = 'Confirmar',
-    size = ConfirmationMessageSize.md,
-    variant = ColorVariant.default,
+    size = 'md',
+    variant = 'default',
     showConfirmationMessage = false,
     onCancel = undefined,
     onConfirm = undefined,
@@ -50,9 +44,9 @@ export const ConfirmationMessage: React.FC<IProps> = ({
             <div  className={classname({
               'mx-auto w-full bg-white  mt-16 rounded drop-shadow-[0_4px_16px_rgba(39,40,51,0.4)]':true,
               //size 
-              'max-w-[18.75rem]': ConfirmationMessageSize.sm == size,
-              'max-w-[31.25rem] min-w-[31.25rem]': ConfirmationMessageSize.md == size,
-              'max-w-[50rem] min-w-[50rem]': ConfirmationMessageSize.lg == size
+              'max-w-[18.75rem]': 'sm' == size,
+              'max-w-[31.25rem] min-w-[31.25rem]': 'md' == size,
+              'max-w-[50rem] min-w-[50rem]': 'lg' == size
               })}>
               
               <div className='py-4 px-6 text-darkD1'>
@@ -63,11 +57,11 @@ export const ConfirmationMessage: React.FC<IProps> = ({
                 { onConfirm &&   <button onClick={onConfirm} className={classname({
                     'py-2 px-4 text-white rounded':true,
                   //variant 
-                    'bg-primary':ColorVariant.default == variant,
-                    'bg-danger' : ColorVariant.danger == variant,
-                    'bg-success' : ColorVariant.success == variant,
-                    'bg-warning' : ColorVariant.warning == variant,
-                    'bg-info' : ColorVariant.info == variant,
+                    'bg-primary': 'default' == variant,
+                    'bg-danger' : 'danger' == variant,
+                    'bg-success' : 'success' == variant,
+                    'bg-warning' : 'warning' == variant,
+                    'bg-info' : 'info' == variant,
                     })}>{ labelButtonConfirm }</button>
                 }
               </footer>
