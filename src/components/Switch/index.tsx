@@ -5,7 +5,8 @@ import { ColorVariant, SwitchSize } from '../../types';
 export interface IProps {
     label?: string,
     checked: boolean;
-    onClick: () => void;
+    onClick?: () => void;
+    onChange?:(value)=> void
     disabled?: boolean;
     size?: SwitchSize,
     checkedIcon?: string;

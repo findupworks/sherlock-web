@@ -1,13 +1,13 @@
 import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { ColorVariant, SizeVariant } from '../../types';
+import { ColorVariant, SwitchSize } from '../../types';
 export interface IProps {
     label: string,
     variant?: ColorVariant,
-    size: SizeVariant,
-    outlined: boolean,
-    iconRight: string
+    size?:SwitchSize
+    outlined?:boolean
+    iconRight?:string
 }
 
 export const Label: React.FC<IProps> = ({ 
