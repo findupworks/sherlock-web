@@ -12,3 +12,4 @@ export type StickerSizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type SwitchSize = 'sm' | 'md';
 export type PopoverDirection = 'right' | 'left' | 'top' | 'bottom';
 export type TooltipDirection = 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end';
+export type ListVariant = 'group' | 'divider'

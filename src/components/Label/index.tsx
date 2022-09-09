@@ -5,9 +5,9 @@ import { ColorVariant, SizeVariant } from '../../types';
 export interface IProps {
     label: string,
     variant?: ColorVariant,
-    size: SizeVariant,
-    outlined: boolean,
-    iconRight: string
+    size?: SizeVariant,
+    outlined?: boolean,
+    iconRight?: string
 }
 
 export const Label: React.FC<IProps> = ({ 

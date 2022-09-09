@@ -26,4 +26,5 @@ export { Sticker } from './components/Sticker';
 export { Switch } from './components/Switch';
 export { Tooltip } from './components/Tooltip';
 export { Popover } from './components/Popover';
- 
+export { List } from './components/List';
+
