@@ -134,7 +134,7 @@ export const Alert: React.FC<IProps> = ({
                 'fa-solid fa-circle-exclamation':variant == "danger"
                })}></i>
              
-                <span className='font-semibold text-sm flex items-start'>
+                <span className='font-semibold text-sm flex items-start py-0.5'>
                   { title }
                   <span className='ml-1 font-normal'>{text}</span>
                 </span>              
