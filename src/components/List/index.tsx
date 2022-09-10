@@ -76,7 +76,7 @@ export const ItemList = ({
 
   return (
     <div className={classname({
-       'flex justify-between bg-white border  border-darkL2 p-4 items-start cursor-pointer':true,
+       'flex justify-between bg-white border  border-darkL2 p-4 items-start cursor-pointer w-full':true,
         
        //variant list
        'mt-0 ':variant == 'group',
@@ -148,7 +148,7 @@ export const List: React.FC<IProps> = ({
   },[itemsKeySelected])
  
     return (
-      <div className='w-[920px]'>
+      <>
         {itemsList?.map((item)=>(
           <>
             <ItemList
@@ -170,6 +170,6 @@ export const List: React.FC<IProps> = ({
             />
           </>
            ))}
-      </div>
+      </>
     )
 }
