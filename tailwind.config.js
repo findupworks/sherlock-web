@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'tiny': '.675rem'
+      },
       colors:{
         //primary
         primaryD1:"#036EAF",
