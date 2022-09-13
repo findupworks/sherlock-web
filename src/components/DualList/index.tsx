@@ -1,10 +1,8 @@
 import React,{useState} from 'react';
-import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import '../../style/react-dual-listbox.css'
 import DualListBox from 'react-dual-listbox';
 
-import { ColorVariant, SwitchSize,SizeVariant } from '../../types';
 export interface Options {
     value:any 
     label:string
@@ -26,11 +24,9 @@ export const DualList: React.FC<IProps> = ({
     ...props
  }) => {
  
-  const [selected,setSelected] = useState([])
+    const [selected,setSelected] = useState([])
 
  
-  
-
     return (
         <div className='w-96'>
           <div className='flex justify-between mb-4'> 
