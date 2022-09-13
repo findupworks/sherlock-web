@@ -34,7 +34,7 @@ module.exports = {
         lightD2:"#B7B4B8",
         light:"#E5E1E6",
         lightL1:"#EDEAED",
-        white:"#F2F0F3",
+        white:"#FFFFFF",
         //success
         successD1:"#226A33",
         successD2:"#1C5629",
