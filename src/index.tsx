@@ -28,4 +28,6 @@ export { Tooltip } from './components/Tooltip';
 export { Popover } from './components/Popover';
 export { List } from './components/List';
 export { Table } from './components/Table';
+export { DualList } from './components/DualList';
+
 
