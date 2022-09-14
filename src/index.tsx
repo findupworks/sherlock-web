@@ -29,4 +29,6 @@ export { Popover } from './components/Popover';
 export { List } from './components/List';
 export { Table } from './components/Table';
 export { CardClean } from './components/CardClean';
+export { Breadcrumb } from './components/Breadcrumb';
+
 
