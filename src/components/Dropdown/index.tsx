@@ -21,6 +21,7 @@ export interface DropdownItem {
   isTitleFilterBy?:boolean
   typeInput?: InputDropdownVariant
   onClickActionRight?:()=> void
+  onClick?:()=> void,
   checked?:boolean
 }
 
@@ -97,15 +98,17 @@ export const Dropdown: React.FC<IProps> = ({
 
 
   const getDefault = (item:DropdownItem) => {
- 
     return (
       <div className={classname({
         "w-full p-3 text-sm text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer":true,
 
         //isDivider
         "border-b border-darkL1":item?.isDivider
-        
-        })}>
+
+        })}
+        onClick={item?.onClick}
+
+        >
 
       <div  className="flex items-center justify-between">
         <div className="flex items-center">
