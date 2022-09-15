@@ -31,3 +31,4 @@ export { Table } from './components/Table';
 export { Box, BoxHeader, BoxBody, BoxFooter } from './components/Box';
 export { DualList } from './components/DualList';
 export { Breadcrumb } from './components/Breadcrumb';
+export { NavBar } from './components/NavBar';

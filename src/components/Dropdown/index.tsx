@@ -271,7 +271,7 @@ const listFilter =  itemsMenu?.filter((item)=> item?.label?.toLocaleLowerCase().
       <div className="relative inline-block" >
           {/* <!-- Dropdown toggle button --> */}
           <button 
-            className="relative z-10 block p-2 text-dark bg-white border border-transparent rounded-md  focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
+            className="relative z-10 block p-2 text-dark  border border-transparent rounded-md  focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
             onClick={() => setShowDropdown(!showDropdown)}
           >
             {getLeftIcon()} {label} {getRightIcon()}
