@@ -1,12 +1,18 @@
 import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import classNames from 'classnames';
 
 export interface IProps {
     progress: number,
+    type?: string,
+    isFinished?: boolean,
+    
 }
 export const ProgressBar: React.FC<IProps> = ({ 
     progress,
+    type,
+    isFinished,
     ...props
  }) => {
 
@@ -20,6 +26,27 @@ export const ProgressBar: React.FC<IProps> = ({
         }
         
     }
+
+    if (type === 'kanban') {
+        return (
+            <div className='flex items-center'>
+                <div className='w-40 md:w-80 lg:w-80 h-2 bg-white rounded-md mr-2'>
+                    <div className="h-2 rounded-l-md bg-primaryD1 rounded-r-md" style={{"width": getProgress()}}
+                    ></div>
+                </div>
+                <i className={
+                    classNames({
+                        'fa-regular fa-circle-check text-gray-700 self-center': true,
+                        'text-successD1' : isFinished === true,
+                        'text-warningD1' : isFinished === false
+                    })}>
+                </i>
+                
+            </div>
+          
+        )
+    }
+
     return (
         <div className='flex items-center'>
             <div className='w-40 md:w-80 lg:w-80 h-2 bg-white rounded-md mr-2'>

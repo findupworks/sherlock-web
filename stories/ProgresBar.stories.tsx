@@ -17,6 +17,14 @@ export default {
   argTypes: {
    progress:{
     description: "Porcentagem do progresso em formato de 0 a 100."
+   },
+   type: {
+    type: 'string',
+    description: "Para uso da progress bar no kanban, passar o type 'kanban' "
+   },
+   isFinished: {
+    type: 'boolean',
+    description: "Propriedade para uso no type kanban, se o valor for true o icone será verde, se for falso será laranja."
    }
   }
 } as ComponentMeta<typeof ProgressBar>;
