@@ -144,7 +144,7 @@ export const Dropdown: React.FC<IProps> = ({
   const getRadio = (item: DropdownItem, index: number) => {
     return (
       <div>
-        {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-5 ml-2">Filter By</div>}
+        {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-2 ml-2">FILTRAR POR</div>}
         <div
           className={classname({
             "flex items-center w-full justify-between p-3 text-sm text-dark capitalize transition-colors duration-200 transform hover:bg-darkL2 cursor-pointer":
@@ -272,7 +272,7 @@ export const Dropdown: React.FC<IProps> = ({
           {/* <!-- Dropdown menu --> */}
           <div
             className={classname(
-              "absolute z-20 w-56 py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
+              "absolute z-20 w-56 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
               {
                 hidden: !showDropdown,
                 "scale-100 opacity-100": showDropdown,
@@ -290,7 +290,7 @@ export const Dropdown: React.FC<IProps> = ({
               </div>
             )}
             {listFilter.map((item, index) => variantTypeCheck(item, index))}
-            <div className="mt-4 mx-4">
+            <div className="my-4 mx-4">
               {onClickButtonDropwdon && (
                 <Button label={labelButtonDropdown} full variant={"primary"} onClick={onClickButtonDropwdon} />
               )}
