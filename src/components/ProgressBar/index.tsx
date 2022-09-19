@@ -47,6 +47,18 @@ export const ProgressBar: React.FC<IProps> = ({
         )
     }
 
+    const isSimple = ()=>{
+        if(type === "simple"){
+            return <div/>
+        }else{
+            if(progress >= 100){
+                return <i className='fa-regular fa-circle-check text-successD1 self-center\'/>
+            }else{
+                return <p className='text-xs -translate-y-[0.01em] text-darkD2 font-bold'>{progress}%</p>
+            }
+        }
+    }
+
     return (
         <div className='flex items-center'>
             <div className='w-40 md:w-80 lg:w-80 h-2 bg-white rounded-md mr-2'>
@@ -61,12 +73,9 @@ export const ProgressBar: React.FC<IProps> = ({
                 style={{"width": getProgress()}}
                 ></div>
             </div>
+                {isSimple()}
 
-            {progress >= 100 ? (
-                <i className='fa-regular fa-circle-check text-successD1 self-center\'></i>
-            ): (
-                <p className='text-xs -translate-y-[0.01em] text-darkD2 font-bold'>{progress}%</p>
-            )}
+           
         </div>
       
     )
