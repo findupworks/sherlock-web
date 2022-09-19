@@ -191,7 +191,7 @@ export const Dropdown: React.FC<IProps> = ({
           "border-b border-darkL1": item?.isDivider,
         })}
       >
-        {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-5 ml-2">Filter By</div>}
+        {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-5 ml-2">FILTRAR POR</div>}
         <div
           className="flex items-center w-full justify-between text-sm p-3 text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer"
           onClick={() => toggleContentSubItens(index)}
@@ -272,7 +272,7 @@ export const Dropdown: React.FC<IProps> = ({
           {/* <!-- Dropdown menu --> */}
           <div
             className={classname(
-              "absolute z-20 w-56 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
+              "absolute z-20 w-56 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
               {
                 hidden: !showDropdown,
                 "scale-100 opacity-100": showDropdown,
