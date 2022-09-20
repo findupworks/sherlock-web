@@ -149,9 +149,6 @@ export const Dropdown: React.FC<IProps> = ({
           className={classname({
             "flex items-center w-full justify-between p-3 text-sm text-dark capitalize transition-colors duration-200 transform hover:bg-darkL2 cursor-pointer":
               true,
-
-            // isDiviter
-            "border-b border-darkL1": item.isDivider,
           })}
           onChange={(event) => onChange && onChange(event, item, index, false)}
         >
@@ -186,11 +183,7 @@ export const Dropdown: React.FC<IProps> = ({
     };
 
     return (
-      <div
-        className={classname({
-          "border-b border-darkL1": item?.isDivider,
-        })}
-      >
+      <div>
         {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-5 ml-2">FILTRAR POR</div>}
         <div
           className="flex items-center w-full justify-between text-sm p-3 text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer"
@@ -260,37 +253,29 @@ export const Dropdown: React.FC<IProps> = ({
 
   return (
     <>
-      <div className="flex justify-between" ref={ref}>
-        <div className="relative inline-block">
+      <div className="relative flex justify-between border rounded-lg bg-white" ref={ref}>
+        <div className="relative inline-block rounded-lg mx-2 my-2">
           {/* <!-- Dropdown toggle button --> */}
-          <button
-            className="relative z-10 justify-between flex p-2 text-dark min-w-[220px] bg-blueung border border-transparent rounded-md  focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
+          <input
+            className="relative p-2 bg-gray-200 border text-dark min-w-[220px] rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
             onClick={() => setShowDropdown(!showDropdown)}
-          >
-            {getLeftIcon()} {label} {getRightIcon()}
-          </button>
+            placeholder={label}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <i
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="fa-solid fa-magnifying-glass absolute right-3 top-3 text-dark"
+          ></i>
+
           {/* <!-- Dropdown menu --> */}
           <div
-            className={classname(
-              "absolute z-20 w-56 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
-              {
-                hidden: !showDropdown,
-                "scale-100 opacity-100": showDropdown,
-              }
-            )}
+            className={classname("w-56 mt-2 rounded-md transition duration-150 ease-out transform", {
+              hidden: !showDropdown,
+              "scale-100 opacity-100": showDropdown,
+            })}
           >
-            {isSearch && (
-              <div className="relative">
-                <input
-                  type="text"
-                  className="bg-light border-none outline-none w-[97%] m-1 py-1.5	px-3 rounded text-dark"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <i className="fa-solid fa-magnifying-glass absolute right-4 top-4 text-dark"></i>
-              </div>
-            )}
             {listFilter.map((item, index) => variantTypeCheck(item, index))}
-            <div className="my-4 mx-4">
+            <div className="my-2 mx-2">
               {onClickButtonDropwdon && (
                 <Button label={labelButtonDropdown} full variant={"primary"} onClick={onClickButtonDropwdon} />
               )}
