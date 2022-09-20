@@ -268,19 +268,18 @@ export const Dropdown: React.FC<IProps> = ({
           ></i>
 
           {/* <!-- Dropdown menu --> */}
-          <div
-            className={classname("w-56 mt-2 rounded-md transition duration-150 ease-out transform", {
-              hidden: !showDropdown,
-              "scale-100 opacity-100": showDropdown,
-            })}
-          >
-            {listFilter.map((item, index) => variantTypeCheck(item, index))}
-            <div className="my-2 mx-2">
-              {onClickButtonDropwdon && (
-                <Button label={labelButtonDropdown} full variant={"primary"} onClick={onClickButtonDropwdon} />
-              )}
+          {showDropdown ? (
+            <div className="w-56 mt-2 rounded-md transition duration-150 ease-out transform scale-100 opacity-100">
+              {listFilter.map((item, index) => variantTypeCheck(item, index))}
+              <div className="my-2 mx-2">
+                {onClickButtonDropwdon && (
+                  <Button label={labelButtonDropdown} full variant={"primary"} onClick={onClickButtonDropwdon} />
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
