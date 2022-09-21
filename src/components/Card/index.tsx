@@ -8,7 +8,7 @@ export interface TagItem {
 }
 
 export interface IProps {
-    imageCard: string;
+    imageCard?: string;
     onClick?: () => void;
     title: string,
     body: string,
@@ -16,7 +16,6 @@ export interface IProps {
     size?: SizeVariant,
     checked?: boolean,
     iconCard?: string,
-    userCard: string,
     iconButton?: string,
     itemsMenu: DropdownItem[],
     tags: TagItem[],
@@ -32,7 +31,6 @@ export const Card: React.FC<IProps> = ({
     body,
     checked = false,
     iconCard,
-    userCard,
     iconButton,
     size = "md",
     variant = "default",
@@ -68,14 +66,6 @@ export const Card: React.FC<IProps> = ({
         }
     }
 
-    const getUserCard = () => {
-        if(userCard) {
-            return <i className={`fas fa-${userCard} fa-4x`}></i>
-        } else {
-            return <i className="fa-solid fa-user fa-4x"></i>
-        }
-    }
-
     function getVariant() {
 
         if ("default" === variant) {
@@ -93,7 +83,7 @@ export const Card: React.FC<IProps> = ({
 
                 })}> 
                     {
-                        getUserCard()
+                        getIconCard()
                     }
                 </div>
             );

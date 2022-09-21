@@ -11,7 +11,7 @@ export interface SectionItem {
 
 export interface IProps {
     items: SectionItem[],
-    size: string;
+    size?: SizeVariant;
 }
 
 export interface SectionProps {
@@ -23,7 +23,7 @@ export interface SectionProps {
 
 export const Section: React.FC<IProps> = ({ 
     items,
-    size,
+    size = 'md',
     ...props
  }) => {
 

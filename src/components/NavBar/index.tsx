@@ -57,12 +57,9 @@ export const NavBar: React.FC<IProps> = ({
     const NavBarItem = ({index,router,label,isExistiSubItems}:NavBarItemProps)=>{
 
         return(
-          <li >
-            <div className="flex items-center h-32" onClick={()=> setIndexCurrent(index)}>
-              <a 
-                href={router} 
-                className={classname({
-                  'flex items-center gap-2 ml-1 text-sm  hover:border-b-4  p-4  font-semibold ':true,
+          <li>
+            <div className={classname({
+                  'flex items-center h-32 gap-2 ml-1 text-sm  hover:border-b-4  p-4  font-semibold ':true,
                   'text-secondaryL1':index == indexStepCurrent && variant == 'light',
                   'text-darkD2':index == indexStepCurrent && variant == 'dark',
 
@@ -70,12 +67,11 @@ export const NavBar: React.FC<IProps> = ({
                   'text-white  hover:border-secondaryL2':variant == 'light',
                   'text-darkL1 hover:border-primaryL1 hover:text-darkD1':variant == 'dark',
 
-                })}>
-                  {label}
-                  {isExistiSubItems && <Dropdown itemsMenu={optionsDropwdon} leftIcon="fa-solid fa-caret-down" variant="default" />}
-                </a>
+                })} onClick={()=> setIndexCurrent(index)}>
+               <a href={router}>{label}</a>
+              {isExistiSubItems && <Dropdown itemsMenu={optionsDropwdon} leftIcon="fa-solid fa-caret-down" variant="default" />}
             </div>
-            </li>
+          </li>
           )
     }
 
