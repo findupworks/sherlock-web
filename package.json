@@ -2,7 +2,7 @@
   "name": "@findupworks/sherlock-ui-kit",
   "description": "FindUP Sherlock React Components",
   "version": "1.0.21",
-  "readmeFilename": "README.md" ,
+  "readmeFilename": "README.md",
   "main": "dist/index.js",
   "author": "<erick.haendel@findup.com.br>",
   "contributors": [
@@ -55,7 +55,8 @@
     "react-flatpickr": "^3.10.13",
     "react-popper": "^2.3.0",
     "react-select": "^5.4.0",
-    "swiper": "^8.3.2"
+    "swiper": "^8.3.2",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
