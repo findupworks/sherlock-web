@@ -175,7 +175,7 @@ export const Dropdown: React.FC<IProps> = ({
         }
         return (
           <button onClick={item?.onClickActionRight}>
-            <i className={"fa-solid fa-chevron-right"}></i>
+            <i className={"truncate fa-solid fa-chevron-right"}></i>
           </button>
         );
       }
@@ -285,6 +285,7 @@ export const Dropdown: React.FC<IProps> = ({
           className={classname({
             "relative flex justify-between border rounded-lg": true,
             "border-none": variant != "filter",
+            "bg-white w-60": variant === "filter",
           })}
           ref={ref}
         >
@@ -297,7 +298,7 @@ export const Dropdown: React.FC<IProps> = ({
                 className={classname({
                   "absolute right-0 z-20  w-56  py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":
                     variant !== "filter",
-                  "w-full mt-2 rounded-md transition duration-150 h-48 scrollbar-hide overflow-auto ease-out transform scale-100 opacity-100":
+                  "w-56 mt-2 rounded-md transition duration-150 bg-white h-48 scrollbar-hide overflow-auto ease-out transform scale-100 opacity-100":
                     variant === "filter",
                 })}
               >
