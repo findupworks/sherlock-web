@@ -32,8 +32,8 @@ export const Input: React.FC<IProps> = ({
     ...props
  }) => {
 
-    const [toggleIcon, setToggleIcon] = useState('eye');
-    const [typeInput, setTypeInput] = useState('eye');
+    const [toggleIcon, setToggleIcon] = useState('eye-slash');
+    const [typeInput, setTypeInput] = useState('password');
 
     function changleToggleIcon(){
         if(toggleIcon == 'eye'){
