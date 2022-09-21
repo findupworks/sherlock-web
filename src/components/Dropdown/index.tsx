@@ -75,7 +75,7 @@ export const Dropdown: React.FC<IProps> = ({
 
   const getSubItem = (subItem: SubItem, index: number) => {
     return (
-      <label htmlFor={subItem?.value} className="flex gap-2 text-dark hover:bg-darkL2 mt-2 cursor-pointer">
+      <label htmlFor={subItem?.value} className="flex gap-3 text-dark hover:bg-darkL2 mt-4 cursor-pointer">
         <input
           type="checkbox"
           id={subItem?.value}
@@ -204,7 +204,7 @@ export const Dropdown: React.FC<IProps> = ({
         {item?.subItens && item?.subItens?.length > 0 && (
           <div
             className={classname({
-              "w-full justify-between text-sm text-dark capitalize transition-colors duration-200 transform  p-4": true,
+              "w-full justify-between text-sm text-dark capitalize transition-colors duration-200 transform ml-2 px-2": true,
               block: dropdownItemIndexSelected == index,
               hidden: dropdownItemIndexSelected != index,
             })}
@@ -251,37 +251,64 @@ export const Dropdown: React.FC<IProps> = ({
     item?.label?.toLocaleLowerCase().includes(search?.toLocaleLowerCase())
   );
 
-  return (
-    <>
-      <div className="relative flex justify-between border rounded-lg bg-white" ref={ref}>
-        <div className="relative inline-block rounded-lg mx-2 my-2">
-          {/* <!-- Dropdown toggle button --> */}
-          <input
-            className="relative p-2 bg-gray-200 border text-dark min-w-[220px] rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
-            onClick={() => setShowDropdown(!showDropdown)}
-            placeholder={label}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <i
-            onClick={() => setShowDropdown(!showDropdown)}
-            className="fa-solid fa-magnifying-glass absolute right-3 top-3 text-dark"
-          ></i>
+  const content =  ()=>{
+    const toggleDropwdon = ()=>{
+      if(variant === 'filter'){
+        return(
+          <>
+            <input
+              className="relative p-2 bg-gray-200 bdorder text-dark min-w-[220px] rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
+              onClick={() => setShowDropdown(!showDropdown)}
+              placeholder={label}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <i
+              onClick={() => setShowDropdown(!showDropdown)}
+              className="fa-solid fa-magnifying-glass absolute right-3 top-3 text-dark"
+            ></i>
+          </>
+        )
+      }
+      return (
+        <button className=" border-none outline outline-none px-2" onClick={() => setShowDropdown(!showDropdown)}>{getLeftIcon()}{label}{getRightIcon()}</button>
+      )
+    }
 
-          {/* <!-- Dropdown menu --> */}
-          {showDropdown ? (
-            <div className="w-56 mt-2 rounded-md transition duration-150 ease-out transform scale-100 opacity-100">
-              {listFilter.map((item, index) => variantTypeCheck(item, index))}
-              <div className="my-2 mx-2">
-                {onClickButtonDropwdon && (
-                  <Button label={labelButtonDropdown} full variant={"primary"} onClick={onClickButtonDropwdon} />
-                )}
+    
+    return (
+      <>
+        <div 
+            className={classname({"relative flex justify-between border rounded-lg":true,
+            'border-none':variant != 'filter'
+            })} 
+            ref={ref}>
+          <div className="relative inline-block rounded-lg mx-2 my-2 ">
+            {/* <!-- Dropdown toggle button --> */}
+               {toggleDropwdon()}
+            {/* <!-- Dropdown menu --> */}
+            {showDropdown ? (
+              <div className={classname({
+                "absolute right-0 z-20  w-56  py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":variant !== 'filter',
+                "w-full mt-2 rounded-md transition duration-150 ease-out transform scale-100 opacity-100":variant === 'filter'
+                })}>
+                {listFilter.map((item, index) => variantTypeCheck(item, index))}
+                <div className="my-2 mx-2">
+                  {onClickButtonDropwdon && (
+                    <Button label={labelButtonDropdown} full variant={"primary"} onClick={onClickButtonDropwdon} />
+                  )}
+                </div>
               </div>
-            </div>
-          ) : (
-            ""
-          )}
+            ) : (
+              ""
+            )}
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    )
+  }
+   
+
+  return (
+    content()
   );
 };
