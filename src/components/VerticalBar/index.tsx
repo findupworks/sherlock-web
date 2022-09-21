@@ -6,6 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 export interface IconsItem {
     iconType: string;
     divider?: boolean;
+    onClick?: () => void;
 }
 
 export interface IProps {
@@ -13,7 +14,8 @@ export interface IProps {
     hasLogo?: boolean
     iconsColor?: string,
     barColor?: string,
-    onClick: () => void;
+    onClickLogout?:() => void;
+    onClickEdit?:()=> void
 }
 
 export const VerticalBar: React.FC<IProps> = ({ 
@@ -21,7 +23,8 @@ export const VerticalBar: React.FC<IProps> = ({
     iconsColor,
     hasLogo,
     barColor,
-    onClick,
+    onClickLogout,
+    onClickEdit,
     ...props
  }) => {
     
@@ -49,7 +52,7 @@ export const VerticalBar: React.FC<IProps> = ({
                             { 
                                 icons.map(icon => (
                                     <>    
-                                        <li onClick={onClick}>
+                                        <li onClick={icon?.onClick}>
                                             <a className={`flex items-center justify-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700`} style={{ color: iconsColor ? iconsColor : 'white' }}>
                                                 <i className={`fa fa-${icon.iconType}`}></i>
                                             </a>
@@ -62,10 +65,10 @@ export const VerticalBar: React.FC<IProps> = ({
                     </div>
                     <div className="flex justify-end flex-col space-y-2">
                         <ul className="space-y-2 border-t border-gray-200 dark:border-gray-700"></ul>
-                        <a onClick={onClick} className={`flex items-center p-2 text-base font-normal justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700`} style={{ color: iconsColor ? iconsColor : 'gray' }}  >
+                        <a onClick={onClickEdit} className={`flex items-center p-2 text-base font-normal justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700`} style={{ color: iconsColor ? iconsColor : 'gray' }}  >
                             <i className={`fa fa-sliders text-red}`}></i>
                         </a> 
-                        <a onClick={onClick} className={`flex items-center p-2 text-base font-normal justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700`} style={{ color: iconsColor ? iconsColor : 'gray' }} >
+                        <a onClick={onClickLogout} className={`flex items-center p-2 text-base font-normal justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700`} style={{ color: iconsColor ? iconsColor : 'gray' }} >
                             <i className={`fa fa-power-off text-red}`}></i>
                         </a>
                     </div>

@@ -47,7 +47,8 @@ const Template: ComponentStory<typeof VerticalBar> = (args) => <VerticalBar {...
 
 //👇 Each story then reuses that template
 export const Default = Template.bind({});
-Default.args = { icons: [{iconType: 'home'}, {iconType: 'bolt'}, {iconType: 'droplet'}, {iconType: 'paint-roller'}, {iconType: 'fill-drip'}, {iconType: 'sliders', divider: true}, {iconType: 'power-off'}], 
-  onClick: () => alert('Click menu option'),
+Default.args = { icons: [{iconType: 'home',onClick:()=> alert('clicado')}, {iconType: 'bolt',onClick:()=> alert('clicado')}, {iconType: 'droplet',onClick:()=> alert('clicado')}, {iconType: 'paint-roller',onClick:()=> alert('clicado')}, {iconType: 'fill-drip',onClick:()=> alert('clicado')}, {iconType: 'sliders', divider: true}, {iconType: 'power-off'}], 
+  onClickLogout: () => alert('Logout...'),
+  onClickEdit:()=> alert('Clicado'),
   hasLogo: true
 };
