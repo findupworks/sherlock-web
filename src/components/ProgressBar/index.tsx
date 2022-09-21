@@ -2,11 +2,11 @@ import React from 'react';
 import classname from 'classnames';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import classNames from 'classnames';
-
+import {ProgressBarTypeKanbanVariant} from '../../types'
 export interface IProps {
     progress: number,
     type?: string,
-    isFinished?: boolean,
+    isFinished?: ProgressBarTypeKanbanVariant,
     
 }
 export const ProgressBar: React.FC<IProps> = ({ 
@@ -37,8 +37,9 @@ export const ProgressBar: React.FC<IProps> = ({
                 <i className={
                     classNames({
                         'fa-regular fa-circle-check text-gray-700 self-center': true,
-                        'text-successD1' : isFinished === true,
-                        'text-warningD1' : isFinished === false
+                         'text-dark':isFinished == 'progress',
+                        'text-successD1' : isFinished === 'success',
+                        'text-warningD1' : isFinished === 'error'
                     })}>
                 </i>
                 

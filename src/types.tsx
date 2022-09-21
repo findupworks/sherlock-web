@@ -15,3 +15,4 @@ export type TooltipDirection = 'right' | 'right-start' | 'right-end' | 'left' | 
 export type ListVariant = 'group' | 'divider'
 export type TableTdVariant = 'blank' | 'checkbox' | 'progressbar' | 'text' | 'textSticker' | 'label' | 'button' | 'sticker' | 'input' | 'action' | 'badge' | 'toggle' | 'icon'
 export type NavBarVariant = 'light' | 'dark' 
+export type ProgressBarTypeKanbanVariant = 'progress' | 'error' | 'success' 

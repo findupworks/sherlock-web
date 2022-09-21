@@ -44,7 +44,7 @@ export const ItemList = ({
   onClick  = undefined,
   onClickActionCopy  = undefined,
   keyItem,
-  variant,
+  variant = 'group',
   itemsKeySelected,
   handleItemSelected,
   }:ItemsListItem)=>{
@@ -76,7 +76,7 @@ export const ItemList = ({
 
   return (
     <div className={classname({
-       'flex justify-between bg-white border  border-darkL2 p-4 items-start cursor-pointer w-full':true,
+       'flex items-start gap-4 justify-between  border  border-darkL2 p-4 cursor-pointer w-full':true,
         
        //variant list
        'mt-0 ':variant == 'group',
@@ -93,22 +93,25 @@ export const ItemList = ({
          handleItemSelected &&  handleItemSelected()
         }}
       >
-       <div className='flex items-start gap-4'>
-          {isAselectableItem && <input type="checkbox" checked={itemsKeySelected?.includes(keyItem) ? true:false} />}
-          <div className='-translate-y-3'><Sticker img={img} icon={icon} /></div>
-            <div>
+       <div className='flex items-start  gap-4'>
+          {isAselectableItem && <input type="checkbox" checked={itemsKeySelected?.includes(keyItem) ? true:false} className="mt-1" />}
+          <div className='-translate-y-2	'><Sticker img={img} icon={icon} /></div>
+            <div >
                <h2 className='text-dark text-sm font-semibold'>{title}</h2>
                {labelText && <h3 className='font-normal text-sm text-secondary mb-1'>{subTitle}</h3>}
                {labelText && <Label size='sm' outlined variant='success' label={labelText} />}
             </div>
           </div>
-          <div className='flex items-center gap-4'>
+          <div className='flex items-start gap-4 -translate-y-0.5'>
             <Actions />
-            <Dropdown 
-             itemsMenu={dropDrownAction ? dropDrownAction:[]} 
-             leftIcon="fa-solid fa-ellipsis-vertical" 
-              variant="default"
-            />  
+            <div className='-translate-y-2'>
+              <Dropdown 
+               itemsMenu={dropDrownAction ? dropDrownAction:[]} 
+                leftIcon="fa-solid fa-ellipsis-vertical" 
+                variant="default"
+              />  
+            </div>
+            
         </div>
     </div>
     )

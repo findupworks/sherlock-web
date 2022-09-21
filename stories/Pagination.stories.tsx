@@ -14,14 +14,12 @@ export default {
 
   args: {
     //👇 Now all Button stories will be primary.
-    outlined: false,
   },
   argTypes: {
     variant: {
       options: ['default', 'vertical'],
       control: { type: 'select' }
     },
-    outlined : { control : 'boolean'},
     entries: {
       options: [PaginationEntries.ten, PaginationEntries.twenty, PaginationEntries.fifty, PaginationEntries.hundred],
       control: { type: 'select' }

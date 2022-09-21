@@ -32,8 +32,8 @@ export const Input: React.FC<IProps> = ({
     ...props
  }) => {
 
-    const [toggleIcon, setToggleIcon] = useState('eye');
-    const [typeInput, setTypeInput] = useState('eye');
+    const [toggleIcon, setToggleIcon] = useState('eye-slash');
+    const [typeInput, setTypeInput] = useState('password');
 
     function changleToggleIcon(){
         if(toggleIcon == 'eye'){
@@ -98,7 +98,7 @@ export const Input: React.FC<IProps> = ({
                                 'icon' == inputType ?
                                 <>
                                 { label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{ label }</label> : ''}
-                                <div className="flex justify-between">
+                                <div className="flex  justify-between">
                                     <input type="text" className={
                                         classNames(
                                             "border text-gray-900 text-sm rounded-md block w-full p-3", {
@@ -114,7 +114,7 @@ export const Input: React.FC<IProps> = ({
                                     />
                                     <i onClick={onClickIcon} className={
                                         classNames(
-                                            `absolute right-4 top-3 text-gray-600 fa fa-${icon}`, {
+                                            `absolute  right-4 top-10 text-gray-600 fa fa-${icon}`, {
                                         })}></i>
                                 </div>
                                 {

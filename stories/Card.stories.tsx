@@ -13,7 +13,13 @@ export default {
 
   args: {
     //👇 Now all Button stories will be primary.
-    checked: false
+    checked: false,
+    iconCard:'',
+    iconButton:'',
+    imageCard:'',
+    title:'',
+    body:''
+
   },
   argTypes: {
     variant: {
@@ -25,16 +31,17 @@ export default {
       control: 'inline-radio' 
     },
     iconCard: {
-      options: [ 'camera', 'bolt', 'sd-card'],
-      control: 'select' ,
+       type:'string',
       description: "Icones do FontAwsome, passar somente o nome."
     },
     iconButton: {
-      options: [ 'user', 'heart', 'check'],
-      control: 'select' ,
-      description: "Icones do FontAwsome, passar somente o nome dele."
+      type:'string',
+      description: "Icones do FontAwsome, passar somente o nome."
     },
     checked : { control : 'boolean'},
+    imageCard:{type:'string'},
+    title:{type:'string'},
+    body:{type:'string'}
   }
 } as ComponentMeta<typeof Card>;
 

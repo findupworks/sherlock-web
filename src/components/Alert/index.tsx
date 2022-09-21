@@ -11,7 +11,7 @@ export enum  AlertTypes {
 }
 export interface IProps {
     variant?: ColorVariant
-    title: string
+    title?: string
     text: string
     onHiden:()=> void
     onClickOne?:() => void 
@@ -123,7 +123,7 @@ export const Alert: React.FC<IProps> = ({
          <header className={classname({
              'flex items-start justify-between':true,
              })}>
-            <div className='flex gap-2 items-start'>
+            <div className='flex gap-2 items-start mt-0.5'>
               <i className={classname({
                 'text-base mt-1':true,
                 //icon type variant 
@@ -133,9 +133,8 @@ export const Alert: React.FC<IProps> = ({
                 'fa-solid fa-triangle-exclamation':variant == "warning",
                 'fa-solid fa-circle-exclamation':variant == "danger"
                })}></i>
-             
-                <span className='font-semibold text-sm flex items-start py-0.5'>
-                  { title }
+                <span className='font-semibold text-sm flex items-start pyd-1'>
+                  {title}
                   <span className='ml-1 font-normal'>{text}</span>
                 </span>              
             </div>

@@ -23,8 +23,8 @@ export default {
     description: "Para uso da progress bar no kanban, passar o type 'kanban' "
    },
    isFinished: {
-    type: 'boolean',
-    description: "Propriedade para uso no type kanban, se o valor for true o icone será verde, se for falso será laranja."
+    type: 'string',
+    description: "Propriedade para uso no type kanban,passe uma string com um dos seguintes tipos,(progress),(success),(error)"
    }
   }
 } as ComponentMeta<typeof ProgressBar>;

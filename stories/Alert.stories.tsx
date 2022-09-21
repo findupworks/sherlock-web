@@ -40,7 +40,6 @@ export const Default = ()=>{
   return (
       <div>
         <Alert
-        title='Primary'
          showAlert={showAlert} 
          onHiden={()=> setShowAlert(false)} 
          onClickOne={()=> alert("Clicou")}  
