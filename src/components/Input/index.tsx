@@ -31,7 +31,7 @@ export const Input: React.FC<IProps> = ({
   ...props
 }) => {
   const [toggleIcon, setToggleIcon] = useState("eye-slash");
-  const [typeInput, setTypeInput] = useState("");
+  const [typeInput, setTypeInput] = useState("password");
 
   function changleToggleIcon() {
     if (toggleIcon == "eye") {
@@ -64,10 +64,10 @@ export const Input: React.FC<IProps> = ({
     );
   }
 
-  function getContentByType() {
-    return (
-      <>
-        {"textarea" === inputType ? (
+  function getContentType() {
+    if (inputType === "textarea") {
+      return (
+        <>
           <div className="flex flex-col justify-center">
             <div>
               {label ? (
@@ -92,81 +92,115 @@ export const Input: React.FC<IProps> = ({
             </div>
             {tag ? getTag() : ""}
           </div>
-        ) : (
+        </>
+      );
+    }
+
+    if (inputType === "icon") {
+      return (
+        <>
           <div className="relative">
-            {"icon" == inputType ? (
-              <>
-                {label ? (
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label>
-                ) : (
-                  ""
-                )}
-                <div className="flex  justify-between">
-                  <input
-                    type="text"
-                    className={classNames("border text-gray-900 text-sm rounded-md block w-full p-3", {
-                      "bg-gray-50 border border-gray-300": "default" == colorVariant,
-                      "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
-                      "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
-                      "border-danger bg-dangerL1 bg-opacity-10": "danger" == colorVariant,
-                      "border-info bg-infoL1 bg-opacity-10": "info" == colorVariant,
-                      "border-primary bg-primaryL1 bg-opacity-10": "primary" == colorVariant,
-                      "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
-                    })}
-                    {...props}
-                  />
-                  <i
-                    onClick={onClickIcon}
-                    className={classNames(`absolute  right-4 top-10 text-gray-600 fa fa-${icon}`, {})}
-                  ></i>
-                </div>
-                {tag ? getTag() : ""}
-              </>
+            {label ? (
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label>
             ) : (
               ""
             )}
-            {"selector" == inputType ? (
-              <>
-                <div>
-                  {label ? (
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{label}</label>
-                  ) : (
-                    ""
-                  )}
-                  <select
-                    className={classNames("text-gray-900 text-sm border rounded-lg block w-full p-2.5", {
-                      "bg-gray-50 border border-gray-300": "default" == colorVariant,
-                      "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
-                      "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
-                      "border-danger bg-dangerL1 bg-opacity-10": "danger" == colorVariant,
-                      "border-info bg-infoL1 bg-opacity-10": "info" == colorVariant,
-                      "border-primary bg-primaryL1 bg-opacity-10": "primary" == colorVariant,
-                      "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
-                    })}
-                  >
-                    <option defaultValue={"-"} className="text-xs">
-                      -
-                    </option>
-                    {selectorItems ? selectorItems.map((item) => <option value={item.value}>{item.label}</option>) : ""}
-                  </select>
-                </div>
-              </>
+            <div className="flex  justify-between">
+              <input
+                type="text"
+                className={classNames("border text-gray-900 text-sm rounded-md block w-full p-3", {
+                  "bg-gray-50 border border-gray-300": "default" == colorVariant,
+                  "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
+                  "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
+                  "border-danger bg-dangerL1 bg-opacity-10": "danger" == colorVariant,
+                  "border-info bg-infoL1 bg-opacity-10": "info" == colorVariant,
+                  "border-primary bg-primaryL1 bg-opacity-10": "primary" == colorVariant,
+                  "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
+                })}
+                {...props}
+              />
+              <i
+                onClick={onClickIcon}
+                className={classNames(`absolute  right-4 top-10 text-gray-600 fa fa-${icon}`, {})}
+              ></i>
+            </div>
+            {tag ? getTag() : ""}
+          </div>
+        </>
+      );
+    }
+
+    if (inputType === "selector") {
+      return (
+        <>
+          <div>
+            {label ? (
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{label}</label>
+            ) : (
+              ""
+            )}
+            <select
+              className={classNames("text-gray-900 text-sm border rounded-lg block w-full p-2.5", {
+                "bg-gray-50 border border-gray-300": "default" == colorVariant,
+                "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
+                "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
+                "border-danger bg-dangerL1 bg-opacity-10": "danger" == colorVariant,
+                "border-info bg-infoL1 bg-opacity-10": "info" == colorVariant,
+                "border-primary bg-primaryL1 bg-opacity-10": "primary" == colorVariant,
+                "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
+              })}
+            >
+              <option defaultValue={"-"} className="text-xs">
+                -
+              </option>
+              {selectorItems ? selectorItems.map((item) => <option value={item.value}>{item.label}</option>) : ""}
+            </select>
+          </div>
+        </>
+      );
+    }
+
+    if (inputType === "password") {
+      return (
+        <div>
+          {label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
+          <div className="flex relative justify-between">
+            <input
+              type={typeInput}
+              className={classNames("border text-dark text-sm rounded-lg block w-full p-3", {
+                "bg-gray-50 border border-gray-300": "default" == colorVariant,
+                "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
+                "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
+                "border-danger bg-dangerL1 bg-opacity-10": "danger" == colorVariant,
+                "border-info bg-infoL1 bg-opacity-10": "info" == colorVariant,
+                "border-primary bg-primaryL1 bg-opacity-10": "primary" == colorVariant,
+                "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
+              })}
+              {...props}
+            />
+            {isVisible ? (
+              <i
+                onClick={changleToggleIcon}
+                className={`fa fa-${toggleIcon} right-3 top-3 text-lg absolute text-gray-600`}
+              ></i>
             ) : (
               ""
             )}
           </div>
-        )}
-      </>
-    );
+          {tag ? getTag() : ""}
+        </div>
+      );
+    }
+
+    return <></>;
   }
 
   function getContentDefault() {
     return (
       <div>
         {label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
-        <div className={classNames("flex relative justify-between", {})}>
+        <div className="flex relative justify-between">
           <input
-            type={typeInput}
             className={classNames("border text-dark text-sm rounded-lg block w-full p-3", {
               "bg-gray-50 border border-gray-300": "default" == colorVariant,
               "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
@@ -178,19 +212,11 @@ export const Input: React.FC<IProps> = ({
             })}
             {...props}
           />
-          {isVisible ? (
-            <i
-              onClick={changleToggleIcon}
-              className={`fa fa-${toggleIcon} right-3 top-3 text-lg absolute text-gray-600`}
-            ></i>
-          ) : (
-            ""
-          )}
         </div>
         {tag ? getTag() : ""}
       </div>
     );
   }
 
-  return "default" == inputType ? getContentDefault() : getContentByType();
+  return "default" == inputType ? getContentDefault() : getContentType();
 };
