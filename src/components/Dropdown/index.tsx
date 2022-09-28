@@ -299,7 +299,7 @@ export const Dropdown: React.FC<IProps> = ({
                   className={classname({
                     "absolute right-0 z-20 w-56 py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":
                       variant !== "filter",
-                    "w-56 mt-2 rounded-md transition duration-150 bg-white min-h-[20px] scrollbar-hide overflow-auto ease-out transform scale-100 opacity-100":
+                    "w-56 mt-2 rounded-md transition duration-150 bg-white min-h-[20px] max-h-36 scrollbar-hide overflow-auto ease-out transform scale-100 opacity-100":
                       variant === "filter",
                   })}
                 >
