@@ -24,7 +24,6 @@ export interface DropdownItem {
   onClick?: () => void;
   checked?: boolean;
 }
-
 export interface IProps {
   label?: string;
   itemsMenu: DropdownItem[];
@@ -35,6 +34,7 @@ export interface IProps {
   labelButtonDropdown?: string;
   variant: DropwdonVariant;
   isSearch?: boolean;
+  disabled?: boolean;
 }
 
 export const Dropdown: React.FC<IProps> = ({
@@ -47,6 +47,7 @@ export const Dropdown: React.FC<IProps> = ({
   labelButtonDropdown = "Apply",
   variant = "default",
   isSearch = false,
+  disabled = false,
 }) => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const ref = useDetectClickOutside({ onTriggered: () => setShowDropdown(false) });
@@ -262,6 +263,7 @@ export const Dropdown: React.FC<IProps> = ({
               onClick={() => setShowDropdown(!showDropdown)}
               placeholder={label}
               onChange={(e) => setSearch(e.target.value)}
+              disabled={disabled}
             />
             <i
               onClick={() => setShowDropdown(!showDropdown)}
