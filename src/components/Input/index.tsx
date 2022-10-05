@@ -121,7 +121,7 @@ export const Input: React.FC<IProps> = ({
               />
               <i
                 onClick={onClickIcon}
-                className={classNames(`absolute  right-4 top-10 text-gray-600 fa fa-${icon}`, {})}
+                className={classNames(`absolute  right-4 top-11 text-gray-600 fa fa-${icon}`, {})}
               ></i>
             </div>
             {tag ? getTag() : ""}
