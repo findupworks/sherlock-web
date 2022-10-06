@@ -49,11 +49,7 @@ export const TableBody: React.FC<IProps> = ({ children }) => {
 };
 
 export const Tr: React.FC<ITrProps> = ({ children }) => {
-  return (
-    <tr className="flex flex-row w-full border-t-2 border-grey items-center h-16">
-      <div className="flex flex-row justify-between">{children}</div>
-    </tr>
-  );
+  return <tr className="flex flex-row w-full border-t-2 border-grey items-center h-16">{children}</tr>;
 };
 
 export const Td: React.FC<ITrProps> = ({ children }) => {

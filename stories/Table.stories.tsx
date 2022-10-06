@@ -19,30 +19,34 @@ export default {
 const Template: ComponentStory<typeof Table> = (args) => {
   return (
     <Table>
-      <TableHead divider>
-        <Th>Name</Th>
-        <Th>Document Type</Th>
-        <Th>Size</Th>
+      <TableHead>
+        <Th>Os</Th>
+        <Th>Agendamento</Th>
+        <Th>Cliente</Th>
+        <Th>Especialista</Th>
+        <Th>Endereço</Th>
+        <Th>Cidade</Th>
+        <Th>Estado</Th>
+        <Th>Tipo</Th>
         <Th>Status</Th>
-        <Th>Modified Data</Th>
-        <Th>Create Data</Th>
+        <Th>Responsável</Th>
+        <Th>Ações</Th>
       </TableHead>
       <TableBody>
         <Tr>
-          <Td>Text cell</Td>
-          <Td>Text Cell</Td>
-          <Td>553 KB</Td>
-          <Td>LABEL TEXT</Td>
-          <Td>20 Seconds Ago</Td>
-          <Td>20 Seconds Ago</Td>
-        </Tr>
-        <Tr>
-          <Td>Text cell 2</Td>
-          <Td>Text Cell 2</Td>
-          <Td>553 KB 2</Td>
-          <Td>LABEL TEXT 2</Td>
-          <Td>20 Seconds Ago 2</Td>
-          <Td>20 Seconds Ago 2</Td>
+          <Td>#65756</Td>
+          <Td>
+            <p className="truncate">Recife: 31/03/3030 | 08:00</p>
+          </Td>
+          <Td>Loccitane</Td>
+          <Td>Renan Felisberto</Td>
+          <Td>Avenida Vilas Boas 1749, Sobreloja 4 - centro</Td>
+          <Td>Goiânia</Td>
+          <Td>Goiás</Td>
+          <Td>FIELD</Td>
+          <Td>Buscando técnico</Td>
+          <Td>Renan Felisberto</Td>
+          <Td>Lupa</Td>
         </Tr>
       </TableBody>
     </Table>
