@@ -17,6 +17,20 @@ export default {
 
 //👇 We create a “template” of how args map to rendering
 const Template: ComponentStory<typeof Table> = (args) => {
+  const occurrence = [
+    "#65756",
+    "Recife: 31/03/3030 | 08:00",
+    "Loccitane",
+    "Renan Felisberto",
+    "Avenida Vilas Boas 1749, Sobreloja 4 - centro",
+    "Goiânia",
+    "Goiás",
+    "FIELD",
+    "Buscando técnico",
+    "Renan Felisberto",
+    "Lupa",
+  ];
+
   return (
     <Table>
       <TableHead>
@@ -34,30 +48,15 @@ const Template: ComponentStory<typeof Table> = (args) => {
       </TableHead>
       <TableBody>
         <Tr>
-          <Td>#65756</Td>
-          <Td>Recife: 31/03/3030 | 08:00</Td>
-          <Td>Loccitane</Td>
-          <Td>Renan Felisberto</Td>
-          <Td>Avenida Vilas Boas 1749, Sobreloja 4 - centro</Td>
-          <Td>Goiânia</Td>
-          <Td>Goiás</Td>
-          <Td>FIELD</Td>
-          <Td>Buscando técnico</Td>
-          <Td>Renan Felisberto</Td>
-          <Td>Lupa</Td>
-        </Tr>
-        <Tr>
-          <Td>#65756</Td>
-          <Td>Recife: 31/03/3030 | 08:00</Td>
-          <Td>Loccitane</Td>
-          <Td>Renan Felisberto</Td>
-          <Td>Avenida Vilas Boas 1749, Sobreloja 4 - centro</Td>
-          <Td>Goiânia</Td>
-          <Td>Goiás</Td>
-          <Td>FIELD</Td>
-          <Td>Buscando técnico</Td>
-          <Td>Renan Felisberto</Td>
-          <Td>Lupa</Td>
+          {occurrence.map((occ, index) => {
+            return index === 0 ? (
+              <Td badge badgeColor="secondary">
+                opa {occ}
+              </Td>
+            ) : (
+              <Td>{occ}</Td>
+            );
+          })}
         </Tr>
       </TableBody>
     </Table>
