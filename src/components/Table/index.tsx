@@ -17,26 +17,11 @@ export interface ITrProps {
   children?: ReactNode;
 }
 
-export const TableHead: React.FC<ITableHeadProps> = ({ children, divider, dividerLabel }) => {
+export const TableHead: React.FC<ITableHeadProps> = ({ children }) => {
   return (
-    <>
-      {divider ? (
-        <div>
-          <div className="flex flex-col">
-            <thead className="flex my-4 mx-4">
-              <tr className="flex justify-between w-full">{children}</tr>
-            </thead>
-          </div>
-          <div className="flex items-center bg-white w-full h-8">
-            <p className="text-sm text-dark font-bold ml-4">{dividerLabel ?? "Nome da divisão"}</p>
-          </div>
-        </div>
-      ) : (
-        <thead className="flex my-4 mx-4">
-          <tr className="flex justify-between w-full">{children}</tr>
-        </thead>
-      )}
-    </>
+    <thead className="my-4 mx-4 border-b-2 border-grey">
+      <tr>{children}</tr>
+    </thead>
   );
 };
 
@@ -45,17 +30,21 @@ export const Th: React.FC<IThProps> = ({ children }) => {
 };
 
 export const TableBody: React.FC<IProps> = ({ children }) => {
-  return <tbody className="flex flex-col mx-4">{children}</tbody>;
+  return <tbody className="mx-4">{children}</tbody>;
 };
 
 export const Tr: React.FC<ITrProps> = ({ children }) => {
-  return <tr className="flex flex-row w-full border-t-2 border-grey items-center h-16">{children}</tr>;
+  return <tr className="border-b-2 border-grey items-center">{children}</tr>;
 };
 
 export const Td: React.FC<ITrProps> = ({ children }) => {
-  return <td className="flex">{children}</td>;
+  return <td>{children}</td>;
 };
 
 export const Table: React.FC<IProps> = ({ children }) => {
-  return <table className="table-auto w-full h-full bg-white rounded-lg mb-6">{children}</table>;
+  return (
+    <div className="overflow-x-auto">
+      <table className="table-auto bg-white rounded-lg mb-6">{children}</table>;
+    </div>
+  );
 };

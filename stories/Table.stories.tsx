@@ -35,9 +35,20 @@ const Template: ComponentStory<typeof Table> = (args) => {
       <TableBody>
         <Tr>
           <Td>#65756</Td>
-          <Td>
-            <p className="truncate">Recife: 31/03/3030 | 08:00</p>
-          </Td>
+          <Td>Recife: 31/03/3030 | 08:00</Td>
+          <Td>Loccitane</Td>
+          <Td>Renan Felisberto</Td>
+          <Td>Avenida Vilas Boas 1749, Sobreloja 4 - centro</Td>
+          <Td>Goiânia</Td>
+          <Td>Goiás</Td>
+          <Td>FIELD</Td>
+          <Td>Buscando técnico</Td>
+          <Td>Renan Felisberto</Td>
+          <Td>Lupa</Td>
+        </Tr>
+        <Tr>
+          <Td>#65756</Td>
+          <Td>Recife: 31/03/3030 | 08:00</Td>
           <Td>Loccitane</Td>
           <Td>Renan Felisberto</Td>
           <Td>Avenida Vilas Boas 1749, Sobreloja 4 - centro</Td>
