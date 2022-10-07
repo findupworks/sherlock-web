@@ -17,6 +17,20 @@ export default {
 
 //👇 We create a “template” of how args map to rendering
 const Template: ComponentStory<typeof Table> = (args) => {
+  const head = [
+    "OS",
+    "Agendamento",
+    "Cliente",
+    "Especialista",
+    "Endereço",
+    "Cidade",
+    "Estado",
+    "Tipo",
+    "Status",
+    "Responsável",
+    "Ação",
+  ];
+
   const occurrence = [
     "#65756",
     "Recife: 31/03/3030 | 08:00",
@@ -34,28 +48,22 @@ const Template: ComponentStory<typeof Table> = (args) => {
   return (
     <Table>
       <TableHead>
-        <Th>Os</Th>
-        <Th>Agendamento</Th>
-        <Th>Cliente</Th>
-        <Th>Especialista</Th>
-        <Th>Endereço</Th>
-        <Th>Cidade</Th>
-        <Th>Estado</Th>
-        <Th>Tipo</Th>
-        <Th>Status</Th>
-        <Th>Responsável</Th>
-        <Th>Ações</Th>
+        <Th status></Th>
+        {head.map((item) => {
+          return <Th>{item}</Th>;
+        })}
       </TableHead>
       <TableBody>
         <Tr>
-          {occurrence.map((occ, index) => {
-            return index === 0 ? (
-              <Td badge badgeColor="secondary">
-                opa {occ}
-              </Td>
-            ) : (
-              <Td>{occ}</Td>
-            );
+          <Td status statusColor="secondary"></Td>
+          {occurrence.map((occ) => {
+            return <Td>{occ}</Td>;
+          })}
+        </Tr>
+        <Tr>
+          <Td status statusColor="secondary"></Td>
+          {occurrence.map((occ) => {
+            return <Td>{occ}</Td>;
           })}
         </Tr>
       </TableBody>
