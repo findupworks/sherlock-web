@@ -57,7 +57,7 @@ export const Td: React.FC<ITdProps> = ({ children, status, statusColor }) => {
 export const Table: React.FC<IProps> = ({ children }) => {
   return (
     <div className="overflow-x-auto w-full">
-      <table className="table-auto bg-white rounded-lg mb-6 w-full">{children}</table>
+      <table className="table-auto bg-white rounded-lg w-full">{children}</table>
     </div>
   );
 };
