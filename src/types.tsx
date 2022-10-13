@@ -41,3 +41,4 @@ export type TableTdVariant =
   | "icon";
 export type NavBarVariant = "light" | "dark";
 export type ProgressBarTypeKanbanVariant = "progress" | "error" | "success";
+export type BadgeVariant = "default" | "kanban";
