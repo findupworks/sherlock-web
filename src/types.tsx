@@ -42,3 +42,4 @@ export type TableTdVariant =
 export type NavBarVariant = "light" | "dark";
 export type ProgressBarTypeKanbanVariant = "progress" | "error" | "success";
 export type BadgeVariant = "default" | "kanban";
+export type PaginationEntrieOrientation = "up" | "down";

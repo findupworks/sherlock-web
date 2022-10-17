@@ -20,6 +20,10 @@ export default {
       options: ["default", "vertical"],
       control: { type: "select" },
     },
+    entrieOrientation: {
+      options: ["up", "down"],
+      control: { type: "radio" },
+    },
     entries: {
       options: [PaginationEntries.ten, PaginationEntries.twenty, PaginationEntries.fifty, PaginationEntries.hundred],
       control: { type: "select" },
@@ -49,6 +53,7 @@ Default.args = {
   totalPages: 10,
   totalEntries: 100,
   currentPage: 3,
+  entrieOrientation: "up",
 };
 
 export const Example = () => {
