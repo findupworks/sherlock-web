@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import classNames from "classnames";
-import { PaginationVariant } from "../../types";
+import { PaginationVariant, PaginationEntrieOrientation } from "../../types";
 
 export enum PaginationEntries {
   ten = 10,
@@ -12,6 +12,7 @@ export enum PaginationEntries {
 
 export interface IProps {
   variant?: PaginationVariant;
+  entrieOrientation?: PaginationEntrieOrientation;
   currentPage: number;
   totalPages: number;
   totalEntries: number;
@@ -24,6 +25,7 @@ export interface IProps {
 
 export const Pagination: React.FC<IProps> = ({
   variant,
+  entrieOrientation,
   currentPage = 1,
   totalPages,
   totalEntries,
@@ -41,6 +43,84 @@ export const Pagination: React.FC<IProps> = ({
   function changeEntries(entrie: PaginationEntries) {
     setEntrie(entrie);
     setshowEntries(false);
+  }
+
+  function getEntriesElement(entrieOrientation) {
+    if (entrieOrientation === "down") {
+      return (
+        <div
+          className={classNames(
+            "absolute z-20 w-24 py-2 top-6 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
+            {
+              hidden: !showEntries,
+              "scale-100 opacity-100": showEntries,
+            }
+          )}
+        >
+          <p
+            onClick={() => changeEntries(PaginationEntries.ten)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.ten}
+          </p>
+          <p
+            onClick={() => changeEntries(PaginationEntries.twenty)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.twenty}
+          </p>
+          <p
+            onClick={() => changeEntries(PaginationEntries.fifty)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.fifty}
+          </p>
+          <p
+            onClick={() => changeEntries(PaginationEntries.hundred)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.hundred}
+          </p>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className={classNames(
+            "absolute z-20 w-24 py-2 -top-28 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
+            {
+              hidden: !showEntries,
+              "scale-100 opacity-100": showEntries,
+            }
+          )}
+        >
+          <p
+            onClick={() => changeEntries(PaginationEntries.ten)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.ten}
+          </p>
+          <p
+            onClick={() => changeEntries(PaginationEntries.twenty)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.twenty}
+          </p>
+          <p
+            onClick={() => changeEntries(PaginationEntries.fifty)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.fifty}
+          </p>
+          <p
+            onClick={() => changeEntries(PaginationEntries.hundred)}
+            className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
+          >
+            {PaginationEntries.hundred}
+          </p>
+        </div>
+      );
+    }
   }
 
   function getPages() {
@@ -142,40 +222,7 @@ export const Pagination: React.FC<IProps> = ({
               className="fa-solid fa-caret-down text-primary pl-2 pt-1"
               onClick={() => setshowEntries(!showEntries)}
             ></i>
-            <div
-              className={classNames(
-                "absolute z-20 w-20 py-2 top-4 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
-                {
-                  hidden: !showEntries,
-                  "scale-100 opacity-100": showEntries,
-                }
-              )}
-            >
-              <p
-                onClick={() => changeEntries(PaginationEntries.ten)}
-                className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-              >
-                {PaginationEntries.ten}
-              </p>
-              <p
-                onClick={() => changeEntries(PaginationEntries.twenty)}
-                className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-              >
-                {PaginationEntries.twenty}
-              </p>
-              <p
-                onClick={() => changeEntries(PaginationEntries.fifty)}
-                className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-              >
-                {PaginationEntries.fifty}
-              </p>
-              <p
-                onClick={() => changeEntries(PaginationEntries.hundred)}
-                className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-              >
-                {PaginationEntries.hundred}
-              </p>
-            </div>
+            {getEntriesElement(entrieOrientation)}
 
             <p className="text-sm text-gray-700 pl-2">
               {showingLabel ?? "Exibindo"} {currentPage * entrie - entrie + 1} {toLabel ?? "a"} {currentPage * entrie}{" "}
@@ -250,41 +297,11 @@ export const Pagination: React.FC<IProps> = ({
           <p className="text-sm text-gray-700">
             {entrie} {entrieLabel ?? "Entradas"}
           </p>
-          <i className="fa-solid fa-caret-down text-primary pl-2" onClick={() => setshowEntries(!showEntries)}></i>
-          <div
-            className={classNames(
-              "absolute z-20 w-20 py-2 top-6 bg-white rounded-md shadow-xl transition duration-150 ease-out transform",
-              {
-                hidden: !showEntries,
-                "scale-100 opacity-100": showEntries,
-              }
-            )}
-          >
-            <p
-              onClick={() => changeEntries(PaginationEntries.ten)}
-              className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-            >
-              {PaginationEntries.ten}
-            </p>
-            <p
-              onClick={() => changeEntries(PaginationEntries.twenty)}
-              className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-            >
-              {PaginationEntries.twenty}
-            </p>
-            <p
-              onClick={() => changeEntries(PaginationEntries.fifty)}
-              className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-            >
-              {PaginationEntries.fifty}
-            </p>
-            <p
-              onClick={() => changeEntries(PaginationEntries.hundred)}
-              className="flex flex-row items-center text-gray-600 transition-colors duration-200 transform  hover:bg-gray-300"
-            >
-              {PaginationEntries.hundred}
-            </p>
-          </div>
+          <i
+            className="cursor-pointer fa-solid fa-caret-down text-primary pl-2"
+            onClick={() => setshowEntries(!showEntries)}
+          ></i>
+          {getEntriesElement(entrieOrientation)}
         </div>
         <div>
           <p className="text-sm text-gray-700">
