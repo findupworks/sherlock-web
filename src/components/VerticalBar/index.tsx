@@ -64,9 +64,9 @@ export const VerticalBar: React.FC<IProps> = ({
           )}
           <div className="h-full">
             <ul className="space-y-2">
-              {icons.map((icon) => (
+              {icons.map((icon, key) => (
                 <>
-                  <li onClick={icon?.onClick}>
+                  <li onClick={icon?.onClick} key={key}>
                     <a
                       className={`flex items-center justify-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700`}
                       style={{ color: iconsColor ? iconsColor : "white" }}

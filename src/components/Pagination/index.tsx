@@ -219,7 +219,7 @@ export const Pagination: React.FC<IProps> = ({
               {entrie} {entrieLabel ?? "entradas"}
             </p>
             <i
-              className="fa-solid fa-caret-down text-primary pl-2 pt-1"
+              className={`cursor-pointer fa-solid fa-caret-${entrieOrientation} text-primary pl-2 pt-1`}
               onClick={() => setshowEntries(!showEntries)}
             ></i>
             {getEntriesElement(entrieOrientation)}
@@ -298,7 +298,7 @@ export const Pagination: React.FC<IProps> = ({
             {entrie} {entrieLabel ?? "Entradas"}
           </p>
           <i
-            className="cursor-pointer fa-solid fa-caret-down text-primary pl-2"
+            className={`cursor-pointer fa-solid fa-caret-${entrieOrientation} text-primary pl-2`}
             onClick={() => setshowEntries(!showEntries)}
           ></i>
           {getEntriesElement(entrieOrientation)}
