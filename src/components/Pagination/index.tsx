@@ -25,7 +25,7 @@ export interface IProps {
 
 export const Pagination: React.FC<IProps> = ({
   variant,
-  entrieOrientation,
+  entrieOrientation = "down",
   currentPage = 1,
   totalPages,
   totalEntries,
