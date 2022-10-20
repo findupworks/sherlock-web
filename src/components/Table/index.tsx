@@ -32,7 +32,7 @@ export const Th: React.FC<IThProps> = ({ children, status }) => {
   if (status) {
     return <td className="">{children}</td>;
   }
-  return <td className="p-3 text-base text-dark font-semibold tracking-wide text-left">{children}</td>;
+  return <td className="p-3 text-xs text-dark font-semibold tracking-wide text-left">{children}</td>;
 };
 
 export const TableBody: React.FC<IProps> = ({ children }) => {
@@ -51,7 +51,7 @@ export const Td: React.FC<ITdProps> = ({ children, status, statusColor }) => {
       </td>
     );
   }
-  return <td className="p-3 text-sm text-dark">{children}</td>;
+  return <td className="p-3 text-xs text-dark">{children}</td>;
 };
 
 export const Table: React.FC<IProps> = ({ children }) => {

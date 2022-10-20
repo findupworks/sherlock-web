@@ -198,10 +198,10 @@ export const Input: React.FC<IProps> = ({
   function getContentDefault() {
     return (
       <div>
-        {label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
+        {label ? <label className="block text-xs font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
         <div className="flex relative justify-between">
           <input
-            className={classNames("border text-dark text-sm rounded-lg block w-full p-3", {
+            className={classNames("border text-dark text-xs rounded-lg block w-full p-2", {
               "bg-gray-50 border border-gray-300": "default" == colorVariant,
               "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
               "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
