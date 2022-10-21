@@ -94,7 +94,7 @@ export const Dropdown: React.FC<IProps> = ({
     return (
       <div
         className={classname({
-          "w-full p-3 text-sm text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer":
+          "w-full p-3 text-xs text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer":
             true,
 
           //isDivider
@@ -120,7 +120,7 @@ export const Dropdown: React.FC<IProps> = ({
     return (
       <div
         className={classname({
-          "w-full p-3 text-sm text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer":
+          "w-full p-3 text-xs text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer":
             true,
 
           //isDivider
@@ -148,7 +148,7 @@ export const Dropdown: React.FC<IProps> = ({
         {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-2 ml-2">FILTRAR POR</div>}
         <div
           className={classname({
-            "flex items-center w-full justify-between p-3 text-sm text-dark capitalize transition-colors duration-200 transform hover:bg-darkL2 cursor-pointer":
+            "flex items-center w-full justify-between p-3 text-xs text-dark capitalize transition-colors duration-200 transform hover:bg-darkL2 cursor-pointer":
               true,
           })}
           onChange={(event) => onChange && onChange(event, item, index, false)}
@@ -187,7 +187,7 @@ export const Dropdown: React.FC<IProps> = ({
       <div>
         {item?.isTitleFilterBy && <div className="font-semibold text-xs text-dark mt-5 ml-2">FILTRAR POR</div>}
         <div
-          className="flex items-center w-full justify-between text-sm p-3 text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer"
+          className="flex items-center w-full justify-between text-xs p-3 text-dark capitalize transition-colors duration-200 transform  hover:bg-darkL2 cursor-pointer"
           onClick={() => toggleContentSubItens(index)}
         >
           <div className="flex gap-2">
@@ -205,7 +205,7 @@ export const Dropdown: React.FC<IProps> = ({
         {item?.subItens && item?.subItens?.length > 0 && (
           <div
             className={classname({
-              "w-full justify-between text-sm text-dark capitalize transition-colors duration-200 transform ml-2 px-2":
+              "w-full justify-between text-xs text-dark capitalize transition-colors duration-200 transform ml-2 px-2":
                 true,
               block: dropdownItemIndexSelected == index,
               hidden: dropdownItemIndexSelected != index,
@@ -259,7 +259,7 @@ export const Dropdown: React.FC<IProps> = ({
         return (
           <>
             <input
-              className="relative p-2 bg-gray-200 border text-dark min-w-[240px] rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
+              className="relative p-2 text-xs border text-dark min-w-[162px] rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
               onClick={() => setShowDropdown(!showDropdown)}
               placeholder={label}
               onChange={(e) => setSearch(e.target.value)}
@@ -267,7 +267,7 @@ export const Dropdown: React.FC<IProps> = ({
             />
             <i
               onClick={() => setShowDropdown(!showDropdown)}
-              className="fa-solid fa-magnifying-glass absolute right-3 top-3 text-dark"
+              className="fa-solid fa-chevron-down absolute right-3 top-2 text-dark"
             ></i>
           </>
         );
@@ -298,9 +298,9 @@ export const Dropdown: React.FC<IProps> = ({
               <>
                 <div
                   className={classname({
-                    "absolute right-0 z-20 w-[240px] py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":
+                    "absolute right-0 z-20 w-[162px] py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":
                       variant !== "filter",
-                    "absolute inset-x-0 z-10 w-[240px] mt-2 rounded-md transition duration-150 bg-white max-h-60":
+                    "absolute inset-x-0 z-10 w-[162px] mt-2 rounded-md transition duration-150 bg-white max-h-60":
                       variant === "filter",
                   })}
                 >

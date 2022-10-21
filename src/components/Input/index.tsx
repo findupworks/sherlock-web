@@ -71,13 +71,13 @@ export const Input: React.FC<IProps> = ({
           <div className="flex flex-col justify-center">
             <div>
               {label ? (
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label>
+                <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-dark">{label}</label>
               ) : (
                 ""
               )}
               <textarea
                 className={classNames(
-                  "resize w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border border-solid rounded transition ease-in-out m-0",
+                  "resize w-full px-3 py-1.5 text-xs font-normal text-gray-700 bg-clip-padding border border-solid rounded transition ease-in-out m-0",
                   {
                     "bg-gray-50 border border-gray-300": "default" == colorVariant,
                     "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
@@ -101,14 +101,14 @@ export const Input: React.FC<IProps> = ({
         <>
           <div className="relative">
             {label ? (
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label>
+              <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-dark">{label}</label>
             ) : (
               ""
             )}
             <div className="flex  justify-between">
               <input
                 type="text"
-                className={classNames("border text-gray-900 text-sm rounded-md block w-full p-3", {
+                className={classNames("border text-gray-900 text-xs rounded-md block w-full p-3", {
                   "bg-gray-50 border border-gray-300": "default" == colorVariant,
                   "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
                   "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
@@ -121,7 +121,7 @@ export const Input: React.FC<IProps> = ({
               />
               <i
                 onClick={onClickIcon}
-                className={classNames(`absolute  right-4 top-11 text-gray-600 fa fa-${icon}`, {})}
+                className={classNames(`absolute  right-3 top-9 text-gray-600 fa fa-${icon}`, {})}
               ></i>
             </div>
             {tag ? getTag() : ""}
@@ -135,12 +135,12 @@ export const Input: React.FC<IProps> = ({
         <>
           <div>
             {label ? (
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{label}</label>
+              <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-gray-400">{label}</label>
             ) : (
               ""
             )}
             <select
-              className={classNames("text-gray-900 text-sm border rounded-lg block w-full p-2.5", {
+              className={classNames("text-gray-900 text-xs border rounded-lg block w-full p-2.5", {
                 "bg-gray-50 border border-gray-300": "default" == colorVariant,
                 "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
                 "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
@@ -163,11 +163,11 @@ export const Input: React.FC<IProps> = ({
     if (inputType === "password") {
       return (
         <div>
-          {label ? <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
+          {label ? <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
           <div className="flex relative justify-between">
             <input
               type={typeInput}
-              className={classNames("border text-dark text-sm rounded-lg block w-full p-3", {
+              className={classNames("border text-dark text-xs rounded-lg block w-full p-3", {
                 "bg-gray-50 border border-gray-300": "default" == colorVariant,
                 "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
                 "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
@@ -181,7 +181,7 @@ export const Input: React.FC<IProps> = ({
             {isVisible ? (
               <i
                 onClick={changleToggleIcon}
-                className={`fa fa-${toggleIcon} right-3 top-3 text-lg absolute text-gray-600`}
+                className={`fa fa-${toggleIcon} right-2 top-3 text-base absolute text-gray-600`}
               ></i>
             ) : (
               ""
@@ -198,7 +198,7 @@ export const Input: React.FC<IProps> = ({
   function getContentDefault() {
     return (
       <div>
-        {label ? <label className="block text-xs font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
+        {label ? <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
         <div className="flex relative justify-between">
           <input
             className={classNames("border text-dark text-xs rounded-lg block w-full p-2", {

@@ -32,7 +32,7 @@ export const Badge: React.FC<IProps> = ({ label, color = "default", variant = "d
     return (
       <span
         className={classname({
-          "text-xs font-semibold inline-block py-px px-1 uppercase last:mr-0 mr-1 rounded-lg pl-8 pr-8 pt-2 pb-2 min-w-[240px] min-h-[32px] text-center":
+          "text-xs font-semibold inline-block py-px px-1 uppercase last:mr-0 mr-1 rounded-lg pl-4 pr-4 pt-1 pb-1 text-center":
             true,
           // Outline none
           "bg-secondary text-secondaryL3": "default" == color,
