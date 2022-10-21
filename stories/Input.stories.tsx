@@ -26,6 +26,10 @@ export default {
       type: "string",
       description: "Label do input",
     },
+    labelDefault: {
+      type: "string",
+      description: "Label para valor default no type Selector",
+    },
     icon: {
       type: "string",
       description: "Icone do fonts awesome para o tipo Icon (utilizar apenas o nome do icone diretamente)",

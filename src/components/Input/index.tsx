@@ -10,6 +10,7 @@ export interface SelectorItem {
 
 export type IProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
+  labelDefault?: string;
   inputType: InputTypeVariant;
   selectorItems?: SelectorItem[];
   colorVariant?: ColorVariant;
@@ -21,6 +22,7 @@ export type IProps = InputHTMLAttributes<HTMLInputElement> & {
 
 export const Input: React.FC<IProps> = ({
   label,
+  labelDefault,
   inputType = "default",
   colorVariant,
   selectorItems,
@@ -150,8 +152,8 @@ export const Input: React.FC<IProps> = ({
                 "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
               })}
             >
-              <option defaultValue={"-"} className="text-xs">
-                -
+              <option defaultValue={labelDefault ?? "-"} className="text-xs">
+                {labelDefault ?? "-"}
               </option>
               {selectorItems ? selectorItems.map((item) => <option value={item.value}>{item.label}</option>) : ""}
             </select>
