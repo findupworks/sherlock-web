@@ -290,7 +290,7 @@ export const Dropdown: React.FC<IProps> = ({
           })}
           ref={ref}
         >
-          <div className="relative inline-block rounded-lg mx-2 my-2 ">
+          <div className="relative inline-block rounded-lg">
             {/* <!-- Dropdown toggle button --> */}
             {toggleDropwdon()}
             {/* <!-- Dropdown menu --> */}
