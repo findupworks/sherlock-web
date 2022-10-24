@@ -102,15 +102,11 @@ export const Input: React.FC<IProps> = ({
       return (
         <>
           <div className="relative">
-            {label ? (
-              <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-dark">{label}</label>
-            ) : (
-              ""
-            )}
-            <div className="flex  justify-between">
+            {label ? <label className="block mb-1 text-xs font-medium text-dark dark:text-dark">{label}</label> : ""}
+            <div className="flex relative justify-between">
               <input
                 type="text"
-                className={classNames("border text-gray-900 text-xs rounded-md block w-full p-3", {
+                className={classNames("border text-gray-900 text-xs rounded-md block w-full p-2.5", {
                   "bg-gray-50 border border-gray-300": "default" == colorVariant,
                   "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
                   "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
@@ -123,7 +119,7 @@ export const Input: React.FC<IProps> = ({
               />
               <i
                 onClick={onClickIcon}
-                className={classNames(`absolute  right-3 top-9 text-gray-600 fa fa-${icon}`, {})}
+                className={classNames(`absolute right-2 top-3 text-gray-600 fa fa-${icon}`, {})}
               ></i>
             </div>
             {tag ? getTag() : ""}
@@ -142,7 +138,7 @@ export const Input: React.FC<IProps> = ({
               ""
             )}
             <select
-              className={classNames("text-gray-900 text-xs border rounded-lg block w-full p-2.5", {
+              className={classNames("text-dark text-xs border rounded-lg block w-full p-2.5", {
                 "bg-gray-50 border border-gray-300": "default" == colorVariant,
                 "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
                 "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
@@ -152,9 +148,6 @@ export const Input: React.FC<IProps> = ({
                 "border-secondary bg-secondaryL1 bg-opacity-10": "secondary" == colorVariant,
               })}
             >
-              <option defaultValue={labelDefault ?? "-"} className="text-xs">
-                {labelDefault ?? "-"}
-              </option>
               {selectorItems ? selectorItems.map((item) => <option value={item.value}>{item.label}</option>) : ""}
             </select>
           </div>
@@ -169,7 +162,7 @@ export const Input: React.FC<IProps> = ({
           <div className="flex relative justify-between">
             <input
               type={typeInput}
-              className={classNames("border text-dark text-xs rounded-lg block w-full p-3", {
+              className={classNames("border text-dark text-xs rounded-lg block w-full p-2.5", {
                 "bg-gray-50 border border-gray-300": "default" == colorVariant,
                 "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
                 "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
@@ -203,7 +196,7 @@ export const Input: React.FC<IProps> = ({
         {label ? <label className="block mb-1 text-xs font-medium text-gray-900 dark:text-dark">{label}</label> : ""}
         <div className="flex relative justify-between">
           <input
-            className={classNames("border text-dark text-xs rounded-lg block w-full p-2", {
+            className={classNames("border text-dark text-xs rounded-lg block w-full p-2.5", {
               "bg-gray-50 border border-gray-300": "default" == colorVariant,
               "border-success bg-successL1 bg-opacity-10": "success" == colorVariant,
               "border-warning bg-warningL1 bg-opacity-10": "warning" == colorVariant,
