@@ -24,7 +24,7 @@ export interface DropdownItem {
   onClick?: () => void;
   checked?: boolean;
 }
-export interface IProps {
+export type IProps = {
   label?: string;
   itemsMenu: DropdownItem[];
   leftIcon?: string;
@@ -35,7 +35,7 @@ export interface IProps {
   variant: DropwdonVariant;
   isSearch?: boolean;
   disabled?: boolean;
-}
+};
 
 export const Dropdown: React.FC<IProps> = ({
   label,
@@ -259,7 +259,7 @@ export const Dropdown: React.FC<IProps> = ({
         return (
           <>
             <input
-              className="relative p-2 text-xs border text-dark min-w-[162px] rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
+              className="relative p-2.5 text-xs border text-dark w-full rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring focus:outline-none"
               onClick={() => setShowDropdown(!showDropdown)}
               placeholder={label}
               onChange={(e) => setSearch(e.target.value)}
@@ -273,7 +273,7 @@ export const Dropdown: React.FC<IProps> = ({
         );
       }
       return (
-        <button className=" border-none outline outline-none px-2" onClick={() => setShowDropdown(!showDropdown)}>
+        <button className="border-none outline outline-none px-2" onClick={() => setShowDropdown(!showDropdown)}>
           {getLeftIcon()}
           {label}
           {getRightIcon()}
@@ -290,7 +290,7 @@ export const Dropdown: React.FC<IProps> = ({
           })}
           ref={ref}
         >
-          <div className="relative inline-block rounded-lg">
+          <div className="relative inline-block rounded-lg w-full">
             {/* <!-- Dropdown toggle button --> */}
             {toggleDropwdon()}
             {/* <!-- Dropdown menu --> */}
@@ -298,9 +298,9 @@ export const Dropdown: React.FC<IProps> = ({
               <>
                 <div
                   className={classname({
-                    "absolute right-0 z-20 w-[162px] py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":
+                    "absolute right-0 z-20 w-full py-2 mt-2 bg-white rounded-md shadow-xl transition duration-150 ease-out transform":
                       variant !== "filter",
-                    "absolute inset-x-0 z-10 w-[162px] mt-2 rounded-md transition duration-150 bg-white max-h-60":
+                    "absolute inset-x-0 z-10 w-full mt-2 rounded-md transition duration-150 bg-white max-h-60":
                       variant === "filter",
                   })}
                 >

@@ -176,7 +176,7 @@ export const Input: React.FC<IProps> = ({
             {isVisible ? (
               <i
                 onClick={changleToggleIcon}
-                className={`fa fa-${toggleIcon} right-2 top-3 text-base absolute text-gray-600`}
+                className={`fa fa-${toggleIcon} right-2 top-2 text-base absolute text-gray-600`}
               ></i>
             ) : (
               ""
