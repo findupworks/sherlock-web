@@ -267,7 +267,7 @@ export const Dropdown: React.FC<IProps> = ({
             />
             <i
               onClick={() => setShowDropdown(!showDropdown)}
-              className="fa-solid fa-chevron-down absolute right-3 top-2 text-dark"
+              className="fa-solid fa-chevron-down absolute right-2 top-3 text-dark"
             ></i>
           </>
         );
